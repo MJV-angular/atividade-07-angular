@@ -1,0 +1,54 @@
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  figure {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    gap: 25px;
+    div {
+      padding: 40px 0 0;
+      width: 100%;
+      max-width: 50%;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+
+      h2 {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 30px;
+      }
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        color: var(--purple-color);
+      }
+      .logo {
+        width: 80px;
+      }
+    }
+    .animation {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      min-width: 250px;
+      bottom: -29.5px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    padding: 0 3%;
+    figure {
+      div {
+        max-width: 100%;
+      }
+    }
+  }
+}

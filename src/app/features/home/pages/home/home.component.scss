@@ -1,0 +1,131 @@
+.about-container {
+  width: 100%;
+  padding: 60px 5%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--yellow-color);
+
+  .about-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    .about-text {
+      text-align: center;
+      color: rgb(39, 38, 38);
+      font-size: 14px;
+      font-weight: 400;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+  }
+
+  ul {
+    width: 100%;
+    display: flex;
+    margin: 25px 3%;
+    flex-wrap: wrap;
+    row-gap: 22px;
+    justify-content: center;
+    li {
+      align-items: center;
+      justify-self: center;
+      display: flex;
+      div {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        padding: 15px;
+        color: var(--gray-color);
+        background-color: var(--white-color);
+        border-radius: 10px;
+        height: 150px;
+      }
+      figure {
+        width: 60px;
+        height: 60px;
+        background-color: var(--gray-color);
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 40px;
+        }
+      }
+    }
+  }
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+.schools-container {
+  width: 100%;
+  display: flex;
+  .white {
+    padding: 60px 25px;
+    background-color: var(--white-color);
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    .schools-heading-container {
+      width: 100%;
+      max-width: 650px;
+      display: flex;
+      gap: 35px;
+      flex-direction: column;
+    }
+  }
+
+  .purple {
+    padding: 60px 25px;
+    background-color: var(--purple-color);
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    .schools-list-container {
+      display: flex;
+      max-width: 650px;
+
+      ul {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 25px;
+        column-gap: 25px;
+        li {
+          border-radius: 25px;
+          background-color: var(--white-color);
+          height: 50px;
+          width: 210px;
+          padding: 0 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          &:hover {
+            background-color: var(--gray-color);
+            color: var(--white-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .schools-container {
+    flex-direction: column;
+    .white,
+    .purple {
+      max-width: none;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}

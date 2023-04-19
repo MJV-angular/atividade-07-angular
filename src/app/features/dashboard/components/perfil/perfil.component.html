@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="icons container-courses">
+    <div>
+      <figure>
+        <img src="/assets/bookicon.svg" alt="" srcset="" />
+      </figure>
+      <h2>Cursos</h2>
+    </div>
+
+    <ul>
+      <li *ngFor="let ele of data?.courses">
+        {{ ele }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="icons container-certificate">
+    <div>
+      <figure>
+        <img src="/assets/certificadoicon.svg" alt="" srcset="" />
+      </figure>
+      <h2>Certificados</h2>
+    </div>
+
+    <ul>
+      <li *ngFor="let ele of data?.certificate">
+        {{ ele }}
+      </li>
+    </ul>
+  </div>
+</div>

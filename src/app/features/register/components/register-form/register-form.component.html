@@ -1,0 +1,42 @@
+<div class="container">
+  <form>
+    <div>
+      <h2>Bem-vindo(a) a <strong>MJVscholl</strong></h2>
+    </div>
+    <div>
+      <label for="name">Nome:</label>
+      <input [(ngModel)]="name" type="text" id="name" name="name" required />
+    </div>
+
+    <div>
+      <label for="email">E-mail:</label>
+      <input
+        [(ngModel)]="email"
+        type="email"
+        id="email"
+        name="email"
+        required
+      />
+      <p class="error" *ngIf="error">*{{ error }}</p>
+    </div>
+
+    <div>
+      <label for="password">Senha:</label>
+      <input
+        [(ngModel)]="password"
+        type="password"
+        id="password"
+        name="password"
+        required
+      />
+    </div>
+
+    <div>
+      <button (click)="createUser()" type="submit">Cadastrar</button>
+    </div>
+
+    <div>
+      <p>Já tem uma conta? <a href="/login">Entrar</a></p>
+    </div>
+  </form>
+</div>

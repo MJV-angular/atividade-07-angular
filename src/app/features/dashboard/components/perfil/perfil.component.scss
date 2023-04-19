@@ -1,0 +1,62 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  height: 150px;
+  display: flex;
+  gap: 22px;
+  padding: 0 25px;
+
+  .icons {
+    border-radius: 20px;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    padding: 15px 35px;
+    width: 100%;
+    box-shadow: 0px 11px 15px -3px rgba(0, 0, 0, 0.1);
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      figure {
+        width: 80px;
+      }
+    }
+  }
+  .container-courses {
+    background-color: var(--yellow-color);
+    color: var(--gray-color);
+    li {
+      background-color: var(--white-color);
+    }
+  }
+
+  .container-certificate {
+    background-color: var(--gray-color);
+    color: var(--white-color);
+    li {
+      background-color: var(--white-color);
+      color: var(--gray-color);
+    }
+  }
+}
+figure {
+  img {
+    width: 100%;
+  }
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 30px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+}

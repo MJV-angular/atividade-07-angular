@@ -1,0 +1,11 @@
+div{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+app-login-form{
+height: 100%;
+background: url("/assets/background.svg");
+}
