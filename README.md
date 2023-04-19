@@ -7,6 +7,9 @@ Esta é uma atividade desenvolvida para os alunos da MJV School Angular, com o o
 
 
 
+https://user-images.githubusercontent.com/100942719/233216983-45d92e0f-6a4b-4d32-938f-d2639fda19ac.mp4
+
+
 
 [api utilizada no projeto](https://github.com/MJV-angular/api-projeto-final) 
 [aplicação no vercel](https://atividade-semana07-naianereis.vercel.app/)
