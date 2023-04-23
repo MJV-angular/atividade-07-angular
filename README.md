@@ -22,7 +22,7 @@ https://user-images.githubusercontent.com/100942719/233216983-45d92e0f-6a4b-4d32
    
 ### `git clone https://github.com/MJV-angular/atividade-07-angular.git` 
 
-1. Para rodar o app é necessário rodar installar todas as dependências utilizadas no projeto.
+1. Para rodar o app é necessário rodar instalar todas as dependências utilizadas no projeto.
    
 ### `yarn install`
 
