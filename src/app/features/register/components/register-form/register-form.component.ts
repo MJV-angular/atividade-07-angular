@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
-import { UserRequest } from 'src/app/shared/interfaces/api.interfaces';
 import { ApiService } from 'src/app/shared/services/api.service';
 @Component({
   selector: 'app-register-form',
@@ -8,18 +8,24 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
-  email: string = '';
-  password: string = '';
-  name: string = '';
-  error?: string;
+
+  userForm = new FormGroup({
+    email: new FormControl("",[Validators.required]),
+    name: new FormControl("",[Validators.required]),
+    cpf: new FormControl("",[Validators.required]),
+    dateBirth: new FormControl("",[Validators.required]),
+    picture: new FormControl("",[Validators.required]),
+    password: new FormControl("",[Validators.required]),
+  })
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {}
 
-  createUser() {
-    return this.apiService.createUser({ email: this.email, name: this.name, password: this.password}).subscribe({
+  onSubmit() {
+    console.log(this.userForm.value)
+    return this.apiService.createUser(this.userForm.value).subscribe({
         error: ({error}) => {
-          this.error = error.message;
+          console.log(error)
         },
         complete: () => this.router.navigateByUrl('/login')
     });

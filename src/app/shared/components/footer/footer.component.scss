@@ -1,7 +1,6 @@
 div {
-
-  position:relative;
-  bottom:0;
+  position: relative;
+  bottom: 0;
   background-color: #3e3e3e;
   min-height: 100px;
   display: flex;
@@ -21,19 +20,22 @@ div {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background-color: rgb(84, 82, 82) ;
+    background-color: rgb(84, 82, 82);
     cursor: pointer;
     z-index: 9999999;
-    img{
+    img {
       width: 40%;
     }
-    &:hover{
+    &:hover {
       background-color: rgb(122, 120, 120);
       transition: 0.3s;
     }
   }
 
   figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100px;
     img {
       width: 60%;
@@ -42,11 +44,10 @@ div {
 }
 
 @media screen and (max-width: 580px) {
-	div {
+  div {
     padding: 25px 0;
-		flex-direction: column;
+    flex-direction: column;
     gap: 15px;
     justify-content: center;
-
-	}
+  }
 }

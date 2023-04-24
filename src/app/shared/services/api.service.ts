@@ -11,11 +11,11 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
   createUser(data: UserRequest): Observable<any>{
-    return this.httpClient.post(`https://api-naianereis.vercel.app/user`, data)
+    return this.httpClient.post(`https://api-projeto-final-naianereis.vercel.app/user`, data)
   }
 
   login(data: IloginRequest): Observable<any>{
-    return this.httpClient.post(`https://api-naianereis.vercel.app/login`, data)
+    return this.httpClient.post(`https://api-projeto-final-naianereis.vercel.app/login`, data)
   }
 
   logout(): void{

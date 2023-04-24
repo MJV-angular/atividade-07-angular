@@ -1,42 +1,80 @@
 <div class="container">
-  <form>
+  <form [formGroup]="userForm">
     <div>
-      <h2>Bem-vindo(a) a <strong>MJVscholl</strong></h2>
-    </div>
-    <div>
-      <label for="name">Nome:</label>
-      <input [(ngModel)]="name" type="text" id="name" name="name" required />
+      <h2>Bem-vindo(a) a <strong> MJVschool </strong></h2>
     </div>
 
     <div>
-      <label for="email">E-mail:</label>
-      <input
-        [(ngModel)]="email"
-        type="email"
-        id="email"
-        name="email"
-        required
-      />
-      <p class="error" *ngIf="error">*{{ error }}</p>
+      <div>
+        <label for="name">Nome:</label>
+        <input
+          type="text"
+          formControlName="name"
+          id="name"
+          name="name"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="email">E-mail:</label>
+        <input
+          formControlName="email"
+          type="email"
+          id="email"
+          name="email"
+          required
+        />
+        <!-- <p class="error" *ngIf="error">*{{ error }}</p> -->
+      </div>
+
+      <div>
+        <label for="cpf">cpf:</label>
+        <input
+          formControlName="cpf"
+          type="text"
+          id="cpf"
+          name="cpf"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="dateBirth">data de nascimento:</label>
+        <input
+          formControlName="dateBirth"
+          type="datetime"
+          id="dateBirth"
+          name="dateBirth"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="picture">imagem-url:</label>
+        <input
+          formControlName="picture"
+          type="text"
+          id="picture"
+          name="picture"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="password">Senha:</label>
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          name="password"
+        />
+      </div>
     </div>
 
     <div>
-      <label for="password">Senha:</label>
-      <input
-        [(ngModel)]="password"
-        type="password"
-        id="password"
-        name="password"
-        required
-      />
-    </div>
-
-    <div>
-      <button (click)="createUser()" type="submit">Cadastrar</button>
-    </div>
-
-    <div>
-      <p>Já tem uma conta? <a href="/login">Entrar</a></p>
+      <button (click)="onSubmit()"  type="submit">Cadastrar</button>
+      <p>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
     </div>
   </form>
 </div>

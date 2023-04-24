@@ -1,7 +1,10 @@
 export interface UserRequest {
-  email: string;
-  name: string;
-  password: string;
+  email?: string | null;
+  name?: string | null;
+  password?: string| null;
+  picture?: string | null;
+  dateBirth?: string | null;
+  cpf?: string | null;
 }
 
 export interface IloginRequest {
