@@ -1,6 +1,9 @@
 .container {
   max-width: 1300px;
   margin: 0 auto;
+  background: url("/assets/background.svg");
+  color: var(--white-color);
+  
   figure {
     flex-wrap: wrap;
     display: flex;
@@ -25,7 +28,30 @@
         font-size: 20px;
         font-weight: 600;
         line-height: 30px;
-        color: var(--purple-color);
+        color: var(--white-color);
+      }
+
+      button {
+        max-width: 220px;
+        width: 100%;
+        border-radius: 25px;
+        background-color: var(--white-color);
+        color: var(--btn-color);
+        height: 30px;
+        margin: 22px 0 10px;
+        border: none;
+        padding: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        &:hover {
+          background: none;
+          border: 3px solid var(--white-color);
+          color: var(--white-color);
+        }
       }
       .logo {
         width: 80px;
@@ -36,7 +62,7 @@
       width: 100%;
       max-width: 500px;
       min-width: 250px;
-      bottom: -29.5px;
+      top: calc(28px);
       margin: 0 auto;
     }
   }
@@ -50,5 +76,41 @@
         max-width: 100%;
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    figure {
+      div {
+        button {
+          margin: 22px auto 10px;
+        }
+      }
+      .animation {
+
+        top: calc(27px );
+        margin: 0 auto;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    figure {
+      div {
+        button {
+          margin: 22px auto 10px;
+        }
+      }
+      .animation {
+
+        top: calc(30px - 3.8vw);
+        margin: 0 auto;
+      }
+    }
+
   }
 }

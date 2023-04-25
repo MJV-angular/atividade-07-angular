@@ -87,6 +87,7 @@ video {
   vertical-align: baseline;
   box-sizing: border-box;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -101,17 +102,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -119,6 +124,7 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -126,6 +132,11 @@ table {
 
 body {
   min-height: 100vh;
+  background: linear-gradient(270deg, #7039f2, #4260ad, #9b04f7);
+  background-size: 800% 800%;
+  -webkit-animation: Animationgrad 42s ease infinite;
+  -moz-animation: Animationgrad 42s ease infinite;
+  animation: Animationgrad 42s ease infinite;
 }
 
 * {
@@ -134,10 +145,45 @@ body {
 }
 
 :root {
-  --gray-color: rgb(83,84,85);
-  --pane-padding: 5px 42px;
-  --white-color:rgb(255, 255, 255);
-  --yellow-color:rgb(254, 189, 68);
-  --purple-color:rgb(126, 98, 224);
-  --black-color:rgb(14, 14, 14);
+  --gray-color:   rgb(83, 84, 85);
+  --white-color:  rgb(255, 255, 255);
+  --yellow-color: #fbfbfb;;
+  --purple-color: #7039f2;
+  --black-color:  #393f70;
+  --error-color:  #f2396d;
+  --btn-color:    #442992;
+}
+
+@-webkit-keyframes Animationgrad {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes Animationgrad {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes Animationgrad {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

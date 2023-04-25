@@ -1,10 +1,6 @@
 <div class="container">
   <form [formGroup]="userForm">
     <div>
-      <h2>Bem-vindo(a) a <strong> MJVschool </strong></h2>
-    </div>
-
-    <div>
       <div>
         <label for="name">Nome:</label>
         <input
@@ -43,7 +39,7 @@
         <label for="dateBirth">data de nascimento:</label>
         <input
           formControlName="dateBirth"
-          type="datetime"
+          type="date"
           id="dateBirth"
           name="dateBirth"
           required
@@ -76,5 +72,6 @@
       <button (click)="onSubmit()"  type="submit">Cadastrar</button>
       <p>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
     </div>
+    
   </form>
 </div>
