@@ -22,6 +22,7 @@ import { DashboardModule } from './features/dashboard/dashboard.module';
         LoginModule,
         RegisterModule,
         DashboardModule,
+        
 
     ]
 })

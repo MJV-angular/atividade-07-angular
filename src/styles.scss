@@ -88,7 +88,6 @@ video {
   box-sizing: border-box;
 }
 
-/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,
@@ -103,26 +102,9 @@ section {
   display: block;
 }
 
-body {
-  line-height: 1;
-}
-
 ol,
 ul {
   list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
 }
 
 table {
@@ -137,6 +119,7 @@ body {
   -webkit-animation: Animationgrad 42s ease infinite;
   -moz-animation: Animationgrad 42s ease infinite;
   animation: Animationgrad 42s ease infinite;
+
 }
 
 * {
@@ -145,44 +128,174 @@ body {
 }
 
 :root {
-  --gray-color:   rgb(83, 84, 85);
-  --white-color:  rgb(255, 255, 255);
-  --yellow-color: #fbfbfb;;
+  --gray-color: rgb(83, 84, 85);
+  --white-color: rgb(255, 255, 255);
+  --yellow-color: #fbfbfb;
   --purple-color: #7039f2;
-  --black-color:  #393f70;
-  --error-color:  #f2396d;
-  --btn-color:    #442992;
+  --black-color: #393f70;
+  --error-color: #f2396d;
+  --btn-color: #442992;
+  --shadow-primary: rgba(11, 43, 158, 0.15) 0px 6px 20px -6px;
 }
 
+button,
+a {
+  cursor: pointer;
+}
+form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 2rem;
+  border-radius: 25px;
+  gap: 22px;
+  background-color: var(--white-color);
+  color: var(--gray-color);
+  box-shadow: var(--shadow-primary);
+
+  & > div {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    row-gap: 15px;
+    justify-content: space-between;
+
+    label {
+      color: rgb(0, 105, 255);
+      font-size: 1rem;
+      text-transform: lowercase;
+    }
+
+    h2 {
+      color: #031b4e;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 32px;
+      text-align: left;
+    }
+
+    button {
+      box-sizing: border-box;
+      max-width: 220px;
+      width: 100%;
+      border-radius: 8px;
+      background-color: var(--btn-color);
+      color: var(--white-color);
+      margin: 22px auto 10px;
+      border: none;
+      padding: 0 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 500;
+      height: 35px;
+      &:hover {
+        background: none;
+        border: 2px solid var(--btn-color);
+        color: var(--btn-color);
+      }
+      &:disabled {
+        background-color: #f1f1f1;
+        color: #888;
+      }
+      &:disabled:hover {
+        background-color: #f1f1f1;
+        color: #888;
+        border: none;
+      }
+    }
+
+    div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin-top: 10px;
+        padding: 10px 25px;
+        outline: none;
+        border: 1px solid rgb(135, 148, 176);
+        border-radius: 8px;
+        background: rgb(255, 255, 255);
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  .container-title {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+.container-submit {
+  justify-content: center;
+  max-width: 250px;
+  margin: 0 auto;
+  width: 100%;
+  p {
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    a {
+      color: rgb(0, 105, 255);
+      text-transform: lowercase;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  }
+}
+
+.error {
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  color: rgb(255, 58, 46);
+  font-size: 10px;
+}
 @-webkit-keyframes Animationgrad {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
+
 @-moz-keyframes Animationgrad {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
+
 @keyframes Animationgrad {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

@@ -10,28 +10,29 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class RegisterFormComponent implements OnInit {
 
   currentDate: Date = new Date(Date.now())
+  
   userForm = new FormGroup({
-    email: new FormControl("", [Validators.required]),
-    name: new FormControl("", [Validators.required]),
-    cpf: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required, Validators.email]),
+    name: new FormControl("", [Validators.required, Validators.maxLength(50), Validators.minLength(3)]),
+    cpf: new FormControl("", [Validators.required, Validators.pattern(/^\d+$/), Validators.maxLength(11), Validators.minLength(11)]),
     dateBirth: new FormControl(this.currentDate, [Validators.required]),
     picture: new FormControl("", [Validators.required]),
-    password: new FormControl("", [Validators.required]),
+    password: new FormControl("", [Validators.required, Validators.minLength(6)]),
   })
+
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.currentDate = new Date(Date.now())
-   }
+  }
 
   formatDate() {
     if (this.userForm.value.dateBirth)
       this.userForm.value.dateBirth = new Date(new Date(this.userForm.value.dateBirth.toString()))
-
   }
+
   onSubmit() {
     this.formatDate()
-    console.log(this.formatDate())
     return this.apiService.createUser(this.userForm.value).subscribe({
       error: ({ error }) => {
         console.log(error)

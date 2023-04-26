@@ -3,73 +3,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   form {
-    font-size: 14px;
-    width: 400px;
-    padding: 25px;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--white-color);
-    flex-direction: column;
-    color: var(--black-color);
-    border-radius: 25px;
-    box-shadow: 0px 11px 15px -3px rgba(0, 0, 0, 0.1);
-    gap: 22px;
-    justify-content: center;
-    div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      h2 {
-        font-size: 25px;
-      }
+    max-width: 500px;
+  }
+}
 
-      .error {
-        text-align: left;
-        margin: 0;
-      }
-
-      input {
-        margin-top: 10px;
-        border-radius: 25px;
-        border: none;
-        padding: 10px 25px;
-        outline: none;
-      }
-      p {
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
-        font-size: 12px;
-        margin: 0 auto;
-        a {
-          color: var(--black-color);
-          text-decoration: none;
-          font-weight: 600;
-        }
-      }
-      button {
-        max-width: 220px;
-        width: 100%;
-        border-radius: 25px;
-        background-color: var(--white-color);
-        height: 30px;
-        margin: 0 auto;
-        border: none;
-        padding: 0 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-        &:hover {
-          background-color: var(--gray-color);
-          color: var(--white-color);
-        }
-      }
+@media screen and (max-width: 600px) {
+  .container {
+    height: 100%;
+    form {
+      height: 100%;
+      max-width: 100%;
+      border-radius: 0;
+      justify-content: center;
     }
   }
 }

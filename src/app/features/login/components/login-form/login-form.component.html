@@ -1,40 +1,65 @@
 <div class="container">
-  <form>
+  <form [formGroup]="userForm">
     <div>
-      <h2>Bem-vindo(a) a <strong>MJVscholl</strong></h2>
+      <h2>Login</h2>
     </div>
 
     <div>
-      <label for="email">E-mail:</label>
-      <input
-        [(ngModel)]="email"
-        type="email"
-        id="email"
-        name="email"
-        required
-      />
-      <p class="error" *ngIf="error">*{{error}}</p>
+      <div>
+        <label for="email">E-mail:</label>
+        <input formControlName="email" type="email" id="email" name="email" placeholder="Digite seu email." />
+        <div
+          class="error"
+          *ngIf="
+            userForm.controls.email.errors &&
+            (userForm.controls.email.dirty || userForm.controls.email.touched)
+          "
+        >
+          <div *ngIf="userForm.controls.email.errors['required']">
+            *Email é obrigatório.
+          </div>
+          <div *ngIf="userForm.controls.email.errors['email']">
+            *O campo deve ser preenchido por um email.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="password">Senha:</label>
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Digite sua senha."
+        />
+        <div
+          class="error"
+          *ngIf="
+            userForm.controls.password.errors &&
+            (userForm.controls.password.dirty ||
+              userForm.controls.password.touched)
+          "
+        >
+          <div *ngIf="userForm.controls.password.errors['required']">
+            *A senha é obrigatória.
+          </div>
+          <div *ngIf="userForm.controls.password.errors['minlength']">
+            *Deve ter no mínimo 6 caracteres.
+          </div>
+        </div>
+      </div>
+      <p class="error" *ngIf="error">*{{ error }}</p>
+      <div class="container-submit">
+        <button (click)="login()" [disabled]="userForm.invalid" type="submit">
+          Login
+        </button>
+        <p>
+          Ainda não está no MjvSchool?
+          <a routerLink="/register">Crie uma conta.</a>
+        </p>
+      </div>
     </div>
 
-    <div>
-      <label for="password">Senha:</label>
-      <input
-        [(ngModel)]="password"
-        type="password"
-        id="password"
-        name="password"
-        required
-      />
-    </div>
-
-    <div>
-      <button (click)="login()" type="submit">Login</button>
-    </div>
-
-    <div>
-      <p>
-        Já tem uma conta? Ainda não está no MjvSchool? <a href="/register">Crie uma conta.</a>
-      </p>
-    </div>
   </form>
 </div>
