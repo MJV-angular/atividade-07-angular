@@ -8,6 +8,7 @@ import { LoginModule } from './features/login/login.module';
 import { RegisterModule } from './features/register/register.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -22,7 +23,7 @@ import { DashboardModule } from './features/dashboard/dashboard.module';
         LoginModule,
         RegisterModule,
         DashboardModule,
-        
+
 
     ]
 })

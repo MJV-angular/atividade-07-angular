@@ -1,108 +1,95 @@
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-  color: var(--white-color);
-
-
-  figure {
-    flex-wrap: wrap;
+figure {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  gap: 25px;
+  div {
+    padding: 40px 0 0;
+    width: 100%;
+    max-width: 50%;
+    min-width: 300px;
     display: flex;
-    justify-content: space-between;
-    position: relative;
-    gap: 25px;
-    div {
-      padding: 40px 0 0;
-      width: 100%;
-      max-width: 50%;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
+    flex-direction: column;
+    gap: 22px;
+    color: var(--white-color);
 
-      h2 {
-        font-size: 30px;
-        font-weight: 600;
-        line-height: 30px;
-      }
-      h3 {
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 30px;
+    h2 {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 30px;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 30px;
+      color: var(--white-color);
+    }
+
+    button {
+      max-width: 220px;
+      width: 100%;
+      border-radius: 25px;
+      background-color: var(--white-color);
+      color: var(--btn-color);
+      height: 30px;
+      margin: 22px 0 10px;
+      border: none;
+      padding: 0 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      &:hover {
+        background: none;
+        border: 3px solid var(--white-color);
         color: var(--white-color);
       }
+    }
+    .logo {
+      width: 80px;
+    }
+  }
+  .animation {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    min-width: 250px;
+    top: calc(28px);
+    margin: 0 auto;
+  }
 
-      button {
-        max-width: 220px;
-        width: 100%;
-        border-radius: 25px;
-        background-color: var(--white-color);
-        color: var(--btn-color);
-        height: 30px;
-        margin: 22px 0 10px;
-        border: none;
-        padding: 0 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-        &:hover {
-          background: none;
-          border: 3px solid var(--white-color);
-          color: var(--white-color);
-        }
-      }
-      .logo {
-        width: 80px;
-      }
-    }
-    .animation {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      min-width: 250px;
-      top: calc(28px);
-      margin: 0 auto;
-    }
-
-    .animation {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      min-width: 250px;
-      top: calc(28px);
-      margin: 0 auto;
-    }
+  .animation {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    min-width: 250px;
+    top: calc(28px);
+    margin: 0 auto;
   }
 }
 
 @media screen and (max-width: 1400px) {
-  .container {
-    padding: 0 3%;
-    figure {
-      div {
-        max-width: 100%;
-      }
+  figure {
+    div {
+      max-width: 100%;
     }
   }
 }
 
 @media screen and (max-width: 600px) {
-  .container {
-    figure {
-      div {
-        button {
-          margin: 22px auto 10px;
-        }
-      }
-      .animation {
-
-        top: calc(27px );
-        margin: 0 auto;
+  figure {
+    div {
+      button {
+        margin: 22px auto 10px;
       }
     }
-
+    .animation {
+      top: calc(27px);
+      margin: 0 auto;
+    }
   }
 }
 
@@ -115,11 +102,9 @@
         }
       }
       .animation {
-
         top: calc(30px - 3.8vw);
         margin: 0 auto;
       }
     }
-
   }
 }

@@ -1,10 +1,21 @@
-div{
+main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+
 }
 
-app-login-form{
-height: 100%;
-background: url("/assets/background.svg");
+app-login-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("/assets/background.svg");
 }
+
+
+
+
+
+
