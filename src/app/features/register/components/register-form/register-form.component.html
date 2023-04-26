@@ -1,149 +1,155 @@
-<div class="container">
-  <form [formGroup]="userForm">
-    <div class="container-title">
-      <h2>Cadastro</h2>
-    </div>
+<form [formGroup]="userForm">
+  <div class="container-title">
+    <h2>Cadastro</h2>
+  </div>
+  <div>
     <div>
-      <div>
-        <label for="name">Nome:</label>
-        <input
-          placeholder="Digite seu nome."
-          type="text"
-          formControlName="name"
-          id="name"
-          name="name"
-          required
-        />
-        <div
-          class="error"
-          *ngIf="
-            userForm.controls.name.errors &&
-            (userForm.controls.name.dirty || userForm.controls.name.touched)
-          "
-        >
-          <div *ngIf="userForm.controls.name.errors['required']">
-            *Nome é obrigatório.
-          </div>
-          <div *ngIf="userForm.controls.name.errors">
-            *Nome deve ter no mínimo 3 caracteres.
-          </div>
-          <div *ngIf="userForm.controls.name.errors['maxlength']">
-            *Nome deve ter no máximo 50 caracteres.
-          </div>
+      <label for="name">Nome:</label>
+      <input
+        placeholder="Digite seu nome."
+        type="text"
+        formControlName="name"
+        id="name"
+        name="name"
+        required
+      />
+      <div
+        class="error"
+        *ngIf="
+          userForm.controls.name.errors &&
+          (userForm.controls.name.dirty || userForm.controls.name.touched)
+        "
+      >
+        <div *ngIf="userForm.controls.name.errors['required']">
+          *Nome é obrigatório.
         </div>
-      </div>
-
-      <div>
-        <label for="email">E-mail:</label>
-        <input
-          formControlName="email"
-          type="email"
-          id="email"
-          name="email"
-          required
-        />
-        <div
-          class="error"
-          *ngIf="
-            userForm.controls.email.errors &&
-            (userForm.controls.email.dirty || userForm.controls.email.touched)
-          "
-        >
-          <div *ngIf="userForm.controls.email.errors['required']">
-            *Email é obrigatório.
-          </div>
-          <div *ngIf="userForm.controls.email.errors['email']">
-            *O campo deve ser preenchido por um email.
-          </div>
+        <div *ngIf="userForm.controls.name.errors">
+          *Nome deve ter no mínimo 3 caracteres.
         </div>
-      </div>
-
-      <div>
-        <label for="cpf">cpf:</label>
-        <input formControlName="cpf" type="text" id="cpf" name="cpf" required />
-        <div
-          class="error"
-          *ngIf="
-            userForm.controls.cpf.errors &&
-            (userForm.controls.cpf.dirty || userForm.controls.cpf.touched)
-          "
-        >
-          <div *ngIf="userForm.controls.cpf.errors['required']">
-            *O cpf é obrigatório.
-          </div>
-          <div *ngIf="userForm.controls.cpf.errors['maxlength']">
-            *Deve ter no máximo 11 números.
-          </div>
-          <div *ngIf="userForm.controls.cpf.errors['minlength']">
-            *Deve ter no mínimo 11 números.
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <label for="dateBirth">data de nascimento:</label>
-        <input
-          formControlName="dateBirth"
-          type="date"
-          id="dateBirth"
-          name="dateBirth"
-        />
-        <div
-          class="error"
-          *ngIf="
-            userForm.controls.dateBirth.errors &&
-            (userForm.controls.dateBirth.dirty ||
-              userForm.controls.dateBirth.touched)
-          "
-        >
-          <div *ngIf="userForm.controls.dateBirth.errors['required']">
-            *A data de nascimento é obrigatória.
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <label for="picture">imagem-url:</label>
-        <input
-          formControlName="picture"
-          type="text"
-          id="picture"
-          name="picture"
-          required
-        />
-      </div>
-
-      <div>
-        <label for="password">Senha:</label>
-        <input
-          formControlName="password"
-          type="password"
-          id="password"
-          name="password"
-        />
-        <div
-          class="error"
-          *ngIf="
-            userForm.controls.password.errors &&
-            (userForm.controls.password.dirty ||
-              userForm.controls.password.touched)
-          "
-        >
-          <div *ngIf="userForm.controls.password.errors['required']">
-            *A senha é obrigatória.
-          </div>
-          <div *ngIf="userForm.controls.password.errors['minlength']">
-            *Deve ter no mínimo 6 caracteres.
-          </div>
+        <div *ngIf="userForm.controls.name.errors['maxlength']">
+          *Nome deve ter no máximo 50 caracteres.
         </div>
       </div>
     </div>
 
-    <div class="container-submit">
-      <button (click)="onSubmit()" [disabled]="userForm.invalid" type="submit">
-        Cadastrar
-      </button>
-      <p>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
+    <div>
+      <label for="email">E-mail:</label>
+      <input
+        placeholder="Digite seu e-mail."
+        formControlName="email"
+        type="email"
+        id="email"
+        name="email"
+        required
+      />
+      <div
+        class="error"
+        *ngIf="
+          userForm.controls.email.errors &&
+          (userForm.controls.email.dirty || userForm.controls.email.touched)
+        "
+      >
+        <div *ngIf="userForm.controls.email.errors['required']">
+          *Email é obrigatório.
+        </div>
+        <div *ngIf="userForm.controls.email.errors['email']">
+          *O campo deve ser preenchido por um email.
+        </div>
+      </div>
     </div>
-  </form>
-</div>
+
+    <div>
+      <label for="cpf">cpf:</label>
+      <input
+        formControlName="cpf"
+        type="text"
+        id="cpf"
+        name="cpf"
+        placeholder="Digite seu cpf."
+      />
+      <div
+        class="error"
+        *ngIf="
+          userForm.controls.cpf.errors &&
+          (userForm.controls.cpf.dirty || userForm.controls.cpf.touched)
+        "
+      >
+        <div *ngIf="userForm.controls.cpf.errors['required']">
+          *O cpf é obrigatório.
+        </div>
+        <div *ngIf="userForm.controls.cpf.errors['maxlength']">
+          *Deve ter no máximo 11 números.
+        </div>
+        <div *ngIf="userForm.controls.cpf.errors['minlength']">
+          *Deve ter no mínimo 11 números.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="dateBirth">data de nascimento:</label>
+      <input
+        formControlName="dateBirth"
+        type="date"
+        id="dateBirth"
+        name="dateBirth"
+      />
+      <div
+        class="error"
+        *ngIf="
+          userForm.controls.dateBirth.errors &&
+          (userForm.controls.dateBirth.dirty ||
+            userForm.controls.dateBirth.touched)
+        "
+      >
+        <div *ngIf="userForm.controls.dateBirth.errors['required']">
+          *A data de nascimento é obrigatória.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="picture">imagem-url:</label>
+      <input
+        formControlName="picture"
+        type="text"
+        id="picture"
+        name="picture"
+        placeholder="Adicione uma imagem-url."
+      />
+    </div>
+
+    <div>
+      <label for="password">Senha:</label>
+      <input
+        formControlName="password"
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Digite sua senha."
+      />
+      <div
+        class="error"
+        *ngIf="
+          userForm.controls.password.errors &&
+          (userForm.controls.password.dirty ||
+            userForm.controls.password.touched)
+        "
+      >
+        <div *ngIf="userForm.controls.password.errors['required']">
+          *A senha é obrigatória.
+        </div>
+        <div *ngIf="userForm.controls.password.errors['minlength']">
+          *Deve ter no mínimo 6 caracteres.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-submit">
+    <button (click)="onSubmit()" [disabled]="userForm.invalid" type="submit">
+      Cadastrar
+    </button>
+    <p>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
+  </div>
+</form>

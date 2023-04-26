@@ -1,15 +1,19 @@
 nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
-  height: 65px;
   padding: 0 2rem;
   z-index: 99999;
   background: rgba(7, 7, 7, 0.392);
   backdrop-filter: blur(0.5px);
-  display: flex;
+
 
   figure {
     width: 60px;

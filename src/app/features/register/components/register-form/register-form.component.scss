@@ -1,32 +1,20 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-
-  form {
-    max-width: 1000px;
-    flex-wrap: wrap;
-    padding: 3rem;
-
-    & > div {
-      div {
-        max-width: 420px;
-      }
+form {
+  max-width: 1000px;
+  flex-wrap: wrap;
+  padding: 3rem;
+  & > div {
+    div {
+      max-width: 420px;
     }
   }
 }
 
 @media screen and (max-width: 1000px) {
-  .container {
-    form {
-      border-radius: 0;
-      padding: 1rem;
-      & > div {
-        div {
-          max-width: 100%;
-        }
+  form {
+    border-radius: 0;
+    & > div {
+      div {
+        max-width: 100%;
       }
     }
   }

@@ -113,13 +113,11 @@ table {
 }
 
 body {
-  min-height: 100vh;
   background: linear-gradient(270deg, #7039f2, #4260ad, #9b04f7);
   background-size: 800% 800%;
   -webkit-animation: Animationgrad 42s ease infinite;
   -moz-animation: Animationgrad 42s ease infinite;
   animation: Animationgrad 42s ease infinite;
-
 }
 
 * {
@@ -218,7 +216,7 @@ form {
 
       input {
         margin-top: 10px;
-        padding: 10px 25px;
+        padding: 10px 15px;
         outline: none;
         border: 1px solid rgb(135, 148, 176);
         border-radius: 8px;
@@ -228,6 +226,9 @@ form {
     }
   }
 
+  .container{
+    background-image: url("/assets/background.svg");
+  }
   .container-title {
     width: 100%;
     justify-content: flex-start;
@@ -239,7 +240,7 @@ form {
   margin: 0 auto;
   width: 100%;
   p {
-    margin: 20px 0;
+    margin: 10px 0;
     width: 100%;
     text-align: center;
     font-size: 1rem;
@@ -259,6 +260,7 @@ form {
   color: rgb(255, 58, 46);
   font-size: 10px;
 }
+
 @-webkit-keyframes Animationgrad {
   0% {
     background-position: 0% 50%;
