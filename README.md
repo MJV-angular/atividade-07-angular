@@ -7,7 +7,7 @@ Esta é uma atividade desenvolvida para os alunos da MJV School Angular, com o o
 
 
 
-https://user-images.githubusercontent.com/100942719/233216983-45d92e0f-6a4b-4d32-938f-d2639fda19ac.mp4
+![image](https://user-images.githubusercontent.com/100942719/234717842-0f958fe6-1125-470c-8d60-7bb7ce000426.png)
 
 
 
