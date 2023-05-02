@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { DataHomeService } from 'src/app/shared/services/data-home.service';
 import { DataHome } from 'src/app/shared/interfaces/home.interfaces';
 @Component({
-  selector: 'app-animation-home',
-  templateUrl: './animation-home.component.html',
-  styleUrls: ['./animation-home.component.scss'],
+  selector: 'app-home-animation',
+  templateUrl: './home-animation.component.html',
+  styleUrls: ['./home-animation.component.scss'],
 })
-export class AnimationHomeComponent {
+export class HomeAnimationComponent {
   data: DataHome;
   constructor(private dataHome: DataHomeService) {
     this.data = dataHome.getData();

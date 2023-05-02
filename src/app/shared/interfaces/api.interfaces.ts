@@ -1,15 +1,10 @@
 export interface UserRequest {
-  email?: string | null;
-  name?: string | null;
-  password?: string| null;
-  picture?: string | null;
-  dateBirth?: Date | null;
-  cpf?: string | null;
-}
-
-export interface IloginRequest {
-  email?: string | null;
-  password?: string | null;
+  email: string;
+  name: string;
+  password: string;
+  picture?: string;
+  dateBirth: Date;
+  cpf: string;
 }
 
 export interface UserResponse {
@@ -17,4 +12,26 @@ export interface UserResponse {
   createdAt: Date;
   email: string;
   name: string;
+  picture?: string;
+  dateBirth: Date;
+  cpf: string;
+  address:IAddressRequest;
 }
+
+export interface IloginRequest {
+  email: string;
+  password: string;
+}
+
+
+export interface IAddressRequest {
+  id: number;
+  street: string;
+  number: number;
+  city: string;
+  state: string;
+  country: string;
+  zipCode: number;
+  userId: number;
+}
+

@@ -11,7 +11,7 @@ import { Text } from 'src/app/shared/interfaces/home.interfaces';
 export class HomeMainComponent {
   schools?: string[];
   texts?: Text[];
-  constructor(private dataHome: DataHomeService) {}
+  constructor(private dataHome: DataHomeService) { }
   ngOnInit() {
     this.schools = this.dataHome.getData().schools;
     this.texts = this.dataHome.getData().homeText;

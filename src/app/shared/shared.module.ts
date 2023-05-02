@@ -7,12 +7,18 @@ import { RouterModule } from '@angular/router';
 import { PopupComponent } from './components/popup/popup.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { CardSimpleComponent } from './components/card-simple/card-simple.component';
+import { CardPictureTextComponent } from './components/card-picture-text/card-picture-text.component';
+import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     PopupComponent,
-    LoadingComponent
+    LoadingComponent,
+    CardSimpleComponent,
+    CardPictureTextComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +28,11 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
   exports:[
     HeaderComponent,
     FooterComponent,
-    LoadingComponent
+    LoadingComponent,
+    CardSimpleComponent,
+    CardPictureTextComponent,
+    ModalComponent,
+    PopupComponent
   ],
   providers:[
     {

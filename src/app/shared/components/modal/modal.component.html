@@ -1,0 +1,17 @@
+<div class="container-modal" *ngIf="this.modalService.isOpen$ | async">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Titulo</h3>
+      <button (click)="modalService.hide()"><img src="../../../../assets/close.png" alt="" srcset=""></button>
+    </div>
+      <div>
+        <ng-container #body>
+
+        </ng-container>
+      </div>
+    <div>
+      <button (click)="cancelEvent">Cancelar</button>
+      <button (click)="confirmEvent">Salvar Alterações</button>
+    </div>
+  </div>
+</div>

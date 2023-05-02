@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "storybook": "ng run cadastro:storybook",
+    "build-storybook": "ng run cadastro:build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +20,10 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "moment": "^2.29.4",
     "ng-angular-popup": "^0.2.0",
     "rxjs": "~7.8.0",
+    "storybook": "^7.0.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
@@ -27,6 +31,13 @@
     "@angular-devkit/build-angular": "^15.2.2",
     "@angular/cli": "~15.2.2",
     "@angular/compiler-cli": "^15.2.0",
+    "@compodoc/compodoc": "^1.1.19",
+    "@storybook/addon-essentials": "^7.0.7",
+    "@storybook/addon-interactions": "^7.0.7",
+    "@storybook/addon-links": "^7.0.7",
+    "@storybook/angular": "^7.0.7",
+    "@storybook/blocks": "^7.0.7",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
@@ -34,6 +45,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "~4.9.4"
   }
 }

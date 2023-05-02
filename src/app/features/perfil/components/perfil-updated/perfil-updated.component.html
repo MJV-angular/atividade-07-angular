@@ -1,0 +1,76 @@
+<div class="container-modal" *ngIf="this.perfilServices.isOpen$ | async">
+  <div class="modal">
+    <div class="modal-header">
+      <h4>Atualizar Perfil</h4>
+      <button (click)="this.perfilServices.hide()">
+        <img src="../../../../assets/close.png" alt="" srcset="" />
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="userForm" class="form-default">
+        <div>
+          <div class="container-picture">
+            <figure>
+              <img src="/assets/user.png" alt="" srcset="" />
+            </figure>
+            <div>
+              <label for="picture">foto</label>
+              <input type="text" formControlName="picture" />
+            </div>
+          </div>
+        </div>
+        <div class="container-profile">
+          <div>
+            <label for="name">Nome</label>
+            <input type="text" formControlName="name" />
+          </div>
+          <div>
+            <label for="cpf">Cpf</label>
+            <input formControlName="cpf" />
+          </div>
+          <div>
+            <label for="data de nascimento">Data de nascimento</label>
+            <input type="date" formControlName="dateBirth" />
+          </div>
+          <div>
+            <label for="e-mail">Email</label>
+            <input type="email" formControlName="email" />
+          </div>
+        </div>
+        <h4>Atualizar Endereço</h4>
+      </form>
+      <form [formGroup]="addressForm"  class="form-default container-address">
+      <div>
+        <div>
+          <label for="street">Rua</label>
+          <input type="text" formControlName="street" />
+        </div>
+        <div>
+          <label for="number">Número</label>
+          <input type="number" formControlName="number" />
+        </div>
+        <div>
+          <label for="city">Cidade</label>
+          <input type="city" formControlName="city" />
+        </div>
+        <div>
+          <label for="state">Estado</label>
+          <input type="state" formControlName="state" />
+        </div>
+        <div>
+          <label for="country">Pais</label>
+          <input type="text" formControlName="country" />
+        </div>
+        <div>
+          <label for="zipCode">CEP</label>
+          <input type="number" formControlName="zipCode" />
+        </div>
+      </div>
+      </form>
+    </div>
+    <div>
+      <!-- <button>Cancelar</button> -->
+      <button type="submit" (click)="onSubmit()">Salvar Alterações</button>
+    </div>
+  </div>
+</div>

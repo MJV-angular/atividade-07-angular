@@ -10,14 +10,14 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class RegisterFormComponent implements OnInit {
 
   currentDate: Date = new Date(Date.now())
-  
+
   userForm = new FormGroup({
-    email: new FormControl("", [Validators.required, Validators.email]),
-    name: new FormControl("", [Validators.required, Validators.maxLength(50), Validators.minLength(3)]),
-    cpf: new FormControl("", [Validators.required, Validators.pattern(/^\d+$/), Validators.maxLength(11), Validators.minLength(11)]),
-    dateBirth: new FormControl(this.currentDate, [Validators.required]),
-    picture: new FormControl("", [Validators.required]),
-    password: new FormControl("", [Validators.required, Validators.minLength(6)]),
+    email: new FormControl("", { nonNullable: true, validators: [Validators.required, Validators.email] }),
+    name: new FormControl("", { nonNullable: true, validators: [Validators.required, Validators.maxLength(50), Validators.minLength(3)] }),
+    cpf: new FormControl("", { nonNullable: true, validators: [Validators.required, Validators.pattern(/^\d+$/), Validators.maxLength(11), Validators.minLength(11)] }),
+    dateBirth: new FormControl(this.currentDate, { nonNullable: true, validators: [Validators.required] }),
+    picture: new FormControl("", { nonNullable: true, validators: [Validators.required] }),
+    password: new FormControl("", { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
   })
 
   constructor(private apiService: ApiService, private router: Router) { }
@@ -33,7 +33,7 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit() {
     this.formatDate()
-    return this.apiService.createUser(this.userForm.value).subscribe({
+    return this.apiService.createUser(this.userForm.getRawValue()).subscribe({
       error: ({ error }) => {
         console.log(error)
       },

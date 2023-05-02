@@ -4,6 +4,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AsideComponent } from './components/aside/aside.component';
+import { DashboardMainComponent } from './components/dashboard-main/dashboard-main.component';
+import { PerfilModule } from '../perfil/perfil.module';
 
 
 
@@ -11,14 +13,17 @@ import { AsideComponent } from './components/aside/aside.component';
   declarations: [
     DashboardComponent,
     PerfilComponent,
-    AsideComponent
+    AsideComponent,
+    DashboardMainComponent
   ],
   imports: [
     SharedModule,
-    CommonModule
+    CommonModule,
+    PerfilModule
   ],
   exports:[
-    DashboardComponent
+    DashboardComponent,
+    DashboardMainComponent
   ]
 
 })

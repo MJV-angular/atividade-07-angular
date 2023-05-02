@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserRequest } from 'src/app/shared/interfaces/api.interfaces';
+import { IloginRequest, UserRequest } from 'src/app/shared/interfaces/api.interfaces';
 
 @Component({
   selector: 'app-login-form',
@@ -13,30 +13,35 @@ export class LoginFormComponent {
 
   token?: string;
   user?: UserRequest;
-  error? : string;
+  error?: string;
 
   userForm = new FormGroup({
-    email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("", [Validators.required, Validators.minLength(6)]),
+    email: new FormControl<string>("", {
+      nonNullable: true,
+      validators: [Validators.required, Validators.email]
+    }),
+    password: new FormControl<string>("", {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(6)]
+    })
   })
 
-  constructor(private router: Router, private apiService: ApiService) {
-    console.log(this.userForm)
-  }
+  constructor(private router: Router, private apiService: ApiService) { }
 
   login() {
     return this.apiService
-      .login(this.userForm.value)
+      .login(this.userForm.getRawValue())
       .subscribe({
-        next: ({ token, user }) => {
-          this.token = token;
-          this.user = user;
+        next: (res) => {
+          this.token = res.token;
+          this.user = res;
         },
-        error: ({error}) => {
+        error: ({ error }) => {
           this.error = error.message;
         },
         complete: () => {
           window.localStorage.setItem('@TOKEN', this.token!);
+          console.log(this.user)
           window.localStorage.setItem('@USER', JSON.stringify(this.user));
           this.router.navigateByUrl('/dashboard');
         },

@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DataHomeService } from 'src/app/shared/services/data-home.service';
-import { DataHome } from 'src/app/shared/interfaces/home.interfaces';
-import { Text } from 'src/app/shared/interfaces/home.interfaces';
+import { Component } from '@angular/core';
+
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
