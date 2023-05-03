@@ -20,6 +20,7 @@ export class ModalComponent implements AfterViewInit {
   @Input() title: string = '';
   @Output() cancelEvent = new EventEmitter();
   @Output() confirmEvent = new EventEmitter();
+ 
 
   constructor(public modalService: ModalService) { }
   ngAfterViewInit(): void {

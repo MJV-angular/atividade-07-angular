@@ -135,6 +135,22 @@ body {
   --error-color: #f2396d;
   --btn-color: #442992;
   --shadow-primary: rgba(11, 43, 158, 0.15) 0px 6px 20px -6px;
+  --wp--preset--color--black: #000000;
+  --color--cyan-bluish-gray: #abb8c3;
+  --color--white: #ffffff;
+  --color--pale-pink: #f78da7;
+  --color--vivid-red: #cf2e2e;
+  --color--luminous-vivid-orange: #ff6900;
+  --color--luminous-vivid-amber: #fcb900;
+  --color--light-green-cyan: #7bdcb5;
+  --color--vivid-green-cyan: #00d084;
+  --color--pale-cyan-blue: #8ed1fc;
+  --color--vivid-cyan-blue: #0693e3;
+  --color--vivid-purple: #9b51e0;
+  --size--small: 13px;
+  --size--medium: 20px;
+  --size--large: 36px;
+  --size--x-large: 42px;
 }
 
 button,
@@ -264,6 +280,48 @@ a {
   font-size: 10px;
 }
 
+.btn-cancel {
+  background-color: var(--error-color);
+  &:hover {
+    background: none;
+    border: 2px solid var(--error-color);
+    color: var(--error-color);
+  }
+}
+
+.btn-progress {
+  background-color: var(--color--vivid-green-cyan);
+  &:hover {
+    background: none;
+    border: 2px solid var(--color--vivid-green-cyan);
+    color: var(--color--vivid-green-cyan);
+  }
+}
+.btn-cancel,
+.btn-progress {
+  box-sizing: border-box;
+  max-width: 220px;
+  width: 100%;
+  border-radius: 8px;
+  color: var(--white-color);
+  border: none;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  height: 35px;
+  &:disabled {
+    background-color: #f1f1f1;
+    color: #888;
+  }
+  &:disabled:hover {
+    background-color: #f1f1f1;
+    color: #888;
+    border: none;
+  }
+}
 @-webkit-keyframes Animationgrad {
   0% {
     background-position: 0% 50%;

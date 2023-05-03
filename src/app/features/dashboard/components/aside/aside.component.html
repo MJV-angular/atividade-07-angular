@@ -1,7 +1,5 @@
 <div class="container-perfil">
-  <figure>
-    <img src="/assets/user.png" alt="" srcset="" />
-  </figure>
+  <app-picture-perfil picture={{user?.picture}}></app-picture-perfil>
   <div>
     <p>{{ user?.name }}</p>
     <p>{{ user?.email }}</p>

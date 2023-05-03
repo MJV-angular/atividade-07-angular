@@ -10,6 +10,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { CardSimpleComponent } from './components/card-simple/card-simple.component';
 import { CardPictureTextComponent } from './components/card-picture-text/card-picture-text.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { PicturePerfilComponent } from './components/picture-perfil/picture-perfil.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -18,7 +19,8 @@ import { ModalComponent } from './components/modal/modal.component';
     LoadingComponent,
     CardSimpleComponent,
     CardPictureTextComponent,
-    ModalComponent
+    ModalComponent,
+    PicturePerfilComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { ModalComponent } from './components/modal/modal.component';
     CardSimpleComponent,
     CardPictureTextComponent,
     ModalComponent,
-    PopupComponent
+    PopupComponent,
+    PicturePerfilComponent
   ],
   providers:[
     {

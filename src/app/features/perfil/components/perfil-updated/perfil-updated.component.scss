@@ -18,11 +18,13 @@
     width: 100%;
     max-width: 700px;
     background-color: #fff;
+    box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 0.26);
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;
     .modal-header {
       display: flex;
       justify-content: space-between;
+      padding-bottom: 20px;
       button {
         background: none;
         border: none;
@@ -44,7 +46,6 @@
           width: 100%;
           flex-wrap: wrap;
           figure {
-            margin-bottom: 10px;
             border: 0.5px solid var(--btn-color);
             width: 100px;
             height: 100px;
@@ -84,8 +85,20 @@
   }
 }
 h4{
-  color: var(--btn-color);
   width: 100%;
-  font-size: 15px;
+  color: #444;
+  font-size:15px;
   font-weight: 600;
+  border-bottom: #9a9a9a 1px solid;
 }
+
+.modal-footer
+{
+  display: flex;
+  gap: 30px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+
+

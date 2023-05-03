@@ -9,7 +9,6 @@ import { RegisterModule } from './features/register/register.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { PerfilModule } from './features/perfil/perfil.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +24,6 @@ import { PerfilModule } from './features/perfil/perfil.module';
     RegisterModule,
     DashboardModule,
     PerfilModule
-
   ]
 })
 export class AppModule { }

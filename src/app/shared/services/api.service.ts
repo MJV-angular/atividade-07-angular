@@ -1,24 +1,31 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { UserRequest, IloginRequest, UserResponse } from '../interfaces/api.interfaces';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap, BehaviorSubject } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  user = localStorage.getItem('@USER')
-  constructor(private httpClient: HttpClient) {}
+  private userSubject = new BehaviorSubject<UserResponse | null>(null);
+  user$: Observable<UserResponse | null> = this.userSubject.asObservable();
 
-  createUser(data: UserRequest): Observable<any>{
+  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
+
+  createUser(data: UserRequest): Observable<any> {
     return this.httpClient.post(`https://api-projeto-final.vercel.app/user`, data)
   }
 
-  login(data: IloginRequest): Observable<any>{
+  updatedUser(data: Partial<UserRequest>, UserId: number): Observable<any> {
+    return this.httpClient.patch(`https://api-projeto-final-naianereis.vercel.app/user/${UserId}`, data)
+  }
+
+  login(data: IloginRequest): Observable<any> {
     return this.httpClient.post(`https://api-projeto-final-naianereis.vercel.app/login`, data)
   }
 
-  logout(): void{
+  logout(): void {
     localStorage.clear()
   }
 }

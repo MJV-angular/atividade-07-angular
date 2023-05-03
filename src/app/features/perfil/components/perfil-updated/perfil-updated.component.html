@@ -10,9 +10,7 @@
       <form [formGroup]="userForm" class="form-default">
         <div>
           <div class="container-picture">
-            <figure>
-              <img src="/assets/user.png" alt="" srcset="" />
-            </figure>
+            <app-picture-perfil picture={{user?.picture}}></app-picture-perfil>
             <div>
               <label for="picture">foto</label>
               <input type="text" formControlName="picture" />
@@ -37,6 +35,7 @@
             <input type="email" formControlName="email" />
           </div>
         </div>
+        <hr>
         <h4>Atualizar Endereço</h4>
       </form>
       <form [formGroup]="addressForm"  class="form-default container-address">
@@ -68,9 +67,9 @@
       </div>
       </form>
     </div>
-    <div>
-      <!-- <button>Cancelar</button> -->
-      <button type="submit" (click)="onSubmit()">Salvar Alterações</button>
+    <div class="modal-footer">
+      <button class="btn-cancel">Cancelar</button>
+      <button class="btn-progress" type="submit"  (click)="onSubmit()">Salvar Alterações</button>
     </div>
   </div>
 </div>
