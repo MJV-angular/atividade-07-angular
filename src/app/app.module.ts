@@ -8,6 +8,7 @@ import { LoginModule } from './features/login/login.module';
 import { RegisterModule } from './features/register/register.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { PerfilModule } from './features/perfil/perfil.module';
+import { CatalogModule } from './features/catalog/catalog.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PerfilModule } from './features/perfil/perfil.module';
     LoginModule,
     RegisterModule,
     DashboardModule,
-    PerfilModule
+    PerfilModule,
+    CatalogModule
   ]
 })
 export class AppModule { }

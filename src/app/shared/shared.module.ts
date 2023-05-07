@@ -4,18 +4,19 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { PopupComponent } from './components/popup/popup.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { CardSimpleComponent } from './components/card-simple/card-simple.component';
 import { CardPictureTextComponent } from './components/card-picture-text/card-picture-text.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PicturePerfilComponent } from './components/picture-perfil/picture-perfil.component';
+import { ToastComponent } from './components/toast/toast.component';
+
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    PopupComponent,
+    ToastComponent,
     LoadingComponent,
     CardSimpleComponent,
     CardPictureTextComponent,
@@ -34,7 +35,7 @@ import { PicturePerfilComponent } from './components/picture-perfil/picture-perf
     CardSimpleComponent,
     CardPictureTextComponent,
     ModalComponent,
-    PopupComponent,
+    ToastComponent,
     PicturePerfilComponent
   ],
   providers:[

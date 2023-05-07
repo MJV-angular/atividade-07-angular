@@ -5,6 +5,7 @@ import { RegisterComponent } from './features/register/pages/register/register.c
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { DashboardComponent } from './features/dashboard/pages/dashboard/dashboard.component';
+import { CatalogComponent } from './features/catalog/page/catalog/catalog.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,6 +19,11 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'catalog',
+    component: CatalogComponent,
   },
   {
     path: 'login',

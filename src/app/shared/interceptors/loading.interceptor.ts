@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoadingService } from '../services/loading.service';
-import {  finalize } from 'rxjs/operators'
+import { finalize } from 'rxjs/operators'
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
   private activeRequest = 0
@@ -22,7 +22,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       finalize(() => {
         this.activeRequest--
-        if(this.activeRequest==0){
+        if (this.activeRequest == 0) {
           this.loadingServices.hide()
         }
       })

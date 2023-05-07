@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/shared/services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IloginRequest, UserRequest } from 'src/app/shared/interfaces/api.interfaces';
-
+import { UserRequest, UserResponse } from 'src/app/shared/interfaces/api.interfaces';
+import { ApiSessionService } from 'src/app/shared/core/async/api-session.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
+import { ApiSessionFacadeService } from 'src/app/shared/core/facade/api-session.service.facade';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent {
 
+export class LoginFormComponent {
   token?: string;
-  user?: UserRequest;
+  user?: UserResponse;
   error?: string;
 
   userForm = new FormGroup({
@@ -26,25 +27,15 @@ export class LoginFormComponent {
     })
   })
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private apiService: ApiSessionFacadeService, public toast: ToastService) { }
 
   login() {
     return this.apiService
       .login(this.userForm.getRawValue())
-      .subscribe({
-        next: (res) => {
-          this.token = res.token;
-          this.user = res;
-        },
-        error: ({ error }) => {
-          this.error = error.message;
-        },
-        complete: () => {
-          window.localStorage.setItem('@TOKEN', this.token!);
-          console.log(this.user)
-          window.localStorage.setItem('@USER', JSON.stringify(this.user));
-          this.router.navigateByUrl('/dashboard');
-        },
+      .subscribe((value) => {
+        console.log(value)
+        this.token = value.token;
+        this.user = value;
       });
   }
 }

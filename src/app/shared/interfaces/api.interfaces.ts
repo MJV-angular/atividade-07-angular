@@ -8,6 +8,7 @@ export interface UserRequest {
 }
 
 export interface UserResponse {
+  token: string;
   id: number;
   createdAt: Date;
   email: string;
@@ -31,7 +32,7 @@ export interface IAddressRequest {
   city: string;
   state: string;
   country: string;
-  zipCode: number;
+  zipCode: string;
   userId: number;
 }
 

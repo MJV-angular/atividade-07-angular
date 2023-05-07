@@ -6,9 +6,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-
-
-
 @NgModule({
   declarations: [
     LoginComponent,

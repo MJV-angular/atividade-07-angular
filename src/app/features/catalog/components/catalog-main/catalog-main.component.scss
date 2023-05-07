@@ -1,0 +1,30 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
+}
+
+.main-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-secundary {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  background-color: #f9b234;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  img {
+    width: 80%;
+    transform: rotate(90deg);
+  }
+
+  &:hover {
+    background-color: var(--gray-color);
+    transition: all 0.2s ease;
+  }
+}

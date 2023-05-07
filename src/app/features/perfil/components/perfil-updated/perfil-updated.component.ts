@@ -2,23 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { PerfilModalService } from 'src/app/shared/services/perfil-modal.service';
 import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { ApiUserService } from 'src/app/shared/core/async/api-user.service';
+import { LocalStorageService } from 'src/app/shared/core/sync/local-storage.service';
 import moment from 'moment';
-import { Subscription } from 'rxjs';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-perfil-updated',
   templateUrl: './perfil-updated.component.html',
   styleUrls: ['./perfil-updated.component.scss']
 })
+
 export class PerfilUpdatedComponent implements OnInit {
   user?: UserResponse
-  currentDate: Date | undefined;
+  currentDate?: Date;
   newUser?: UserResponse
-  private subscription: Subscription = new Subscription;
 
-  constructor(public perfilServices: PerfilModalService, public api: ApiService, private _localStorage: LocalStorageService) { }
+  constructor(public perfilServices: PerfilModalService, public api: ApiUserService, private _localStorage: LocalStorageService, public toast: ToastService) { }
 
   addressForm = new FormGroup({
     street: new FormControl("", { nonNullable: true, validators: [Validators.required] }),
@@ -35,7 +35,6 @@ export class PerfilUpdatedComponent implements OnInit {
     cpf: new FormControl("", { nonNullable: true, validators: [Validators.required, Validators.pattern(/^\d+$/), Validators.maxLength(11), Validators.minLength(11)] }),
     dateBirth: new FormControl<Date | string>("", { nonNullable: true, validators: [Validators.required] }),
     picture: new FormControl("", { nonNullable: true, validators: [Validators.required] }),
-    password: new FormControl("", { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
     address: this.addressForm,
   })
 
@@ -43,8 +42,7 @@ export class PerfilUpdatedComponent implements OnInit {
     return JSON.parse(localStorage.getItem(value)!);
   }
 
-  ngOnInit(): void {
-    this.user = this.getUser('@USER')
+  getDefaultValues() {
     if (this.user) {
       this.userForm.get('picture')?.setValue(this.user.picture ? this.user.picture : '');
       this.userForm.get('email')?.setValue(this.user.email);
@@ -58,17 +56,34 @@ export class PerfilUpdatedComponent implements OnInit {
       this.addressForm.get('state')?.setValue(this.user.address.state);
       this.addressForm.get('country')?.setValue(this.user.address.country);
     }
+  }
 
+  ngOnInit(): void {
+    this.user = this.getUser('@USER')
+    this.getDefaultValues()
   }
 
   onSubmit() {
     if (this.user?.id) {
       const { dateBirth, ...Data } = this.userForm.getRawValue()
       const res = this.api.updatedUser({ dateBirth: moment(this.userForm.value.dateBirth, "YYYY-MM-DD").toDate(), ...Data }, this.user.id);
-      res.subscribe((value) => {
-        this._localStorage.set('@USER', value)
-        this._localStorage.refresh$.next(value)
+      res.subscribe({
+        next: value => {
+          this._localStorage.set('@USER', value)
+          this._localStorage.refresh$.next(value)
+        },
+        complete: () => {
+          this.perfilServices.hide();
+          this.toast.show(`Usuário atualizado com sucesso!`)
+        },
       })
     }
   }
+
+  close() {
+    this.perfilServices.hide();
+    this.getDefaultValues()
+  }
+
+
 }

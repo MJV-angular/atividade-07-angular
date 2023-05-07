@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserResponse } from '../../interfaces/api.interfaces';
-import { ApiService } from '../../services/api.service';
+import { ApiSessionService } from '../../core/async/api-session.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,16 +11,16 @@ import { Router } from '@angular/router';
 
 export class HeaderComponent implements OnInit {
   user?: UserResponse
-  constructor(private apiService:ApiService, private route: Router){}
+  constructor(private apiService: ApiSessionService, private route: Router) { }
+
   ngOnInit(): void {
     const userSession = localStorage.getItem('@USER');
-    if(userSession){
+    if (userSession) {
       this.user = JSON.parse(userSession)
-
     }
   }
 
-  logout(){
+  logout() {
     this.apiService.logout()
     this.route.navigate(['/home'])
   }

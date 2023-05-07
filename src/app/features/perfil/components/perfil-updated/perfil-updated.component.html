@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="modal-header">
       <h4>Atualizar Perfil</h4>
-      <button (click)="this.perfilServices.hide()">
+      <button (click)="close()">
         <img src="../../../../assets/close.png" alt="" srcset="" />
       </button>
     </div>
@@ -68,7 +68,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button class="btn-cancel">Cancelar</button>
+      <button class="btn-cancel" (click)="close()" >Cancelar</button>
       <button class="btn-progress" type="submit"  (click)="onSubmit()">Salvar Alterações</button>
     </div>
   </div>

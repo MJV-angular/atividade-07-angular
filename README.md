@@ -5,8 +5,6 @@ Esta é uma atividade desenvolvida para os alunos da MJV School Angular, com o o
 ## Conceitos
 - Template Driven
 
-
-
 ![image](https://user-images.githubusercontent.com/100942719/234717842-0f958fe6-1125-470c-8d60-7bb7ce000426.png)
 
 ![image](https://user-images.githubusercontent.com/100942719/234717986-0e8da837-dee2-4503-9fa7-438b00913227.png)

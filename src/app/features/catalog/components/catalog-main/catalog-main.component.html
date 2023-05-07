@@ -1,0 +1,31 @@
+<main>
+  <div>
+    <h2 class="primary-title">Escolha um curso</h2>
+  </div>
+
+  <app-catalog-list>
+    <ng-container *ngFor="let item of catalog.courses; let i = index">
+      <app-catalog-item
+        [classe]="catalog.selects.includes(item)? 'selected' : ''"
+        (click)="onClick(item)"
+      >
+        {{ item.name }}
+      </app-catalog-item>
+    </ng-container>
+  </app-catalog-list>
+
+  <div class="main-footer">
+    <button class="button-secundary">
+      <img src="/assets/AngleUp.svg" alt="" srcset="" />
+    </button>
+  </div>
+</main>
+
+<!-- <form [formGroup]="form">
+  <div *ngFor="let course of courses">
+    <label>
+      <input type="checkbox" formControlName={{course.id}}>
+      {{course.id}}
+    </label>
+  </div>
+</form> -->
