@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { IcourseState } from 'src/app/shared/core/types/course-state.types';
+import { Component } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-catalog-list',
@@ -10,9 +10,7 @@ import { IcourseState } from 'src/app/shared/core/types/course-state.types';
 
 
 export class CatalogListComponent{
-  @Input() courses: [] | IcourseState[]  = [];
-  @Output() clicked = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) { }
+
 
 }

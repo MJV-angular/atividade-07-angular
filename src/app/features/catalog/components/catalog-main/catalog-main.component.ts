@@ -1,6 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IcourseState } from 'src/app/shared/core/types/course-state.types';
+import { Component, OnInit } from '@angular/core';
+import { ICatalog } from 'src/app/shared/interfaces/catalog.interfaces';
 import { CatalogFacadeService } from 'src/app/shared/core/facade/catalog-facade.service';
+import { ApiRegisterCourseFacadeService } from 'src/app/shared/core/facade/api-register-course.facade.service';
+import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
+import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
+
 @Component({
   selector: 'app-catalog-main',
   templateUrl: './catalog-main.component.html',
@@ -8,22 +12,28 @@ import { CatalogFacadeService } from 'src/app/shared/core/facade/catalog-facade.
 })
 
 
-export class CatalogMainComponent implements OnInit{
+export class CatalogMainComponent implements OnInit {
   class?: string;
-  catalog: any;
-  constructor(private caltalogFacade: CatalogFacadeService) {
+  catalog?: ICatalog;
+  courseRegistred? : any
+  constructor(private caltalogFacade: CatalogFacadeService, private apiRegisterCourseFacade: ApiRegisterCourseFacadeService, private apiUserFacade: ApiUserFacadeService) {
   }
 
   ngOnInit(): void {
     this.caltalogFacade.getCatalog().subscribe();
     this.caltalogFacade.loadCatalog().subscribe(value => this.catalog = value)
+    this.apiUserFacade.userCourses$.subscribe(value => this.courseRegistred = value)
   }
 
-  onClick(course: IcourseState) {
-    this.caltalogFacade.selectCatalog(course)
+
+  onClick(id: number) {
+    this.caltalogFacade.selectCatalog(id)
   }
 
-  onSubmit(){
-    
+  onSubmit() {
+    if (this.catalog) {
+      this.apiRegisterCourseFacade.addRegisterCourse({courseId: this.catalog.selects})
+    }
+
   }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IcourseState } from '../types/course-state.types';
+import { IcourseResponse } from '../../interfaces/courses.interfaces';
+import { ICatalog } from '../../interfaces/catalog.interfaces';
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,31 +25,27 @@ export class CatalogStateService {
     return this.state$.asObservable();
   }
 
-  addCourses(courses: IcourseState[]) {
+  addCourses(courses: IcourseResponse[]) {
     return this.state$.next({
       ...this.state$.getValue(),
       courses: courses,
     });
   }
 
-  selectCourses(courses: IcourseState) {
+  selectCourses(id: number) {
     const state = this.state$.getValue();
-    if (state.selects.indexOf(courses) === -1) {
+    if (state.selects.indexOf(id) === -1) {
       return this.state$.next({
         ...state,
-        selects: [...state.selects, courses],
+        selects: [...state.selects, id ],
       });
     } else {
       return this.state$.next({
         ...state,
-        selects: [...state.selects.filter(ele => ele !== courses)],
+        selects: [...state.selects.filter(ele => ele !== id)],
       });
     }
   }
 }
 
 
-export interface ICatalog {
-  selects: IcourseState[],
-  courses: IcourseState[];
-}

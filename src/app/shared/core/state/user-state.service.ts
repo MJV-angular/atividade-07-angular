@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserState } from '../types/user-state.types';
+import {  UserRequest, UserResponse} from '../../interfaces/api.interfaces';
+import { IPartialUser } from '../../interfaces/user.interfaces';
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserStateService {
 
-  private state$ = new BehaviorSubject<UserState>({
+
+
+  private state$ = new BehaviorSubject<Partial<IPartialUser>>({
     id: undefined,
     createdAt: undefined,
     email: undefined,
@@ -27,15 +30,15 @@ export class UserStateService {
     }
   })
 
-  getState(): Observable<UserState> {
+  getState(): Observable<Partial<IPartialUser>> {
     return this.state$.asObservable()
   }
 
-  setUser(user: UserState) {
+  setUser(user: UserResponse) {
     this.state$.next(user)
   }
 
-  editeUser(user: UserState) {
+  editeUser(user: UserResponse) {
     this.state$.next(user)
   }
   constructor() { }

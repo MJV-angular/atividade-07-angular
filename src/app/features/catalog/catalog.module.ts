@@ -5,6 +5,7 @@ import { CatalogMainComponent } from './components/catalog-main/catalog-main.com
 import { CatalogListComponent } from './components/catalog-list/catalog-list.component';
 import { CatalogItemComponent } from './components/catalog-item/catalog-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     CatalogComponent,

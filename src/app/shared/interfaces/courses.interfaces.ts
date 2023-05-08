@@ -5,3 +5,5 @@ export interface IcourseResponse{
   createdAt: Date;
   updatedAt: Date;
 }
+
+

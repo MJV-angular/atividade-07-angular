@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IcourseState } from '../types/course-state.types';
+import { IcourseResponse } from '../../interfaces/courses.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +11,13 @@ export class CourseStateService {
 
   constructor() { }
 
-  private courseState$ = new BehaviorSubject<IcourseState[]>([])
+  private courseState$ = new BehaviorSubject<IcourseResponse[]>([])
 
-  getState(): Observable<IcourseState[]> {
+  getState(): Observable<IcourseResponse[]> {
     return this.courseState$.asObservable()
   }
 
-  getCourses(courses: IcourseState[]) {
+  getCourses(courses: IcourseResponse[]) {
     this.courseState$.next(courses)
   }
 

@@ -4,10 +4,10 @@
   </div>
 
   <app-catalog-list>
-    <ng-container *ngFor="let item of catalog.courses; let i = index">
+    <ng-container *ngFor="let item of catalog?.courses; let i = index">
       <app-catalog-item
-        [classe]="catalog.selects.includes(item)? 'selected' : ''"
-        (click)="onClick(item)"
+        [classe]="catalog?.selects?.includes(item.id) ? 'selected' : ''"
+        (click)="onClick(item.id)"
       >
         {{ item.name }}
       </app-catalog-item>
@@ -15,17 +15,8 @@
   </app-catalog-list>
 
   <div class="main-footer">
-    <button class="button-secundary">
+    <button (click)="onSubmit()" class="button-secundary">
       <img src="/assets/AngleUp.svg" alt="" srcset="" />
     </button>
   </div>
 </main>
-
-<!-- <form [formGroup]="form">
-  <div *ngFor="let course of courses">
-    <label>
-      <input type="checkbox" formControlName={{course.id}}>
-      {{course.id}}
-    </label>
-  </div>
-</form> -->

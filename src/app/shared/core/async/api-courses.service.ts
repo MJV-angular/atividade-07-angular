@@ -11,7 +11,7 @@ export class ApiCoursesService {
 
   constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
 
-  getCourses( ): Observable<any> {
+  getCourses(): Observable<any> {
     return this.httpClient.get(`https://api-naianereis.vercel.app/courses`)
   }
 

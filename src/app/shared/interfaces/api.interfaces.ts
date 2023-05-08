@@ -1,3 +1,5 @@
+import { IcourseResponse } from "./courses.interfaces";
+
 export interface UserRequest {
   email: string;
   name: string;
@@ -17,6 +19,7 @@ export interface UserResponse {
   dateBirth: Date;
   cpf: string;
   address:IAddressRequest;
+  courses: IcourseResponse[]
 }
 
 export interface IloginRequest {
