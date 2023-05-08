@@ -1,29 +1,20 @@
-.dashboard-container{
- display: flex;
- width: 100vh;
- flex-direction: row;
-}
+.container {
 
-.dashboard-middle{
-  display: flex;
-  flex: 1;
-  border: 2px solid #000000;
-  flex-direction: column;
- }
-
- .dashboard-right{
-  display: flex;
-  border: 2px solid black;
-  flex-direction: column;
- }
-
-
-
-
-
-app-feed-dashboard{
-  margin: 20px 30px ;
   width: 100%;
-  background-color: rgb(255, 255, 255);
-}
+  display: grid;
+  grid-template-columns: 0.7fr 2fr 1fr;
+  grid-template-rows: 1fr 0fr 0fr;
+  gap: 0px 20px;
+  
+  .dashboard-middle {
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    gap: 20px 10px;
+  }
 
+  .dashboard-right{
+    padding: 20px 20px  20px 0;
+  }
+}
