@@ -1,5 +1,20 @@
+<div class="dashboard-container">
+  <div>
+    <app-aside
+      (click)="showModal()"
+      class="dashboard-left"
+      [_mycourse]="mycourses"
+      [user]="user"
+    ></app-aside>
+  </div>
 
-<app-aside></app-aside>
-<div>
-  <app-card-simple>Olá</app-card-simple>
+  <div class="dashboard-middle">
+    <app-search-dashboard></app-search-dashboard>
+    <app-feed-dashboard></app-feed-dashboard>
+  </div>
+
+    <div class="dashboard-right">
+      <app-chat-dashboard></app-chat-dashboard>
+    </div>
+
 </div>

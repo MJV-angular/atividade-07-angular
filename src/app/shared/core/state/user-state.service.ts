@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {  UserRequest, UserResponse} from '../../interfaces/api.interfaces';
-import { IPartialUser } from '../../interfaces/user.interfaces';
+import { UserResponse } from '../../interfaces/api.interfaces';
+import { IUserState } from '../../interfaces/user.interfaces';
+import { IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,8 +11,7 @@ import { IPartialUser } from '../../interfaces/user.interfaces';
 export class UserStateService {
 
 
-
-  private state$ = new BehaviorSubject<Partial<IPartialUser>>({
+  private state$ = new BehaviorSubject<IUserState>({
     id: undefined,
     createdAt: undefined,
     email: undefined,
@@ -18,6 +19,7 @@ export class UserStateService {
     picture: undefined,
     dateBirth: undefined,
     cpf: undefined,
+    courses: [],
     address: {
       id: undefined,
       street: undefined,
@@ -30,7 +32,8 @@ export class UserStateService {
     }
   })
 
-  getState(): Observable<Partial<IPartialUser>> {
+
+  getState(): Observable<IUserState> {
     return this.state$.asObservable()
   }
 
@@ -39,9 +42,18 @@ export class UserStateService {
   }
 
   editeUser(user: UserResponse) {
+    
     this.state$.next(user)
   }
-  constructor() { }
+
+  addCourses(courses: IRegisterCourseResponse[]) {
+    const state = this.state$.getValue();
+    this.state$.next({
+      ...state,
+      courses: [...state.courses, ...courses]
+    });
+  }
+
 }
 
 

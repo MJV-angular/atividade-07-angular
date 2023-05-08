@@ -6,4 +6,6 @@ export interface IcourseResponse{
   updatedAt: Date;
 }
 
-
+export interface IcourseState {
+  courses: IcourseResponse[]
+}

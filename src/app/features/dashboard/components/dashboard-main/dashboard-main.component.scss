@@ -1,5 +1,29 @@
-div{
+.dashboard-container{
+ display: flex;
+ width: 100vh;
+ flex-direction: row;
+}
+
+.dashboard-middle{
+  display: flex;
+  flex: 1;
+  border: 2px solid #000000;
+  flex-direction: column;
+ }
+
+ .dashboard-right{
+  display: flex;
+  border: 2px solid black;
+  flex-direction: column;
+ }
+
+
+
+
+
+app-feed-dashboard{
+  margin: 20px 30px ;
   width: 100%;
   background-color: rgb(255, 255, 255);
-  border-left: 0.5px solid var(--gray-color);
 }
+

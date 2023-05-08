@@ -5,7 +5,7 @@ import {
   IRegisterCourseRequest,
 
 } from '../../interfaces/register-courses.interfaces';
-
+import { IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,11 +14,10 @@ export class ApiRegisterCourseService {
   constructor(private httpClient: HttpClient) {}
   registerCourse(
     data: IRegisterCourseRequest
-  ) {
+  ): Observable<IRegisterCourseResponse[]> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
-    return this.httpClient
-      .post(`http://localhost:3000/registercourse`, data, {headers})
+    return this.httpClient.post<IRegisterCourseResponse[]>(`http://localhost:3000/registercourse`, data, {headers})
   }
 }

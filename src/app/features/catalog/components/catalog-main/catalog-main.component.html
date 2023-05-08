@@ -6,7 +6,7 @@
   <app-catalog-list>
     <ng-container *ngFor="let item of catalog?.courses; let i = index">
       <app-catalog-item
-        [classe]="catalog?.selects?.includes(item.id) ? 'selected' : ''"
+        [classe]="cursesRegistred?.includes(item.id) || this.catalog?.selects?.includes(item.id) ? 'selected' : ''"
         (click)="onClick(item.id)"
       >
         {{ item.name }}

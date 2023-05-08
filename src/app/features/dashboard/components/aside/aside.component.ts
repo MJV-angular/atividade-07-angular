@@ -1,35 +1,21 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
-import { PerfilModalService } from 'src/app/shared/services/perfil-modal.service';
-import { LocalStorageService } from 'src/app/shared/core/sync/local-storage.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IcourseResponse } from 'src/app/shared/interfaces/courses.interfaces';
+import { IRegisterCourseResponse } from 'src/app/shared/interfaces/register-courses.interfaces';
+import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 
 @Component({
   selector: 'app-aside',
   templateUrl: './aside.component.html',
   styleUrls: ['./aside.component.scss']
 })
-export class AsideComponent implements OnInit {
-  user?: UserResponse;
-  constructor(public modalService: PerfilModalService, public _localStorage: LocalStorageService) {
+export class AsideComponent {
 
-  }
-
-  ngOnInit(): void {
-    this.getUser('@USER');
-    this._localStorage.refresh$.subscribe(
-      {
-        next: (value) => {
-          this.user = value!
-        }
-      }
-    )
-  }
-
-  getUser(value: string) {
-    return this._localStorage.get(value).subscribe(value => { this.user = JSON.parse(value!) })
-  }
-  ngOnDestroy() {
-    this._localStorage.refresh$.unsubscribe
+  @Input() user?: IUserState;
+  @Output() clicked = new EventEmitter();
+  @Input() _mycourse?: IcourseResponse[]
+  @Input() courses?: IcourseResponse[]
+  onSubmit() {
+    this.clicked.emit();
   }
 }
 

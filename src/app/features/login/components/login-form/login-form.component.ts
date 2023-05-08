@@ -33,7 +33,6 @@ export class LoginFormComponent {
     return this.apiService
       .login(this.userForm.getRawValue())
       .subscribe((value) => {
-        console.log(value)
         this.token = value.token;
         this.user = value;
       });

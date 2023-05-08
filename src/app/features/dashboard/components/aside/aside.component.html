@@ -1,8 +1,13 @@
 <div class="container-perfil">
   <app-picture-perfil picture={{user?.picture}}></app-picture-perfil>
-  <div>
+
+  <div class="first-container">
     <p>{{ user?.name }}</p>
     <p>{{ user?.email }}</p>
-    <button (click)="modalService.show()">Editar Perfil</button>
+    <button (clicked)="onSubmit()">Editar Perfil</button>
+  </div>
+
+  <div>
+    <app-my-courses [mycourses]="_mycourse" />
   </div>
 </div>

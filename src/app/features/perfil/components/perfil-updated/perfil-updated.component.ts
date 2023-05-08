@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PerfilModalService } from 'src/app/shared/services/perfil-modal.service';
 import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiUserService } from 'src/app/shared/core/async/api-user.service';
+import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
 import { LocalStorageService } from 'src/app/shared/core/sync/local-storage.service';
 import moment from 'moment';
 import { ToastService } from 'src/app/shared/services/toast.service';
@@ -18,7 +18,7 @@ export class PerfilUpdatedComponent implements OnInit {
   currentDate?: Date;
   newUser?: UserResponse
 
-  constructor(public perfilServices: PerfilModalService, public api: ApiUserService, private _localStorage: LocalStorageService, public toast: ToastService) { }
+  constructor(public perfilServices: PerfilModalService, public api: ApiUserFacadeService, private _localStorage: LocalStorageService, public toast: ToastService) { }
 
   addressForm = new FormGroup({
     street: new FormControl("", { nonNullable: true, validators: [Validators.required] }),
@@ -66,17 +66,7 @@ export class PerfilUpdatedComponent implements OnInit {
   onSubmit() {
     if (this.user?.id) {
       const { dateBirth, ...Data } = this.userForm.getRawValue()
-      const res = this.api.updatedUser({ dateBirth: moment(this.userForm.value.dateBirth, "YYYY-MM-DD").toDate(), ...Data }, this.user.id);
-      res.subscribe({
-        next: value => {
-          this._localStorage.set('@USER', value)
-          this._localStorage.refresh$.next(value)
-        },
-        complete: () => {
-          this.perfilServices.hide();
-          this.toast.show(`Usuário atualizado com sucesso!`)
-        },
-      })
+      this.api.updatedUser({ dateBirth: moment(this.userForm.value.dateBirth, "YYYY-MM-DD").toDate(), ...Data }, this.user.id).subscribe();
     }
   }
 

@@ -9,7 +9,7 @@ import { LocalStorageService } from '../sync/local-storage.service';
 })
 export class ApiSessionService {
 
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
+  constructor(private httpClient: HttpClient) { }
 
   login(data: IloginRequest): Observable<any> {
     return this.httpClient.post(`https://api-naianereis.vercel.app/login`, data)

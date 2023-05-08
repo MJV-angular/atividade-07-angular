@@ -16,20 +16,25 @@ export class ApiSessionFacadeService {
 
 
   login(user: IloginRequest): Observable<UserResponse> {
+    let pathDirect: string = "/dashboard"
     return this.api.login(user).pipe(
       tap({
         next: (response: UserResponse) => {
           this.userState.setUser(response);
           window.localStorage.setItem('@TOKEN', response.token!);
           window.localStorage.setItem('@USER', JSON.stringify(response));
-          this.toast.show(`Bem vindo`)
+          if(response.courses.length == 0){
+            pathDirect = "/catalog"
+          }
         },
         error: (error: any) => {
           console.log(error.message);
         },
         complete: () => {
-
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl(pathDirect);
+          if(pathDirect == "/dashboard"){
+            this.router.navigateByUrl(pathDirect)
+          }
         }
       })
     )

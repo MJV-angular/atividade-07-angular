@@ -6,10 +6,11 @@
   width: 300px;
   height: 100vh;
   padding: 20px 0;
+  .first-container{
+    padding: 25px;
+  }
   div {
-    padding: 15px;
     width: 100%;
-    margin: 25px 0;
     color: var(--btn-color);
     button {
       padding: 5px;
