@@ -12,6 +12,8 @@ import { MyCoursesListItemComponent } from './components/my-courses-list-item/my
 import { FeedDashboardComponent } from './components/feed-dashboard/feed-dashboard.component';
 import { ChatDashboardComponent } from './components/chat-dashboard/chat-dashboard.component';
 import { SearchDashboardComponent } from './components/search-dashboard/search-dashboard.component';
+import { FeedListDashboardComponent } from './components/feed-list-dashboard/feed-list-dashboard.component';
+import { FeedListDashboardItemComponent } from './components/feed-list-dashboard-item/feed-list-dashboard-item.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { SearchDashboardComponent } from './components/search-dashboard/search-d
     FeedDashboardComponent,
     ChatDashboardComponent,
     SearchDashboardComponent,
+    FeedListDashboardComponent,
+    FeedListDashboardItemComponent,
   ],
   imports: [
     SharedModule,

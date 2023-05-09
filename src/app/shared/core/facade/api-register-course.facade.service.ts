@@ -13,10 +13,6 @@ export class ApiRegisterCourseFacadeService {
 
   }
 
-  // addRegisterCourse(coursesId: IRegisterCourseRequest){
-  //    this.apiServices.registerCourse(coursesId).subscribe(value => this.userState.addCourses(value))
-  // }
-
   addRegisterCourse(coursesId: IRegisterCourseRequest): Observable<IRegisterCourseResponse[]>{
     return this.apiServices.registerCourse(coursesId).pipe(
       tap((response: IRegisterCourseResponse[]) =>

@@ -10,6 +10,8 @@ import { DashboardModule } from './features/dashboard/dashboard.module';
 import { PerfilModule } from './features/perfil/perfil.module';
 import { CatalogModule } from './features/catalog/catalog.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

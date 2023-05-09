@@ -48,7 +48,6 @@ export class ApiUserFacadeService {
   }
 
   addUser(user: UserRequest): Observable<UserResponse> {
-
     return this.apiServices.createUser(user).pipe(
       tap((response) => {
         this.userState.setUser(response)
