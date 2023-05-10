@@ -12,15 +12,16 @@ export class CourseContentStateService {
   })
 
   getState(): Observable<IcourseContentState> {
+    console.log(this.state$.getValue(), "$state")
     return this.state$.asObservable()
   }
 
-  getCoursesContent(coursesContent: ICourseContent[]) {
-    console.log(this.state$.getValue())
+  addCoursesContent(coursesContent: ICourseContent[]) {
     const state = this.state$.getValue();
     this.state$.next({
       courseContent: [...state.courseContent ,...coursesContent]
     });
+    console.log(this.state$.getValue(), "f")
   }
 
 }

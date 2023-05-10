@@ -16,7 +16,6 @@ export class CourseStateService {
   }
 
   getCourses(courses: IcourseResponse[]) {
-    console.log(this.state$.getValue())
     const state = this.state$.getValue();
     this.state$.next({
       courses: courses

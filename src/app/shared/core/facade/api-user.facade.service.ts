@@ -14,8 +14,6 @@ export class ApiUserFacadeService {
 
   }
 
-
-
   readonly getUser$ = this.userState
     .getState()
     .pipe(

@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.facade.service';
-import { IcourseResponse } from 'src/app/shared/interfaces/courses.interfaces';
-import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
+import { IcourseState, IcourseResponse } from 'src/app/shared/interfaces/courses.interfaces';
+
 
 @Component({
   templateUrl: './catalog.component.html',
@@ -10,12 +10,12 @@ import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
 
 export class CatalogComponent implements OnInit {
   courses: IcourseResponse[] = [];
-  
+
   constructor(public courseFacade: ApiCoursesFacadeService){
   }
 
   ngOnInit(): void {
-    this.courseFacade.getCourses().subscribe(value => this.courses = value)
+    this.courseFacade.getcourses$.subscribe(value => this.courses = value.courses)
   }
 
 }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { PerfilModalService } from 'src/app/shared/services/perfil-modal.service';
+import { PerfilModalService } from 'src/app/shared/core/sync/perfil-modal.service';
 import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
 import { LocalStorageService } from 'src/app/shared/core/sync/local-storage.service';
 import moment from 'moment';
-import { ToastService } from 'src/app/shared/services/toast.service';
+
 
 @Component({
   selector: 'app-perfil-updated',
@@ -18,7 +18,7 @@ export class PerfilUpdatedComponent implements OnInit {
   currentDate?: Date;
   newUser?: UserResponse
 
-  constructor(public perfilServices: PerfilModalService, public api: ApiUserFacadeService, private _localStorage: LocalStorageService, public toast: ToastService) { }
+  constructor(public perfilServices: PerfilModalService, public api: ApiUserFacadeService, private _localStorage: LocalStorageService) { }
 
   addressForm = new FormGroup({
     street: new FormControl("", { nonNullable: true, validators: [Validators.required] }),

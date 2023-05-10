@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataHomeService } from 'src/app/shared/services/data-home.service';
+import { DataHomeService } from 'src/app/shared/core/sync/data-home.service';
 import { DataHome } from 'src/app/shared/interfaces/home.interfaces';
 @Component({
   selector: 'app-home-animation',

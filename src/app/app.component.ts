@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiUserFacadeService } from './shared/core/facade/api-user.facade.service';
+import { CourseContentFacadeService } from './shared/core/facade/course-content.facade.service';
+import { ApiCoursesFacadeService } from './shared/core/facade/api-courses.facade.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,19 +9,19 @@ import { ApiUserFacadeService } from './shared/core/facade/api-user.facade.servi
 })
 export class AppComponent implements OnInit {
 
-  constructor(private userFacade: ApiUserFacadeService){
-
-  }
+  constructor(private userFacade: ApiUserFacadeService, private courseContentFacade :CourseContentFacadeService, private courseFacade: ApiCoursesFacadeService) { }
   ngOnInit(): void {
     this.userFacade.setUserlocalHost()
-    this.userFacade.getUser$.subscribe( user => {
+    this.userFacade.getUser$.subscribe(user => {
       localStorage.setItem('@USER', JSON.stringify(user))
-      console.log(user, "app")
+      console.log("app => user",user)
     }
-
-
     );
+    this.courseContentFacade.getCourseContent().subscribe(courseContent => {
+      console.log("app => coursesContent", courseContent)
+    });
+    this.courseFacade.getCourses().subscribe(courseContent => {
+      console.log( "app => courses", courseContent)
+    });
   }
-
-  title = 'cadastro';
 }

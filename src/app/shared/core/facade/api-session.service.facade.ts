@@ -5,7 +5,7 @@ import { UserResponse } from '../../interfaces/api.interfaces';
 import { UserStateService } from '../state/user-state.service';
 import { IloginRequest } from '../../interfaces/api.interfaces';
 import { Router } from '@angular/router';
-import { ToastService } from '../../services/toast.service';
+import { ToastService } from '../sync/toast.service';
 
 @Injectable({
   providedIn: 'root'

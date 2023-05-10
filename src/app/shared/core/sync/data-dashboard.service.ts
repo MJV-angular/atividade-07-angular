@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IDashboard } from '../interfaces/dashboard.interfaces';
+import { IDashboard } from '../../interfaces/dashboard.interfaces';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,7 +7,7 @@ export class DataDashboardService {
 
   constructor() { }
   data: IDashboard = {
-    certificate : ['REACT', 'Angular'],
+    certificate: ['REACT', 'Angular'],
     courses: []
   }
 

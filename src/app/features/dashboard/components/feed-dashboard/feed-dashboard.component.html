@@ -1,10 +1,8 @@
-<app-card-simple>
-  <h2>FEED</h2>
-    <app-feed-list-dashboard>
-      <app-feed-list-dashboard-item></app-feed-list-dashboard-item>
-    </app-feed-list-dashboard>
-</app-card-simple>
+<h2>FEED</h2>
 
-
-
+  <app-feed-list-dashboard>
+    <ng-container *ngFor="let item of courseContent">
+      <app-card-picture-text></app-card-picture-text>
+    </ng-container>
+  </app-feed-list-dashboard>
 

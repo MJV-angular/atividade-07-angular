@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserRequest, UserResponse } from 'src/app/shared/interfaces/api.interfaces';
-import { ApiSessionService } from 'src/app/shared/core/async/api-session.service';
-import { ToastService } from 'src/app/shared/services/toast.service';
+import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
+import { ToastService } from 'src/app/shared/core/sync/toast.service';
+
 import { ApiSessionFacadeService } from 'src/app/shared/core/facade/api-session.service.facade';
 @Component({
   selector: 'app-login-form',
