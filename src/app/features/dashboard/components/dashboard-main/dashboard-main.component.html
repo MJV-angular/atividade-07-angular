@@ -1,15 +1,8 @@
 <div class="container">
-
-    <app-aside
-      (click)="showModal()"
-      class="dashboard-left"
-      [_mycourse]="mycourses"
-      [user]="user"
-    ></app-aside>
-
+  <app-sidebar [courses]="mycourses" (openModal)="showModal()"  [user]="user"></app-sidebar>
 
   <div class="dashboard-middle">
-    <app-search-dashboard></app-search-dashboard>
+    <app-search-dashboard [courses]="mycourses" [user]="user"></app-search-dashboard>
     <app-feed-dashboard></app-feed-dashboard>
   </div>
 

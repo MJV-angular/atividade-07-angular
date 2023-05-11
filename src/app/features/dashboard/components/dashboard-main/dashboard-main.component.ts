@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.facade.service';
 import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
 import { LocalStorageService } from 'src/app/shared/core/sync/local-storage.service';
@@ -14,18 +14,18 @@ import { PerfilModalService } from 'src/app/shared/core/sync/perfil-modal.servic
 export class DashboardMainComponent implements OnInit {
   user?: IUserState;
   user$ = this.userFacade.getUser$;
-  mycourses$ = this.userFacade.getCoursesByUser$
-  mycourses: IcourseResponse[] | undefined
+  mycourses$ = this.userFacade.getCoursesByUser$;
+  mycourses?: IcourseResponse[];
   constructor(public modalService: PerfilModalService, public userFacade: ApiUserFacadeService, public coursesFacade: ApiCoursesFacadeService) {
   }
 
-
   ngOnInit(): void {
     this.user$.subscribe(value => this.user = value)
-    this.mycourses$.subscribe( value =>  this.mycourses = value )
+    this.mycourses$.subscribe(value => this.mycourses = value)
+
   }
 
-  showModal(){
+  showModal() {
     this.modalService.show()
   }
 

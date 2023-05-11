@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PerfilComponent } from './components/perfil/perfil.component';
-import { AsideComponent } from './components/aside/aside.component';
 import { DashboardMainComponent } from './components/dashboard-main/dashboard-main.component';
 import { PerfilModule } from '../perfil/perfil.module';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
@@ -19,8 +17,6 @@ import { FeedListDashboardItemComponent } from './components/feed-list-dashboard
 @NgModule({
   declarations: [
     DashboardComponent,
-    PerfilComponent,
-    AsideComponent,
     DashboardMainComponent,
     MyCoursesComponent,
     MyCoursesListComponent,
@@ -36,7 +32,7 @@ import { FeedListDashboardItemComponent } from './components/feed-list-dashboard
     CommonModule,
     PerfilModule
   ],
-  exports:[
+  exports: [
     DashboardComponent,
     DashboardMainComponent
   ]

@@ -113,8 +113,7 @@ table {
 }
 
 body {
-  background: linear-gradient(270deg, #7039f2, #4260ad, #9b04f7);
-  background-size: 800% 800%;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-animation: Animationgrad 42s ease infinite;
   -moz-animation: Animationgrad 42s ease infinite;
   animation: Animationgrad 42s ease infinite;
@@ -128,13 +127,13 @@ body {
 }
 
 :root {
-  --gray-color: rgb(83, 84, 85);
+  --gray-color: #3e3e3e;;
   --white-color: rgb(255, 255, 255);
   --yellow-color: #fbfbfb;
   --purple-color: #7039f2;
-  --blue-color: #393f70;
+  --blue-color: #504db4;
   --error-color: #f2396d;
-  --btn-color: #442992;
+  --btn-color: #504db4;
   --shadow-primary: rgba(11, 43, 158, 0.15) 0px 6px 20px -6px;
   --wp--preset--color--black: #000000;
   --color--cyan-bluish-gray: #abb8c3;

@@ -1,5 +1,6 @@
-
 <app-card-simple>
-  <p>search-dashboard works!</p>
+  <ng-container *ngFor="let item of courses">
+    <!-- {{courses| json}} -->
+    <app-card-course [course]="item"></app-card-course>
+  </ng-container>
 </app-card-simple>
-

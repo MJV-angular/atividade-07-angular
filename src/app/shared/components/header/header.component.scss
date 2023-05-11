@@ -3,17 +3,14 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  height: 70px;
+  height: 90px;
   display: flex;
-  -webkit-box-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: center;
   align-items: center;
   padding: 0 2rem;
   z-index: 999;
-  background: rgba(7, 7, 7, 0.392);
   backdrop-filter: blur(0.5px);
-
+  border-bottom: 1px solid #ffffff6c;
 
   figure {
     width: 60px;

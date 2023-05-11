@@ -5,6 +5,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
 import { LocalStorageService } from 'src/app/shared/core/sync/local-storage.service';
 import moment from 'moment';
+import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
+
 
 
 @Component({
@@ -14,11 +16,12 @@ import moment from 'moment';
 })
 
 export class PerfilUpdatedComponent implements OnInit {
-  user?: UserResponse
+  user?: UserResponse;
+  userData?: IUserState;
   currentDate?: Date;
   newUser?: UserResponse
 
-  constructor(public perfilServices: PerfilModalService, public api: ApiUserFacadeService, private _localStorage: LocalStorageService) { }
+  constructor(public perfilServices: PerfilModalService, public userFacade: ApiUserFacadeService, private _localStorage: LocalStorageService) { }
 
   addressForm = new FormGroup({
     street: new FormControl("", { nonNullable: true, validators: [Validators.required] }),
@@ -59,6 +62,7 @@ export class PerfilUpdatedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userFacade.getUser$.subscribe(value => this.userData = value)
     this.user = this.getUser('@USER')
     this.getDefaultValues()
   }
@@ -66,7 +70,7 @@ export class PerfilUpdatedComponent implements OnInit {
   onSubmit() {
     if (this.user?.id) {
       const { dateBirth, ...Data } = this.userForm.getRawValue()
-      this.api.updatedUser({ dateBirth: moment(this.userForm.value.dateBirth, "YYYY-MM-DD").toDate(), ...Data }, this.user.id).subscribe();
+      this.userFacade.updatedUser({ dateBirth: moment(this.userForm.value.dateBirth, "YYYY-MM-DD").toDate(), ...Data }, this.user.id).subscribe();
     }
   }
 

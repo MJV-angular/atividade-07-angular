@@ -11,6 +11,8 @@ import { CardPictureTextComponent } from './components/card-picture-text/card-pi
 import { ModalComponent } from './components/modal/modal.component';
 import { PicturePerfilComponent } from './components/picture-perfil/picture-perfil.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CardCourseComponent } from './components/card-course/card-course.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ToastComponent } from './components/toast/toast.component';
     CardSimpleComponent,
     CardPictureTextComponent,
     ModalComponent,
-    PicturePerfilComponent
+    PicturePerfilComponent,
+    SidebarComponent,
+    CardCourseComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +40,9 @@ import { ToastComponent } from './components/toast/toast.component';
     CardPictureTextComponent,
     ModalComponent,
     ToastComponent,
-    PicturePerfilComponent
+    PicturePerfilComponent,
+    SidebarComponent,
+    CardCourseComponent
   ],
   providers:[
     {

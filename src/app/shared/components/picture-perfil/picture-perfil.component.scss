@@ -1,15 +1,37 @@
-figure {
-  border: 0.5px solid var(--btn-color);
-  width: 100px;
-  height: 100px;
-  border-radius: 25%;
+section {
   display: flex;
-  background-color: var(--white-color);
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 25px;
+  gap: 22px;
+}
+
+figure {
+  width: 110px;
+  max-height: 110px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: var(--white-color);
   overflow: hidden;
+  border: 2px solid var(--blue-color);
   img {
-    width: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .email {
+    font-size: 12px;
+    font-weight: 400;
   }
 }
