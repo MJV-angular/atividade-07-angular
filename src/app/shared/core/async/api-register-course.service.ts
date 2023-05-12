@@ -18,6 +18,6 @@ export class ApiRegisterCourseService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
-    return this.httpClient.post<IRegisterCourseResponse[]>(`http://localhost:3000/registercourse`, data, {headers})
+    return this.httpClient.post<IRegisterCourseResponse[]>(`https://api-naianereis.vercel.app/registercourse`, data, {headers})
   }
 }

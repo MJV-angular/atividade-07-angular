@@ -12,7 +12,7 @@ export class ApiUserService {
   constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
 
   createUser(data: UserRequest): Observable<any> {
-    return this.httpClient.post(`http://localhost:3000/user`, data)
+    return this.httpClient.post(`https://api-naianereis.vercel.app/user`, data)
   }
 
   updatedUser(data: Partial<UserRequest>, UserId: number): Observable<any> {

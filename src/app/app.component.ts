@@ -9,19 +9,22 @@ import { ApiCoursesFacadeService } from './shared/core/facade/api-courses.facade
 })
 export class AppComponent implements OnInit {
 
-  constructor(private userFacade: ApiUserFacadeService, private courseContentFacade :CourseContentFacadeService, private courseFacade: ApiCoursesFacadeService) { }
+  constructor(private userFacade: ApiUserFacadeService, private courseContentFacade: CourseContentFacadeService, private courseFacade: ApiCoursesFacadeService) { }
+
   ngOnInit(): void {
     this.userFacade.setUserlocalHost()
     this.userFacade.getUser$.subscribe(user => {
-      localStorage.setItem('@USER', JSON.stringify(user))
-      console.log("app => user",user)
+      console.log("app => user", user)
     }
     );
     this.courseContentFacade.getCourseContent().subscribe(courseContent => {
       console.log("app => coursesContent", courseContent)
     });
     this.courseFacade.getCourses().subscribe(courseContent => {
-      console.log( "app => courses", courseContent)
+      console.log("app => courses", courseContent)
     });
+    this.userFacade.getCoursesByUser$.subscribe(coursesByUser => {
+      console.log("app => coursesByUsers", coursesByUser)
+    })
   }
 }

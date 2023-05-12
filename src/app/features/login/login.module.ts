@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -14,7 +14,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     SharedModule,
     CommonModule,
-    FormsModule,
     RouterModule,
     ReactiveFormsModule
   ]

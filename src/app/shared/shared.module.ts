@@ -13,7 +13,11 @@ import { PicturePerfilComponent } from './components/picture-perfil/picture-perf
 import { ToastComponent } from './components/toast/toast.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CardCourseComponent } from './components/card-course/card-course.component';
-
+import { SliderComponent } from './components/slider/slider.component';
+import { NextDirective } from './directives/next.directive';
+import { PrevDirective } from './directives/prev.directive';
+import { InputSearchComponent } from './components/input-search/input-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -25,12 +29,17 @@ import { CardCourseComponent } from './components/card-course/card-course.compon
     ModalComponent,
     PicturePerfilComponent,
     SidebarComponent,
-    CardCourseComponent
+    CardCourseComponent,
+    SliderComponent,
+    NextDirective,
+    PrevDirective,
+    InputSearchComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[
     HeaderComponent,
@@ -42,7 +51,9 @@ import { CardCourseComponent } from './components/card-course/card-course.compon
     ToastComponent,
     PicturePerfilComponent,
     SidebarComponent,
-    CardCourseComponent
+    CardCourseComponent,
+    SliderComponent,
+    InputSearchComponent
   ],
   providers:[
     {

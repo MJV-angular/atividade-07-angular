@@ -12,7 +12,8 @@ import { ChatDashboardComponent } from './components/chat-dashboard/chat-dashboa
 import { SearchDashboardComponent } from './components/search-dashboard/search-dashboard.component';
 import { FeedListDashboardComponent } from './components/feed-list-dashboard/feed-list-dashboard.component';
 import { FeedListDashboardItemComponent } from './components/feed-list-dashboard-item/feed-list-dashboard-item.component';
-
+import { CoursesListDashboardComponent } from './components/courses-list-dashboard/courses-list-dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,13 @@ import { FeedListDashboardItemComponent } from './components/feed-list-dashboard
     SearchDashboardComponent,
     FeedListDashboardComponent,
     FeedListDashboardItemComponent,
+    CoursesListDashboardComponent,
   ],
   imports: [
     SharedModule,
     CommonModule,
-    PerfilModule
+    PerfilModule,
+    ReactiveFormsModule
   ],
   exports: [
     DashboardComponent,

@@ -2,7 +2,8 @@
   <app-sidebar [courses]="mycourses" (openModal)="showModal()"  [user]="user"></app-sidebar>
 
   <div class="dashboard-middle">
-    <app-search-dashboard [courses]="mycourses" [user]="user"></app-search-dashboard>
+    <app-courses-list-dashboard [courses]="mycourses" [user]="user"></app-courses-list-dashboard>
+    <app-search-dashboard [courses]="mycourses"  [user]="user"></app-search-dashboard>
     <app-feed-dashboard></app-feed-dashboard>
   </div>
 

@@ -10,6 +10,6 @@ export class ApiCourseContentService {
   constructor(private httpClient: HttpClient) { }
 
   getCoursesContent(): Observable<any> {
-    return this.httpClient.get(`http://localhost:3000/courseContent`)
+    return this.httpClient.get(`https://api-naianereis.vercel.app/courseContent`)
   }
 }

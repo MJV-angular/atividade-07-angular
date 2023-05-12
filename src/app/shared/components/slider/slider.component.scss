@@ -1,0 +1,56 @@
+.container
+{
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+  .container-fluid{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .slider-wrap{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+  }
+  .slider-main{
+    display: flex;
+    gap: 22px;
+    position: absolute;
+    width: max-content;
+  }
+}
+
+.container-btn{
+  position: absolute;
+  width: 105%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 9999;
+
+  .prev{
+    transform: rotate(-90deg);
+  }
+  .next{
+    transform: rotate(90deg);
+  }
+  button{
+    width: 30px;
+    left: -30px;
+    height: 30px;
+    border: none;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    img{
+      width: 70%;
+    }
+  }
+}

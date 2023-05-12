@@ -9,7 +9,7 @@ import { RegisterModule } from './features/register/register.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { PerfilModule } from './features/perfil/perfil.module';
 import { CatalogModule } from './features/catalog/catalog.module';
-
+import { SwiperModule } from 'swiper/types/shared';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +25,7 @@ import { CatalogModule } from './features/catalog/catalog.module';
     RegisterModule,
     DashboardModule,
     PerfilModule,
-    CatalogModule
+    CatalogModule,
   ]
 })
 export class AppModule { }
