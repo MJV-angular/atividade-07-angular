@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ICourseContent } from '../../interfaces/course-content.interface';
 
 @Component({
   selector: 'app-card-picture-text',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-picture-text.component.scss']
 })
 export class CardPictureTextComponent {
-
+  @Input() course! : ICourseContent;
 }

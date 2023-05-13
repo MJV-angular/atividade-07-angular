@@ -17,7 +17,7 @@ import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 
 export class PerfilUpdatedComponent implements OnInit {
   user?: UserResponse;
-  userData?: IUserState;
+  userData: IUserState | null = null;
   currentDate?: Date;
   newUser?: UserResponse
 

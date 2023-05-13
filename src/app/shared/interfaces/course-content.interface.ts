@@ -9,6 +9,9 @@ export interface ICourseContent {
 }
 
 export interface IcourseContentState{
-  courseContent: [] | ICourseContent[]
+  courseContent: [] | ICourseContent[],
 }
 
+export interface IcourseContentFilterState{
+  filterCourseContent: [] | ICourseContent[]
+}

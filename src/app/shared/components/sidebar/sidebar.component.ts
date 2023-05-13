@@ -13,8 +13,8 @@ import { ApiCoursesFacadeService } from '../../core/facade/api-courses.facade.se
 
 
 export class SidebarComponent {
-  @Input() user : IUserState | undefined;
-  @Input() courses : IcourseResponse[] | undefined
+  @Input() user : IUserState | null = null;
+  @Input() courses : IcourseResponse[] | null = null
   @Output() openModal = new EventEmitter();
 
   open() {

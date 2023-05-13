@@ -1,10 +1,19 @@
 <div class="container">
-  <app-sidebar [courses]="mycourses" (openModal)="showModal()"  [user]="user"></app-sidebar>
+  <app-sidebar
+    [courses]="mycourses$ | async"
+    (openModal)="showModal()"
+    [user]="user$ | async"
+  ></app-sidebar>
 
   <div class="dashboard-middle">
-    <app-courses-list-dashboard [courses]="mycourses" [user]="user"></app-courses-list-dashboard>
-    <app-search-dashboard [courses]="mycourses"  [user]="user"></app-search-dashboard>
-    <app-feed-dashboard></app-feed-dashboard>
+    <app-courses-list-dashboard
+      [courses]="mycourses$ | async"
+      [user]="user$ | async"
+    ></app-courses-list-dashboard>
+    <app-search-dashboard></app-search-dashboard>
+    <app-feed-dashboard
+      [courseContent]="(filterCoursesContent$ | async)!"
+    ></app-feed-dashboard>
   </div>
 
   <div class="dashboard-right">

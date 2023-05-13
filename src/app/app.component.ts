@@ -13,18 +13,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.userFacade.setUserlocalHost()
-    this.userFacade.getUser$.subscribe(user => {
-      console.log("app => user", user)
-    }
-    );
-    this.courseContentFacade.getCourseContent().subscribe(courseContent => {
-      console.log("app => coursesContent", courseContent)
-    });
-    this.courseFacade.getCourses().subscribe(courseContent => {
-      console.log("app => courses", courseContent)
-    });
-    this.userFacade.getCoursesByUser$.subscribe(coursesByUser => {
-      console.log("app => coursesByUsers", coursesByUser)
-    })
   }
 }

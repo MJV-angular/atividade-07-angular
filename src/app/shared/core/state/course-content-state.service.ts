@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IcourseContentState , ICourseContent} from '../../interfaces/course-content.interface';
+import { IcourseContentState , ICourseContent, IcourseContentFilterState} from '../../interfaces/course-content.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,20 +8,35 @@ import { IcourseContentState , ICourseContent} from '../../interfaces/course-con
 export class CourseContentStateService {
 
   private state$ = new BehaviorSubject<IcourseContentState>({
-    courseContent: []
+    courseContent: [],
   })
 
-  getState(): Observable<IcourseContentState> {
-    console.log(this.state$.getValue(), "$state")
+  private stateFilter$ = new BehaviorSubject<IcourseContentFilterState>({
+    filterCourseContent: []
+  })
+
+
+  getStateCourseContent(): Observable<IcourseContentState> {
     return this.state$.asObservable()
+  }
+
+  getStateCoursesContentFilter(): Observable<IcourseContentFilterState> {
+    return this.stateFilter$.asObservable()
   }
 
   addCoursesContent(coursesContent: ICourseContent[]) {
     const state = this.state$.getValue();
     this.state$.next({
-      courseContent: [...state.courseContent ,...coursesContent]
+      ...state,
+      courseContent: [...state.courseContent, ...coursesContent],
     });
-    console.log(this.state$.getValue(), "f")
+  }
+
+  addCoursesContentFiltered(coursesContentFiltered: ICourseContent[]) {
+    const state = this.stateFilter$.getValue();
+    this.stateFilter$.next({
+      filterCourseContent: coursesContentFiltered
+    });
   }
 
 }

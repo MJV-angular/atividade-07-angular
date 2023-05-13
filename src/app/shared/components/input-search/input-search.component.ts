@@ -1,6 +1,8 @@
-import { Component, Input, OnInit  } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Subject, debounceTime, map, takeUntil } from 'rxjs';
+import { Subject, debounceTime, filter, map, takeUntil, distinctUntilChanged, tap, switchMap, Observable, Subscription } from 'rxjs';
+import { CourseContentFacadeService } from '../../core/facade/course-content.facade.service';
+import { ICourseContent } from '../../interfaces/course-content.interface';
 
 @Component({
   selector: 'app-input-search',
@@ -8,24 +10,21 @@ import { Subject, debounceTime, map, takeUntil } from 'rxjs';
   styleUrls: ['./input-search.component.scss']
 })
 export class InputSearchComponent implements OnInit {
+  inputSearch = new FormControl();
 
-  ngOnInit(): void {
-    this.searchForm
-      .valueChanges
-      .pipe(
-        debounceTime(300),
-        map(() => this.searchForm.getRawValue()),
-      )
-      .subscribe(filters => {
-        // this.todosFacade.updateTodosFilters(filters);
-      })
+  constructor(private coursesContentFacade: CourseContentFacadeService) {
   }
 
 
 
-  searchForm = new FormGroup({
-    searchQuery: new FormControl<string>("", {
-      nonNullable: true,
-    }),
-  });
+  ngOnInit(): void {
+    this.inputSearch
+      .valueChanges
+      .pipe(
+        // distinctUntilChanged(),
+        // debounceTime(200),
+        map(() => this.inputSearch.getRawValue().trim()),
+        switchMap(value => this.coursesContentFacade.filteredCoursesContent(value)),
+      ).subscribe()
+  }
 }

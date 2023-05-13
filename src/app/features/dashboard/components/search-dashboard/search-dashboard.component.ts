@@ -9,7 +9,7 @@ import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
   styleUrls: ['./search-dashboard.component.scss']
 })
 export class SearchDashboardComponent {
-  @Input() user : IUserState | undefined;
-  @Input() courses : IcourseResponse[] | undefined
+  @Input() user : IUserState | null = null;
+  @Input() courses : IcourseResponse[] | null = null;
   @Input() searchForm!: FormGroup;
 }

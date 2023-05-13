@@ -37,7 +37,6 @@ export class CatalogMainComponent implements OnInit {
 
   onSubmit() {
     if (this.catalog) {
-      console.log(this.catalog.selects)
       this.apiRegisterCourseFacade.addRegisterCourse({ courseId: this.catalog.selects }).subscribe(
         {
           complete: () => this.router.navigateByUrl('/dashboard')

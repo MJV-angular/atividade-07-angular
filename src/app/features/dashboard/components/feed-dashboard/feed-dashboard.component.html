@@ -1,5 +1,10 @@
-<app-feed-list-dashboard>
-  <ng-container *ngFor="let item of courseContent">
-    <app-card-picture-text></app-card-picture-text>
-  </ng-container>
-</app-feed-list-dashboard>
+<ng-container *ngIf="courseContent">
+  <app-feed-list-dashboard>
+    <ng-container *ngIf="courseContent.length > 0; else notfound">
+      <app-card-picture-text *ngFor="let item of courseContent" [course]="item"></app-card-picture-text>
+    </ng-container>
+  </app-feed-list-dashboard>
+  <ng-template #notfound>
+    <p class="notfound">Nenhum conteúdo encontrado.</p>
+  </ng-template>
+</ng-container>

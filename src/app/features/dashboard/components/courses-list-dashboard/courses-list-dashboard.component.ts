@@ -9,6 +9,6 @@ import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 })
 
 export class CoursesListDashboardComponent {
-  @Input() user : IUserState | undefined;
-  @Input() courses : IcourseResponse[] | undefined
+  @Input() user! : IUserState | null;
+  @Input() courses : IcourseResponse[] | null  = null
 }

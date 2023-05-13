@@ -7,5 +7,5 @@ import { IUserState } from '../../interfaces/user.interfaces';
 })
 
 export class PicturePerfilComponent {
-@Input() user: IUserState| undefined;
+  @Input() user!: IUserState | null;
 }

@@ -18,6 +18,7 @@ import { NextDirective } from './directives/next.directive';
 import { PrevDirective } from './directives/prev.directive';
 import { InputSearchComponent } from './components/input-search/input-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ThumbPipe } from './pipes/thumb.pipe';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -33,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SliderComponent,
     NextDirective,
     PrevDirective,
-    InputSearchComponent
+    InputSearchComponent,
+    ThumbPipe
   ],
   imports: [
     CommonModule,
