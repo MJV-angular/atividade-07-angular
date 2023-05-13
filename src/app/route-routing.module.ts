@@ -7,29 +7,21 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { DashboardComponent } from './features/dashboard/pages/dashboard/dashboard.component';
 import { CatalogComponent } from './features/catalog/page/catalog/catalog.component';
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-  },
 
   {
-    path: 'catalog',
-    component: CatalogComponent,
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home',
   },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  { path: '**', component: HomeComponent },
+  { path: 'dashboard', loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule) },
+
+  { path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) },
+
+  { path: 'login', loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule) },
+
+  { path: 'register', loadChildren: () => import('./features/register/register.module').then(m => m.RegisterModule) },
+
+  { path: 'catalog', loadChildren: () => import('./features/catalog/catalog.module').then(m => m.CatalogModule) }
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DashboardMainComponent } from './components/dashboard-main/dashboard-main.component';
-import { PerfilModule } from '../perfil/perfil.module';
+import { DashboardMainComponent } from './components/main-dashboard/dashboard-main.component';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 import { MyCoursesListComponent } from './components/my-courses-list/my-courses-list.component';
 import { MyCoursesListItemComponent } from './components/my-courses-list-item/my-courses-list-item.component';
@@ -14,6 +14,7 @@ import { FeedListDashboardComponent } from './components/feed-list-dashboard/fee
 import { FeedListDashboardItemComponent } from './components/feed-list-dashboard-item/feed-list-dashboard-item.component';
 import { CoursesListDashboardComponent } from './components/courses-list-dashboard/courses-list-dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalPerfilComponent } from './components/modal-perfil/modal-perfil.component';
 
 @NgModule({
   declarations: [
@@ -28,17 +29,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     FeedListDashboardComponent,
     FeedListDashboardItemComponent,
     CoursesListDashboardComponent,
+    ModalPerfilComponent,
   ],
   imports: [
+    CommonModule,
+    DashboardRoutingModule,
     SharedModule,
     CommonModule,
-    PerfilModule,
     ReactiveFormsModule
   ],
-  exports: [
+  exports:[
     DashboardComponent,
     DashboardMainComponent
   ]
-
 })
 export class DashboardModule { }

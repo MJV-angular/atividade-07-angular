@@ -41,6 +41,7 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
   }
 
   showModal() {
+    console.log("ff")
     this.modalService.show();
   }
 }

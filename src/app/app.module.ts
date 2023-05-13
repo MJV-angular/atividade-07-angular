@@ -7,9 +7,8 @@ import { HomeModule } from './features/home/home.module';
 import { LoginModule } from './features/login/login.module';
 import { RegisterModule } from './features/register/register.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
-import { PerfilModule } from './features/perfil/perfil.module';
 import { CatalogModule } from './features/catalog/catalog.module';
-import { SwiperModule } from 'swiper/types/shared';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +23,6 @@ import { SwiperModule } from 'swiper/types/shared';
     LoginModule,
     RegisterModule,
     DashboardModule,
-    PerfilModule,
     CatalogModule,
   ]
 })

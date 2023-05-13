@@ -8,14 +8,13 @@ import moment from 'moment';
 import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 
 
-
 @Component({
-  selector: 'app-perfil-updated',
-  templateUrl: './perfil-updated.component.html',
-  styleUrls: ['./perfil-updated.component.scss']
+  selector: 'app-modal-perfil',
+  templateUrl: './modal-perfil.component.html',
+  styleUrls: ['./modal-perfil.component.scss']
 })
-
-export class PerfilUpdatedComponent implements OnInit {
+export class ModalPerfilComponent implements OnInit {
+  
   user?: UserResponse;
   userData: IUserState | null = null;
   currentDate?: Date;
@@ -78,6 +77,5 @@ export class PerfilUpdatedComponent implements OnInit {
     this.perfilServices.hide();
     this.getDefaultValues()
   }
-
 
 }

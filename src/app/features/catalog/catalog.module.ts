@@ -7,7 +7,7 @@ import { CatalogItemComponent } from './components/catalog-item/catalog-item.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-
+import { CatalogRoutingModule } from './catalog-routing.module';
 @NgModule({
   declarations: [
     CatalogComponent,
@@ -18,7 +18,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    CatalogRoutingModule
   ],
   exports:[
     CatalogComponent,
