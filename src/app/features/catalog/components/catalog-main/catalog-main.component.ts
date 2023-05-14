@@ -5,7 +5,8 @@ import { ApiRegisterCourseFacadeService } from 'src/app/shared/core/facade/api-r
 import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
 import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.facade.service';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Observable, map, switchMap, tap } from 'rxjs';
+import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 
 @Component({
   selector: 'app-catalog-main',
@@ -13,32 +14,36 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./catalog-main.component.scss']
 })
 
-
 export class CatalogMainComponent implements OnInit {
   class?: string;
-  user$ = this.apiUserFacade.getUser$
-  cursesRegistred?: number[];
-  catalog?: ICatalog;
+  catalog!: ICatalog;
+  userCourses?: number[];
 
-  constructor(private caltalogFacade: CatalogFacadeService, private apiRegisterCourseFacade: ApiRegisterCourseFacadeService, private apiUserFacade: ApiUserFacadeService, private router: Router, private coursesFacade: ApiCoursesFacadeService) { }
+
+  constructor(private catalogFacade: CatalogFacadeService, private apiRegisterCourseFacade: ApiRegisterCourseFacadeService, private userFacade: ApiUserFacadeService, private router: Router, private coursesFacade: ApiCoursesFacadeService) { }
 
   ngOnInit(): void {
     this.coursesFacade.getCourses().pipe(
-      switchMap(() => this.caltalogFacade.getCatalog()),
-      switchMap(() => this.caltalogFacade.loadCatalog())
-    ).subscribe(value => this.catalog = value);
+      switchMap(() => this.catalogFacade.getCatalog$),
+      tap(catalog => this.catalog = catalog),
+      switchMap(() => this.userFacade.getUser$),
+      map(({courses}) => courses.map(({courseId}) => courseId)),
+      tap(courses => this.userCourses = courses)
+    ).subscribe();
   }
 
   onClick(id: number) {
-    this.user$.subscribe(value => {
-      if (!value.courses!.map(ele => ele.courseId).includes(id)) {
-        this.caltalogFacade.selectCatalog(id)
-      }
-    })
+    this.selectId(id)
+
+  }
+
+  selectId(id: number) {
+    this.catalogFacade.selectCatalog(id)
   }
 
   onSubmit() {
-    this.apiRegisterCourseFacade.addRegisterCourse({ courseId: this.catalog!.selects }).subscribe(
+    console.log(this.catalog.selects)
+    this.apiRegisterCourseFacade.addRegisterCourse({ courseId: this.catalog.selects }).subscribe(
       {
         complete: () => this.router.navigateByUrl('/dashboard')
       }

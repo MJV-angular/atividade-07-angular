@@ -20,7 +20,6 @@ export class CatalogStateService {
 
   constructor() { }
 
-
   getState(): Observable<ICatalog> {
     return this.state$.asObservable();
   }
@@ -34,6 +33,7 @@ export class CatalogStateService {
 
   selectCourses(id: number) {
     const state = this.state$.getValue();
+    console.log(id)
     if (state.selects.indexOf(id) === -1) {
       return this.state$.next({
         ...state,

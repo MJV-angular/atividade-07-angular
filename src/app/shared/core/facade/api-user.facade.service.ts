@@ -30,10 +30,10 @@ export class ApiUserFacadeService {
       shareReplay(1),
     );
 
-  readonly getCoursesByUser$ = combineLatest([this.userCourses$, this.courses.getcourses$])
+  readonly getCoursesByUser$ = combineLatest([this.userCourses$, this.courses.allCourses$])
   .pipe(
     map(([userCourses, courses]) =>
-      courses.courses.filter(course => userCourses.some(userCourse => course.id == userCourse.courseId))
+      courses.filter(course => userCourses.some(userCourse => course.id == userCourse.courseId))
     )
   );
 

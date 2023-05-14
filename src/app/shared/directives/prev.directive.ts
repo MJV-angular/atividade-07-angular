@@ -5,9 +5,7 @@ import { Directive , ElementRef, HostListener} from '@angular/core';
 })
 export class PrevDirective {
 
-  constructor(private ele: ElementRef) {
-   console.log( this.ele.nativeElement)
-  }
+  constructor(private ele: ElementRef) {}
 
   @HostListener('click')
   prevfunction(){

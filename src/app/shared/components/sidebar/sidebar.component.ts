@@ -4,6 +4,7 @@ import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 import { PerfilModalService } from '../../core/sync/perfil-modal.service';
 import { ApiUserFacadeService } from '../../core/facade/api-user.facade.service';
 import { ApiCoursesFacadeService } from '../../core/facade/api-courses.facade.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,14 +18,18 @@ export class SidebarComponent {
   @Input() courses : IcourseResponse[] | null = null
   @Output() openModal = new EventEmitter();
 
-  open() {
+  onOpen() {
     this.openModal.emit();
   }
 
-  constructor(public modalService: PerfilModalService, public userFacade: ApiUserFacadeService, public coursesFacade: ApiCoursesFacadeService) {
+  constructor(public modalService: PerfilModalService, public userFacade: ApiUserFacadeService, public coursesFacade: ApiCoursesFacadeService, private router: Router, private activatedRouter: ActivatedRoute) {
   }
 
-  ngOnInit(): void {
+  onSelectClick(id: number){
+    console.log(id)
+    this.router.navigate([id],{
+      relativeTo: this.activatedRouter
+    })
   }
 
 

@@ -1,19 +1,17 @@
-<main>
+
   <div>
     <h2 class="primary-title">Escolha um curso</h2>
   </div>
 
   <app-catalog-list>
-
-      <ng-container *ngFor="let item of catalog?.courses; let i = index">
-        <app-catalog-item
-          [classe]="cursesRegistred?.includes(item.id) || catalog?.selects?.includes(item.id) ? 'selected' : ''"
-          (click)="onClick(item.id)"
-        >
-          {{ item.name }}
-        </app-catalog-item>
-      </ng-container>
-
+    <ng-container *ngFor="let item of catalog?.courses; let i = index">
+      <app-catalog-item
+        [styles]="catalog.selects.includes(item.id) || userCourses?.includes(item.id) ? 'selected' : ''"
+        (click)="onClick(item.id)"
+      >
+        {{ item.name }}
+      </app-catalog-item>
+    </ng-container>
   </app-catalog-list>
 
   <div class="main-footer">
@@ -21,4 +19,4 @@
       <img src="/assets/AngleUp.svg" alt="" srcset="" />
     </button>
   </div>
-</main>
+

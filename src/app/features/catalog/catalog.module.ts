@@ -6,8 +6,8 @@ import { CatalogListComponent } from './components/catalog-list/catalog-list.com
 import { CatalogItemComponent } from './components/catalog-item/catalog-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
 import { CatalogRoutingModule } from './catalog-routing.module';
+
 @NgModule({
   declarations: [
     CatalogComponent,
@@ -27,8 +27,4 @@ import { CatalogRoutingModule } from './catalog-routing.module';
   ]
 })
 
-export class CatalogModule {
-
-
-
-}
+export class CatalogModule {}

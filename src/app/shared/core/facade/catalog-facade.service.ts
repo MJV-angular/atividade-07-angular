@@ -1,35 +1,25 @@
 import { Injectable } from '@angular/core';
-import { CourseStateService } from '../state/course-state.service';
-import { Observable, distinctUntilChanged, map, shareReplay, tap } from 'rxjs';
-import { IcourseState } from '../../interfaces/courses.interfaces';
+import {  distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs';
 import { CatalogStateService } from '../state/catalog-state.service';
-import { ICatalog } from '../../interfaces/catalog.interfaces';
-
+import { ApiCoursesFacadeService } from './api-courses.facade.service';
+import { ApiUserFacadeService } from './api-user.facade.service';
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogFacadeService {
 
-  constructor(public courseState: CourseStateService, private catalogState: CatalogStateService) {}
+  constructor(public courseFacade: ApiCoursesFacadeService, private catalogState: CatalogStateService, private userFacade: ApiUserFacadeService) { }
 
-  getCatalog(): Observable<IcourseState> {
-    return this.courseState.getState().pipe(
-      tap(
-        value =>
-        this.catalogState.addCourses(value.courses)
-      ),
-      distinctUntilChanged(),
-      shareReplay(1),
-    );
-  }
+  readonly getCatalog$ = this.courseFacade.allCourses$.pipe(
+    tap((value) => this.catalogState.addCourses(value)),
+    switchMap(() => this.userFacade.getUser$),
+    tap(e => console.log(e)),
+    map((value) => value.courses.map(ele => this.selectCatalog(ele.courseId))),
+    switchMap(() => this.catalogState.getState()),
+    shareReplay(1),
+  );
 
-
-  loadCatalog():Observable<ICatalog>{
-    return this.catalogState.getState()
-  }
-
-
-  selectCatalog(id:number){
+  selectCatalog(id: number) {
     return this.catalogState.selectCourses(id)
   }
 

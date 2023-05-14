@@ -14,7 +14,6 @@ export class ApiSessionFacadeService {
 
   constructor(private router: Router, public api: Api, private toast: ToastService, public userState: UserStateService) { }
 
-
   login(user: IloginRequest): Observable<UserResponse> {
     let pathDirect: string = "/dashboard"
     return this.api.login(user).pipe(
@@ -23,7 +22,7 @@ export class ApiSessionFacadeService {
           this.userState.setUser(response);
           window.localStorage.setItem('@TOKEN', response.token!);
           window.localStorage.setItem('@USER', JSON.stringify(response));
-          if(response.courses.length == 0){
+          if (response.courses.length == 0) {
             pathDirect = "/catalog"
           }
         },
@@ -32,7 +31,7 @@ export class ApiSessionFacadeService {
         },
         complete: () => {
           this.router.navigateByUrl(pathDirect);
-          if(pathDirect == "/dashboard"){
+          if (pathDirect == "/dashboard") {
             this.router.navigateByUrl(pathDirect)
           }
         }

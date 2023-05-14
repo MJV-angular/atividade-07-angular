@@ -31,7 +31,6 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.coursesFacade.getCourses().subscribe();
     this.courseContentFacade
       .getCourseContent()
       .pipe(
@@ -41,7 +40,10 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
   }
 
   showModal() {
-    console.log("ff")
     this.modalService.show();
+  }
+
+  course() {
+    console.log("página de cursos")
   }
 }

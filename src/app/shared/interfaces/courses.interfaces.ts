@@ -6,6 +6,14 @@ export interface IcourseResponse{
   updatedAt: Date;
 }
 
-export interface IcourseState {
+export interface IcoursesState {
+  loaded: boolean;
+  loading: boolean;
+  saving: boolean;
+  // filters: TodoFilters;
   courses: IcourseResponse[]
+}
+export interface IcourseState {
+  loading: boolean,
+  course: IcourseResponse
 }

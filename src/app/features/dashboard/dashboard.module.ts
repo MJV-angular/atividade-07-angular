@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DashboardMainComponent } from './components/main-dashboard/dashboard-main.component';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
@@ -15,6 +15,8 @@ import { FeedListDashboardItemComponent } from './components/feed-list-dashboard
 import { CoursesListDashboardComponent } from './components/courses-list-dashboard/courses-list-dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalPerfilComponent } from './components/modal-perfil/modal-perfil.component';
+import { CourseDetailComponent } from './pages/course-detail/course-detail/course-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ModalPerfilComponent } from './components/modal-perfil/modal-perfil.com
     FeedListDashboardItemComponent,
     CoursesListDashboardComponent,
     ModalPerfilComponent,
+    CourseDetailComponent,
+
   ],
   imports: [
     CommonModule,

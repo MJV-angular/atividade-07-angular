@@ -42,7 +42,7 @@ export class UserStateService {
   }
 
   editeUser(user: UserResponse) {
-    
+
     this.state$.next(user)
   }
 
@@ -53,6 +53,7 @@ export class UserStateService {
       courses: [...state.courses, ...courses]
     });
   }
+
 
 }
 

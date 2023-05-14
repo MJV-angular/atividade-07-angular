@@ -6,5 +6,5 @@ import { Component , EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./catalog-item.component.scss']
 })
 export class CatalogItemComponent {
-  @Input() classe: string | undefined;
+  @Input() styles: string | undefined;
 }

@@ -15,4 +15,8 @@ export class ApiCoursesService {
     return this.httpClient.get(`https://api-naianereis.vercel.app/courses`)
   }
 
+  getCourseById(id: number): Observable<any> {
+    return this.httpClient.get(`https://api-naianereis.vercel.app/courses/${id}`)
+  }
+
 }

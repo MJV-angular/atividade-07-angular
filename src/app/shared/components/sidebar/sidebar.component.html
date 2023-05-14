@@ -5,11 +5,14 @@
     <p>Cursos</p>
   </div>
   <ul>
-    <li *ngFor="let item of courses">
-      <a>{{ item.name }}</a>
-    </li>
+    <ng-container *ngFor="let item of courses">
+      <li (click)="onSelectClick(item.id)" >
+        <a>{{ item.name }}</a>
+      </li>
+    </ng-container>
+
   </ul>
-  <button class="sidebar-icon_perfil" (click)="open()">
+  <button class="sidebar-icon_perfil" (click)="onOpen()">
     <img src="../../../../assets/perfil_icon.png" alt="" srcset="" />
     <p>Perfil</p>
   </button>

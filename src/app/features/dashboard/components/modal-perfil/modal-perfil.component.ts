@@ -14,7 +14,7 @@ import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
   styleUrls: ['./modal-perfil.component.scss']
 })
 export class ModalPerfilComponent implements OnInit {
-  
+
   user?: UserResponse;
   userData: IUserState | null = null;
   currentDate?: Date;

@@ -3,6 +3,7 @@
   <app-sidebar
     [courses]="mycourses$ | async"
     (openModal)="showModal()"
+    (courseSelected)="course()"
     [user]="user$ | async"
   ></app-sidebar>
 
