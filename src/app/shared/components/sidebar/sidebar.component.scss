@@ -36,10 +36,11 @@
 .sidebar-icon_book {
   border-bottom: var(--gray-color) solid 1px;
 }
+
 .sidebar-icon_perfil {
   font-size: 18px;
   width: 100%;
-  background-image: linear-gradient(var(--gradient--color-blue));
+  background-color: var(--gray-color);
   color: var(--white-color);
   cursor: pointer;
   border: none;

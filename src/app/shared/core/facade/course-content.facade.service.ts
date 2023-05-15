@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscriber, combineLatest, distinctUntilChanged, filter, map, shareReplay, tap } from 'rxjs';
+import { Observable, Subscriber, combineLatest, distinctUntilChanged, map, of, shareReplay, switchMap, tap } from 'rxjs';
 import { ApiCourseContentService } from '../async/api-course-content.service';
 import { ICourseContent } from '../../interfaces/course-content.interface';
 import { CourseContentStateService } from '../state/course-content-state.service';
@@ -15,40 +15,47 @@ export class CourseContentFacadeService {
   readonly getCoursesContent$ = this.courseContentState
     .getStateCourseContent()
     .pipe(
-      tap((coursesContent) => coursesContent),
+      map((value) => value.courseContent),
+      switchMap((stateCoursesContent) => {
+        if (stateCoursesContent.length > 0) {
+          return of(stateCoursesContent);
+        }
+        return this.getCourseContent()
+      }
+      ),
       distinctUntilChanged(),
       shareReplay(1),
     );
 
+
   readonly getCoursesfilter$ = this.courseContentState
     .getStateCoursesContentFilter()
     .pipe(
-      map((coursesContent) => 
+      map((coursesContent) =>
         coursesContent.filterCourseContent,
       ),
       distinctUntilChanged(),
       shareReplay(1),
     );
 
-  readonly getCoursesfilterInitial$ = this.courseContentState.getStateCourseContent().pipe(
-    tap((value) =>
-        this.courseContentState.addCoursesContentFiltered(value.courseContent)
-    )
+  readonly getCoursesfilterInitial$ = this.getCoursesContent$.pipe(
+    tap((value) => {
+      this.courseContentState.addCoursesContentFiltered(value)
+    })
   )
 
 
   getCourseContent(): Observable<ICourseContent[]> {
     return this.apiServices.getCoursesContent().pipe(
-      tap((value) => {
-        this.courseContentState.addCoursesContent(value)
-      })
+      tap((value) => this.courseContentState.addCoursesContent(value)
+      )
     )
   }
 
   filteredCoursesContent(search: string) {
     search = search.toLocaleLowerCase()
     return this.getCoursesContent$.pipe(
-      map((value) => value.courseContent.filter(({ title, text }) => title.toLocaleLowerCase().includes(search) || text.toLocaleLowerCase().includes(search))),
+      map((value) => value.filter(({ title, text }) => title.toLocaleLowerCase().includes(search) || text.toLocaleLowerCase().includes(search))),
       tap((value) =>
         this.courseContentState.addCoursesContentFiltered(value)
       )

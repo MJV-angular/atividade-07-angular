@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { ApiSessionService as Api } from '../async/api-session.service';
 import { UserResponse } from '../../interfaces/api.interfaces';
 import { UserStateService } from '../state/user-state.service';
 import { IloginRequest } from '../../interfaces/api.interfaces';
 import { Router } from '@angular/router';
 import { ToastService } from '../sync/toast.service';
+import { IUserState } from '../../interfaces/user.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,14 @@ export class ApiSessionFacadeService {
       })
     )
   }
+
+  updateUserInLocalStorage(user: IUserState): void {
+    localStorage.setItem('@USER', JSON.stringify(user));
+  }
+
+  // Define um fluxo de dados que emite objetos User
+  updateUserInLocalStorage$ = this.userState.getState().pipe(
+    tap(user => this.updateUserInLocalStorage(user))
+  ).subscribe();
 
 }

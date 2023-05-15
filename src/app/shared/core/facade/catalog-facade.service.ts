@@ -10,7 +10,7 @@ export class CatalogFacadeService {
 
   constructor(public courseFacade: ApiCoursesFacadeService, private catalogState: CatalogStateService, private userFacade: ApiUserFacadeService) { }
 
-  readonly getCatalog$ = this.courseFacade.allCourses$.pipe(
+  readonly getCatalog$ = this.courseFacade.getCourses$.pipe(
     tap((value) => this.catalogState.addCourses(value)),
     switchMap(() => this.userFacade.getUser$),
     tap(e => console.log(e)),

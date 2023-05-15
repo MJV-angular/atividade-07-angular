@@ -14,10 +14,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.userFacade.setUserlocalHost();
-
-    forkJoin([
-      this.courseFacade.getCourses().pipe(take(1)),
-      this.courseContentFacade.getCourseContent().pipe(take(1))
-    ]).subscribe();
   }
 }

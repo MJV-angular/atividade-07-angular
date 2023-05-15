@@ -26,7 +26,6 @@ export class SidebarComponent {
   }
 
   onSelectClick(id: number){
-    console.log(id)
     this.router.navigate([id],{
       relativeTo: this.activatedRouter
     })

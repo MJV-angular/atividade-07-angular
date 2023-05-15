@@ -1,5 +1,25 @@
+<app-modal-perfil></app-modal-perfil>
 <main>
-  <app-header/>
-  <app-dashboard-main/>
+  <app-header />
+  <div class="container">
+    <app-sidebar
+      [courses]="mycourses$ | async"
+      (openModal)="showModal()"
+      [user]="user$ | async"
+    ></app-sidebar>
+    <div>
+      <div class="dashboard-middle">
+        <app-courses-list-dashboard
+          [courses]="mycourses$ | async"
+          [user]="user$ | async"
+        ></app-courses-list-dashboard>
+        <app-search-dashboard></app-search-dashboard>
+        <app-feed-dashboard
+          [courseContent]="(filterCoursesContent$ | async)!"
+        ></app-feed-dashboard>
+      </div>
+    </div>
+    <app-chat-dashboard></app-chat-dashboard>
+  </div>
   <app-footer/>
 </main>

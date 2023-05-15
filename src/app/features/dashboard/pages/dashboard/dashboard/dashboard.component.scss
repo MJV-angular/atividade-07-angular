@@ -1,12 +1,18 @@
 main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 
 }
 
-app-dashboard-main {
-  flex: 1;
-  display: flex;
-  background: url("/assets/background.svg");
+.container {
+  display: grid;
+  grid-template-columns:  300px 1fr  400px ;
+  grid-gap: 60px;
+  background-color: var(--background-light-color);
+}
+
+.dashboard-middle{
+  display: grid;
+  grid-gap: 60px;
+  margin: 25px;
 }

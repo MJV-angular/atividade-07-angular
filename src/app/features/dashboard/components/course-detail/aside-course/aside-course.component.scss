@@ -1,0 +1,12 @@
+.container
+{
+  width: 100%;
+  max-width: 300px;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  color: var(--black-color);
+  background-color: var(--white-color);
+  box-shadow: var(--shadow-cards);
+  font-size: 18px;
+}

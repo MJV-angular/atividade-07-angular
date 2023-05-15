@@ -127,17 +127,14 @@ body {
 }
 
 :root {
-  --gray-color: #3e3e3e;;
-  --white-color: rgb(255, 255, 255);
-  --yellow-color: #fbfbfb;
+  /* Cores */
+  --gray-color: #3e3e3e;
+  --white-color: #ffffff;
   --purple-color: #7039f2;
   --blue-color: #504db4;
   --error-color: #f2396d;
-  --btn-color: #504db4;
-  --shadow-primary: rgba(11, 43, 158, 0.15) 0px 6px 20px -6px;
-  --wp--preset--color--black: #000000;
+  --btn-color: var(--blue-color);
   --color--cyan-bluish-gray: #abb8c3;
-  --color--white: #ffffff;
   --color--pale-pink: #f78da7;
   --color--vivid-red: #cf2e2e;
   --color--luminous-vivid-orange: #ff6900;
@@ -147,14 +144,26 @@ body {
   --color--pale-cyan-blue: #8ed1fc;
   --color--vivid-cyan-blue: #0693e3;
   --color--vivid-purple: #9b51e0;
+
+  /* Tamanhos */
   --size--small: 13px;
   --size--medium: 20px;
   --size--large: 36px;
   --size--x-large: 42px;
-  --shadow-cards: 0 10px 10px rgba(0, 0, 0, 0.2);
-  --gradient--color-blue: 135deg, #667eea 0%, #764ba2 100%;
-}
 
+  /* Sombras */
+  --shadow-primary: rgba(11, 43, 158, 0.15) 0px 6px 20px -6px;
+  --shadow-cards: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+  /* Gradiente */
+  --gradient--color-blue: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+  /* Background */
+  --background-light-color: aliceblue;
+
+  /* Outros */
+  --wp--preset--color--black: #000000;
+}
 button,
 a {
   cursor: pointer;

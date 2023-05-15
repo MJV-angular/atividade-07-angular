@@ -11,7 +11,6 @@ export class ApiUserFacadeService {
 
   constructor(private apiServices: ApiUserService,
     private userState: UserStateService, private courses: ApiCoursesFacadeService) {
-
   }
 
   readonly getUser$ = this.userState
@@ -30,20 +29,14 @@ export class ApiUserFacadeService {
       shareReplay(1),
     );
 
-  readonly getCoursesByUser$ = combineLatest([this.userCourses$, this.courses.allCourses$])
+
+  readonly getCoursesByUser$ = combineLatest([this.userCourses$, this.courses.getCourses$])
   .pipe(
     map(([userCourses, courses]) =>
       courses.filter(course => userCourses.some(userCourse => course.id == userCourse.courseId))
     )
   );
 
-  setUserlocalHost() {
-    let user = localStorage.getItem('@USER')
-    if (user) {
-      const data = JSON.parse(user)
-      this.userState.setUser(data)
-    }
-  }
 
   addUser(user: UserRequest): Observable<UserResponse> {
     return this.apiServices.createUser(user).pipe(
@@ -51,6 +44,16 @@ export class ApiUserFacadeService {
         this.userState.setUser(response)
       })
     )
+  }
+
+
+
+  setUserlocalHost() {
+    let user = localStorage.getItem('@USER')
+    if (user) {
+      const data = JSON.parse(user)
+      this.userState.setUser(data)
+    }
   }
 
   updatedUser(user: Partial<UserRequest>, id: number): Observable<UserResponse> {
