@@ -28,7 +28,7 @@ export class ApiRegisterCourseFacadeService {
     return this.apiServices.registerCourse(coursesId).pipe(
       tap((response) => {
         this.userState.addCourses(response.courses)
-        this.userState.addCoursesContent(response.coursesContentUser)
+        this.userState.addCoursesContentUser(response.coursesContentUser)
       }
       ),
     )

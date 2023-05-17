@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IcourseDetailsState } from '../../interfaces/course-details.interfaces';
-import { IcoursesContentUser } from '../../interfaces/api.interfaces';
-import { IcourseResponse } from '../../interfaces/courses.interfaces';
 import { ICourseContent } from '../../interfaces/course-content.interface';
 
 @Injectable({

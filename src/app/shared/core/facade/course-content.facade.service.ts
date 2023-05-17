@@ -21,9 +21,10 @@ export class CourseContentFacadeService {
         if (stateCoursesContent) {
           return of(stateCoursesContent);
         }
-        return this.getCourseContent()
-      }
-      ),
+        return this.getCourseContent().pipe(
+          tap((value) => this.courseContentState.addCoursesContent(value)),
+        )
+      }),
       distinctUntilChanged(),
       shareReplay(1),
     );

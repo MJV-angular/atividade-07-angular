@@ -10,4 +10,5 @@ import { ICourseContent } from 'src/app/shared/interfaces/course-content.interfa
 export class CheckboxComponent {
   @Input() coursesContent?: ICourseContent;
   @Input() class!: string;
+  @Input() checked: boolean = false;
 }

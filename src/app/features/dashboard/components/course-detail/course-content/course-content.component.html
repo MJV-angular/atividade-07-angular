@@ -1,6 +1,5 @@
-<!-- courseContent?.video_url -->
-
 <ng-container *ngIf="courseContent">
+  <button (click)="emitEvent(courseContent.id)">Concluir tarefa</button>
   <h2>{{courseContent.title}}</h2>
   <iframe width="640" height="390" [src]="courseContent.video_url | embed" ></iframe>
   <p>{{courseContent.text}}</p>

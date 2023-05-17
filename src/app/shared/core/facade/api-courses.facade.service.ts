@@ -17,10 +17,9 @@ export class ApiCoursesFacadeService {
     .pipe(
       take(1),
       mergeMap(state => {
-        if (state.courses?.length) {
+        if (state.courses) {
           return of(state.courses);
         }
-
         return this.courseServices.getCourses()
           .pipe(
             tap((courses) => {

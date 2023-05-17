@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICourseContent } from 'src/app/shared/interfaces/course-content.interface';
 
 @Component({
@@ -10,4 +10,9 @@ import { ICourseContent } from 'src/app/shared/interfaces/course-content.interfa
 
 export class CourseContentComponent {
   @Input() courseContent: ICourseContent | null =  null;
+  @Output() completedCourse = new EventEmitter();
+
+  emitEvent(id: number) {
+    this.completedCourse.emit(id)
+  }
 }

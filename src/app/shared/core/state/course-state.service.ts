@@ -9,7 +9,7 @@ export class CourseStateService {
 
   constructor() {}
   private state$ = new BehaviorSubject<IcoursesState>({
-    courses: []
+    courses: null
   });
 
   getState(): Observable<IcoursesState> {

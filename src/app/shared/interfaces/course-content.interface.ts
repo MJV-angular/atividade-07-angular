@@ -1,4 +1,5 @@
 import { SafeResourceUrl } from "@angular/platform-browser";
+import { IcoursesContentUser } from "./api.interfaces";
 
 export interface ICourseContent {
   id: number,
@@ -9,6 +10,7 @@ export interface ICourseContent {
   video_url: SafeResourceUrl,
   updatedAt: Date,
 }
+export interface MergedCourseContentAndCourseContentUser extends IcoursesContentUser, ICourseContent {}
 
 export interface IcourseContentState{
   courseContent:  ICourseContent[] | null,

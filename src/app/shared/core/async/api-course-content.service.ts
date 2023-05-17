@@ -13,4 +13,5 @@ export class ApiCourseContentService {
   getCoursesContent(): Observable<ICourseContent[]> {
     return this.httpClient.get<ICourseContent[]>('https://api-naianereis.vercel.app/courseContent');
   }
+
 }
