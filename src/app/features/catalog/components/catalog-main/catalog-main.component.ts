@@ -34,14 +34,15 @@ export class CatalogMainComponent implements OnInit {
 
   onClick(id: number) {
     this.selectId(id)
-
   }
 
   selectId(id: number) {
     this.catalogFacade.selectCatalog(id)
+    console.log(this.catalog.selects)
   }
 
   onSubmit() {
+    console.log(this.catalog.selects)
     this.apiRegisterCourseFacade.addRegisterCourse({ courseId: this.catalog.selects }).subscribe(
       {
         complete: () => this.router.navigateByUrl('/dashboard')

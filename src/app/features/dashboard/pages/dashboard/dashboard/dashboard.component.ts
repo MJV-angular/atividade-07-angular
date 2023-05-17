@@ -39,7 +39,8 @@ export class DashboardComponent implements OnInit {
     forkJoin([
       this.coursesFacade.getCourses$.pipe(take(1)),
       this.courseContentFacade.getCoursesfilterInitial$
-    ]).subscribe();
+    ]).subscribe(value => console.log(value));
+
   }
 
   showModal() {

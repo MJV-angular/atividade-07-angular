@@ -8,11 +8,11 @@ import { IcourseContentState , ICourseContent, IcourseContentFilterState} from '
 export class CourseContentStateService {
 
   private state$ = new BehaviorSubject<IcourseContentState>({
-    courseContent: [],
+    courseContent: null,
   })
 
   private stateFilter$ = new BehaviorSubject<IcourseContentFilterState>({
-    filterCourseContent: []
+    filterCourseContent: null
   })
 
 
@@ -26,14 +26,18 @@ export class CourseContentStateService {
 
   addCoursesContent(coursesContent: ICourseContent[]) {
     const state = this.state$.getValue();
-    this.state$.next({
-      ...state,
-      courseContent: [...state.courseContent, ...coursesContent],
-    });
+    if(state.courseContent){
+      this.state$.next({
+        courseContent: [...state.courseContent, ...coursesContent],
+      });
+    }else{
+      this.state$.next({
+        courseContent: coursesContent,
+      });
+    }
   }
 
   addCoursesContentFiltered(coursesContentFiltered: ICourseContent[]) {
-    const state = this.stateFilter$.getValue();
     this.stateFilter$.next({
       filterCourseContent: coursesContentFiltered
     });

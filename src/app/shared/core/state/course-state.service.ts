@@ -21,9 +21,4 @@ export class CourseStateService {
       courses: courses,
     });
   }
-
-
-
-  
-
 }

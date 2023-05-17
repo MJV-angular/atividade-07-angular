@@ -13,7 +13,6 @@ export class CatalogFacadeService {
   readonly getCatalog$ = this.courseFacade.getCourses$.pipe(
     tap((value) => this.catalogState.addCourses(value)),
     switchMap(() => this.userFacade.getUser$),
-    tap(e => console.log(e)),
     map((value) => value.courses.map(ele => this.selectCatalog(ele.courseId))),
     switchMap(() => this.catalogState.getState()),
     shareReplay(1),

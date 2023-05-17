@@ -12,6 +12,7 @@ import { CatalogModule } from './features/catalog/catalog.module';
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -24,6 +25,7 @@ import { CatalogModule } from './features/catalog/catalog.module';
     RegisterModule,
     DashboardModule,
     CatalogModule,
+
   ]
 })
 export class AppModule { }

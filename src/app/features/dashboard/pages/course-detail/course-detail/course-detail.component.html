@@ -1,8 +1,12 @@
 <div class="container">
   <app-header></app-header>
   <main>
-    <app-aside-course [coursesContent]="courseState"></app-aside-course>
+    <app-aside-course  (selectedCourseContent)="onSelectCourseContent($event)" [coursesContent]="courseState"></app-aside-course>
+
+    <app-course-content [courseContent]="courseContent | async"></app-course-content>
+
+
   </main>
   <app-footer></app-footer>
 </div>
-<!-- [coursesContent]="courseState" -->
+

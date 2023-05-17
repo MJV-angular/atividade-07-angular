@@ -19,6 +19,7 @@ import { PrevDirective } from './directives/prev.directive';
 import { InputSearchComponent } from './components/input-search/input-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThumbPipe } from './pipes/thumb.pipe';
+import { EmbedPipe } from './pipes/embed.pipe';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -35,7 +36,8 @@ import { ThumbPipe } from './pipes/thumb.pipe';
     NextDirective,
     PrevDirective,
     InputSearchComponent,
-    ThumbPipe
+    ThumbPipe,
+    EmbedPipe
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,9 @@ import { ThumbPipe } from './pipes/thumb.pipe';
     SidebarComponent,
     CardCourseComponent,
     SliderComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    ThumbPipe,
+    EmbedPipe
   ],
   providers:[
     {

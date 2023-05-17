@@ -20,13 +20,22 @@ export interface UserResponse {
   cpf: string;
   address:IAddressRequest;
   courses: IRegisterCourseResponse[]
+  coursesContentUser: IcoursesContentUser[]
+}
+
+
+export interface IcoursesContentUser{
+  id: number,
+  courseContentId: number,
+  userId: number,
+  complete: boolean,
+  favorite: boolean
 }
 
 export interface IloginRequest {
   email: string;
   password: string;
 }
-
 
 export interface IAddressRequest {
   id: number;

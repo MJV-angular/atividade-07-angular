@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserResponse } from '../../interfaces/api.interfaces';
+import { IcoursesContentUser, UserResponse } from '../../interfaces/api.interfaces';
 import { IUserState } from '../../interfaces/user.interfaces';
 import { IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
 
@@ -9,7 +9,6 @@ import { IRegisterCourseResponse } from '../../interfaces/register-courses.inter
 })
 
 export class UserStateService {
-
 
   private state$ = new BehaviorSubject<IUserState>({
     id: undefined,
@@ -20,6 +19,7 @@ export class UserStateService {
     dateBirth: undefined,
     cpf: undefined,
     courses: [],
+    coursesContentUser: [],
     address: {
       id: undefined,
       street: undefined,
@@ -29,7 +29,7 @@ export class UserStateService {
       country: undefined,
       zipCode: undefined,
       userId: undefined,
-    }
+    },
   })
 
 
@@ -42,7 +42,6 @@ export class UserStateService {
   }
 
   editeUser(user: UserResponse) {
-
     this.state$.next(user)
   }
 
@@ -54,6 +53,15 @@ export class UserStateService {
     });
   }
 
+  addCoursesContent(coursesContent: IcoursesContentUser[]) {
+
+    const state = this.state$.getValue();
+    console.log(state)
+    this.state$.next({
+      ...state,
+      coursesContentUser: [...state.coursesContentUser, ...coursesContent]
+    });
+  }
 
 }
 

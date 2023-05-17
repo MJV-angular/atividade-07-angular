@@ -17,6 +17,9 @@ import { ModalPerfilComponent } from './components/dashboard/modal-perfil/modal-
 import { CourseDetailComponent } from './pages/course-detail/course-detail/course-detail.component';
 import { AsideCourseComponent } from './components/course-detail/aside-course/aside-course.component';
 import { CheckboxComponent } from './components/course-detail/checkbox/checkbox.component';
+import { CourseContentComponent } from './components/course-detail/course-content/course-content.component';
+
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -32,7 +35,8 @@ import { CheckboxComponent } from './components/course-detail/checkbox/checkbox.
     ModalPerfilComponent,
     CourseDetailComponent,
     AsideCourseComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    CourseContentComponent,
 
   ],
   imports: [
@@ -40,7 +44,7 @@ import { CheckboxComponent } from './components/course-detail/checkbox/checkbox.
     DashboardRoutingModule,
     SharedModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports:[
     DashboardComponent,

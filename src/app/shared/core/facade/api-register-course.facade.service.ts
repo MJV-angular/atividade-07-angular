@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ApiRegisterCourseService } from '../async/api-register-course.service';
-import { IRegisterCourseRequest, IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
+import { IRegisterCourseRequest, IRegisterCoursesResponse } from '../../interfaces/register-courses.interfaces';
 import { UserStateService } from '../state/user-state.service';
-import { Observable, Subscriber, tap } from 'rxjs';
+import { Observable, Subscriber, map, mergeMap, switchMap, tap } from 'rxjs';
+import { __values } from 'tslib';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +15,24 @@ export class ApiRegisterCourseFacadeService {
 
   }
 
-  addRegisterCourse(coursesId: IRegisterCourseRequest): Observable<IRegisterCourseResponse[]> {
+  addRegisterCourse(coursesIds: IRegisterCourseRequest): Observable<IRegisterCoursesResponse> {
+    return this.apiServices.registerCourse(coursesIds).pipe(
+      tap(response =>
+        this.userState.addCourses(response.courses)
+      ),
+
+    )
+  }
+
+  addRegisterCourseContent(coursesId: IRegisterCourseRequest): Observable<IRegisterCoursesResponse> {
     return this.apiServices.registerCourse(coursesId).pipe(
-      tap((response: IRegisterCourseResponse[]) =>
-        this.userState.addCourses(response)
+      tap((response) => {
+        this.userState.addCourses(response.courses)
+        this.userState.addCoursesContent(response.coursesContentUser)
+      }
       ),
     )
   }
+
+
 }

@@ -1,4 +1,5 @@
-import { Component, Input} from '@angular/core';
+
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ICourseContent } from 'src/app/shared/interfaces/course-content.interface';
 
 @Component({
@@ -7,5 +8,6 @@ import { ICourseContent } from 'src/app/shared/interfaces/course-content.interfa
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent {
-  @Input() coursesContent? : ICourseContent;
+  @Input() coursesContent?: ICourseContent;
+  @Input() class!: string;
 }

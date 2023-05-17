@@ -25,6 +25,7 @@ export class CatalogStateService {
   }
 
   addCourses(courses: IcourseResponse[]) {
+    console.log(courses)
     return this.state$.next({
       ...this.state$.getValue(),
       courses: courses,

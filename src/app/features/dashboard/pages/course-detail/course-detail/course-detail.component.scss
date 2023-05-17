@@ -6,4 +6,15 @@
 
 main{
   background-color: aliceblue;
+  display: flex;
+}
+
+app-course-content
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: aqua;
+
 }

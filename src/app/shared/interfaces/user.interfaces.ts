@@ -1,3 +1,4 @@
+import { IcoursesContentUser } from "./api.interfaces";
 import { IRegisterCourseResponse } from "./register-courses.interfaces";
 
 
@@ -21,7 +22,11 @@ export interface IUserState {
   picture?: string;
   dateBirth?: Date;
   cpf?: string;
-  address?: IAddressState
-  token?:string
-  courses: IRegisterCourseResponse[]
+  address?: IAddressState;
+  token?:string;
+  courses: IRegisterCourseResponse[];
+  coursesContentUser: IcoursesContentUser[]
 }
+
+
+

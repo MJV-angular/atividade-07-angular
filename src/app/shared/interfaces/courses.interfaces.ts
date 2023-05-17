@@ -1,3 +1,4 @@
+
 import { ICourseContent } from "./course-content.interface";
 
 export interface IcourseResponse{
@@ -6,10 +7,11 @@ export interface IcourseResponse{
   id: number;
   createdAt: Date;
   updatedAt: Date;
-  courseContent: ICourseContent[]
+  courseContent: ICourseContent[];
 }
 
+
 export interface IcoursesState {
-  courses: IcourseResponse[]
+  courses: IcourseResponse[] | null
 }
 

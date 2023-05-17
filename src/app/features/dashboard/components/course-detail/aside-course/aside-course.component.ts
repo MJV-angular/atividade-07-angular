@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICourseContent} from 'src/app/shared/interfaces/course-content.interface';
 @Component({
   selector: 'app-aside-course',
@@ -7,4 +7,12 @@ import { ICourseContent} from 'src/app/shared/interfaces/course-content.interfac
 })
 export class AsideCourseComponent {
   @Input() coursesContent? : ICourseContent[];
+  @Output() selectedCourseContent = new EventEmitter<ICourseContent>();
+  isChecked = false;
+  idSelected : number | null = null
+  emitEvent(item:ICourseContent) {
+    this.idSelected = item.id
+    this.isChecked = !this.isChecked;
+    this.selectedCourseContent.emit(item);
+  }
 }

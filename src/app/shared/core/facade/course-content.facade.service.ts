@@ -3,21 +3,22 @@ import { Observable, Subscriber, combineLatest, distinctUntilChanged, map, of, s
 import { ApiCourseContentService } from '../async/api-course-content.service';
 import { ICourseContent } from '../../interfaces/course-content.interface';
 import { CourseContentStateService } from '../state/course-content-state.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CourseContentFacadeService {
-  constructor(private apiServices: ApiCourseContentService, private courseContentState: CourseContentStateService) { }
+  constructor(private apiServices: ApiCourseContentService, private courseContentState: CourseContentStateService, private sanitizer: DomSanitizer) { }
 
 
   readonly getCoursesContent$ = this.courseContentState
     .getStateCourseContent()
     .pipe(
-      map((value) => value.courseContent),
+      map(({ courseContent }) => courseContent),
       switchMap((stateCoursesContent) => {
-        if (stateCoursesContent.length > 0) {
+        if (stateCoursesContent) {
           return of(stateCoursesContent);
         }
         return this.getCourseContent()
@@ -26,6 +27,7 @@ export class CourseContentFacadeService {
       distinctUntilChanged(),
       shareReplay(1),
     );
+
 
 
   readonly getCoursesfilter$ = this.courseContentState
@@ -40,15 +42,15 @@ export class CourseContentFacadeService {
 
   readonly getCoursesfilterInitial$ = this.getCoursesContent$.pipe(
     tap((value) => {
-      this.courseContentState.addCoursesContentFiltered(value)
+      map(({ courseContent }) => courseContent),
+        this.courseContentState.addCoursesContentFiltered(value)
     })
   )
 
 
-  getCourseContent(): Observable<ICourseContent[]> {
+  getCourseContent() {
     return this.apiServices.getCoursesContent().pipe(
-      tap((value) => this.courseContentState.addCoursesContent(value)
-      )
+      tap((value) => this.courseContentState.addCoursesContent(value))
     )
   }
 

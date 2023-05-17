@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IRegisterCoursesResponse } from '../../interfaces/register-courses.interfaces';
 import {
   IRegisterCourseRequest,
 
 } from '../../interfaces/register-courses.interfaces';
-import { IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,10 +15,12 @@ export class ApiRegisterCourseService {
   constructor(private httpClient: HttpClient) { }
   registerCourse(
     data: IRegisterCourseRequest
-  ): Observable<IRegisterCourseResponse[]> {
+  ): Observable<IRegisterCoursesResponse> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
-    return this.httpClient.post<IRegisterCourseResponse[]>(`https://api-naianereis.vercel.app/registercourse`, data, { headers })
+    return this.httpClient.post<IRegisterCoursesResponse>(`https://api-naianereis.vercel.app/registercourse`, data, { headers })
+
   }
+
 }
