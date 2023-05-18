@@ -9,8 +9,9 @@ export class AsideCourseComponent {
   @Input() coursesContent? : MergedCourseContentAndCourseContentUser[] | null;
   @Output() selectedCourseContent = new EventEmitter<number>();
   idSelected : number | null = null
-  emitEvent(id: number) {
+  emitEvent(id: number, itemid: number ) {
+    console.log(id, itemid)
     this.idSelected = id
-    this.selectedCourseContent.emit(id);
+    this.selectedCourseContent.emit(itemid);
   }
 }

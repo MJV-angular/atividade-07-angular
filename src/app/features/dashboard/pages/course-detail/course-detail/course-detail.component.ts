@@ -4,7 +4,7 @@ import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.
 import { IcourseResponse } from '../../../../../shared/interfaces/courses.interfaces';
 import { forkJoin, map, switchMap, take, tap } from 'rxjs';
 import { CourseContentFacadeService } from 'src/app/shared/core/facade/course-content.facade.service';
-import { ICourseContent } from 'src/app/shared/interfaces/course-content.interface';
+import { ICourseContent, MergedCourseContentAndCourseContentUser } from 'src/app/shared/interfaces/course-content.interface';
 import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
 import { ApiRegisterCourseFacadeService } from 'src/app/shared/core/facade/api-register-course.facade.service';
 import { CourseDetailsFacadeService } from 'src/app/shared/core/facade/course-details-facade.service';
@@ -14,7 +14,7 @@ import { RangeValueAccessor } from '@angular/forms';
   styleUrls: ['./course-detail.component.scss'],
 })
 export class CourseDetailComponent implements OnInit {
-  courseState?: ICourseContent[];
+  courseState?: MergedCourseContentAndCourseContentUser | null[];
   courseContentInit: number = 0;
   courseContent = this.courseDetailsFacade.getCourseContentBySelect$;
   teste = this.courseDetailsFacade.getCoursesContentUser$;
@@ -32,7 +32,9 @@ export class CourseDetailComponent implements OnInit {
         switchMap((courseId) => this.coursesFacade.getCourseById(courseId))
       )
       .subscribe();
-    this.courseDetailsFacade.firstCourseContent$.subscribe();
+    this.courseDetailsFacade.firstCourseContent$.subscribe(value=> console.log(value, "fisrtcourse"));
+    this.courseDetailsFacade.getCoursesContentUser$.subscribe(value => console.log(value, "getcoursesContentUser"));
+    this.courseDetailsFacade.getCourseContentBySelect$.subscribe(value => console.log(value, "courseSelect"))
   }
 
   onSelectCourseContent(id: number) {

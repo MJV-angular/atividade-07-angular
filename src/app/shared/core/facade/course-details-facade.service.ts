@@ -34,6 +34,8 @@ export class CourseDetailsFacadeService {
     .pipe(map((value) => value.courseSelected));
 
   getSelectCourseContent$ = this.coursedetailsState.getState();
+
+
   getCourseContentbyId(idSelect: number) {
     return this.getCourseContent$.pipe(
       map((value) => value.find((ele) => ele.id === idSelect)),
@@ -64,13 +66,12 @@ export class CourseDetailsFacadeService {
     this.userFacade.getUser$,
     this.getCourseContent$,
   ]).pipe(
-    map(([userCourses, coursesContent]) => {
+    map(([user, coursesContent]) => {
       let merged: MergedCourseContentAndCourseContentUser[] = []
-      coursesContent.forEach(courseContentUser => {
-        console.log(courseContentUser)
-        userCourses.coursesContentUser.forEach(coursesContent => {
-          if (coursesContent.courseContentId === courseContentUser.id) {
-            merged.push({ ...coursesContent, ...courseContentUser })
+      coursesContent.forEach(courseContent => {
+        user.coursesContentUser.forEach(coursesContentUser => {
+          if (coursesContentUser.courseContentId === courseContent.id) {
+            merged.push({ ...courseContent, courseContentUser: coursesContentUser})
           }
         })
       });
@@ -81,8 +82,8 @@ export class CourseDetailsFacadeService {
 
   completedCourseContentUser(id: number): Observable<IcoursesContentUser> {
     return this.courseContentUserApi.completedCourseContentUser(id).pipe(
-      map((x: IcoursesContentUser) => x),
-      tap(x => this.userState.addCompleteCoursesContentUser(x))
+      tap(x => this.userState.addCompleteCoursesContentUser(x)),
+      tap(e => console.log(e))
     );
   }
 }

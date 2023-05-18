@@ -12,6 +12,7 @@ export class ApiCourseContentUserService {
   token = localStorage.getItem('@TOKEN');
 
   completedCourseContentUser(id: number): Observable<IcoursesContentUser> {
+    console.log(id)
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });

@@ -36,6 +36,12 @@ export class ApiUserFacadeService {
     shareReplay(1)
   );
 
+  readonly updatedLocalStorage$ = this.userState.getState().pipe(
+    map((state) => localStorage.setItem('@USER', JSON.stringify(state))),
+    distinctUntilChanged(),
+    shareReplay(1)
+  );
+
   readonly getCoursesByUser$ = combineLatest([
     this.userCourses$,
     this.courses.getCourses$,
@@ -47,7 +53,7 @@ export class ApiUserFacadeService {
     )
   );
 
-  
+
   addUser(user: UserRequest): Observable<UserResponse> {
     return this.apiServices.createUser(user).pipe(
       tap((response) => {
@@ -56,9 +62,10 @@ export class ApiUserFacadeService {
     );
   }
 
-  setUserlocalHost() {
+  setUserWithlocalHost() {
     let user = localStorage.getItem('@USER');
     if (user) {
+      console.log(user)
       const data = JSON.parse(user);
       this.userState.setUser(data);
     }

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private userFacade: ApiUserFacadeService, private courseContentFacade: CourseContentFacadeService, private courseFacade: ApiCoursesFacadeService) { }
 
   ngOnInit(): void {
-    this.userFacade.setUserlocalHost();
+    this.userFacade.setUserWithlocalHost();
+    this.userFacade.updatedLocalStorage$.subscribe();
   }
 }
