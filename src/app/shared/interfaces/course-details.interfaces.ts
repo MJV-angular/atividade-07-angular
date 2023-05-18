@@ -1,7 +1,7 @@
-import { ICourseContent } from "./course-content.interface";
 
+import { MergedCourseContentAndCourseContentUser } from "./course-content.interface";
 
 export interface IcourseDetailsState {
-  courseSelected: ICourseContent | null,
+  courseSelected: MergedCourseContentAndCourseContentUser | null,
 
 }
