@@ -15,12 +15,10 @@ export class ApiRegisterCourseService {
   constructor(private httpClient: HttpClient) { }
   registerCourse(
     data: IRegisterCourseRequest
-  ): Observable<IRegisterCoursesResponse> {
+  ): Observable<IRegisterCoursesResponse[]> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
-    return this.httpClient.post<IRegisterCoursesResponse>(`https://api-naianereis.vercel.app/registercourse`, data, { headers })
-
+    return this.httpClient.post<IRegisterCoursesResponse[]>(`https://api-naianereis.vercel.app/registercourse`, data, { headers })
   }
-
 }

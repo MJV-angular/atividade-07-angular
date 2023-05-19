@@ -42,8 +42,8 @@ export class CatalogMainComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.catalog.selects)
-    this.apiRegisterCourseFacade.addRegisterCourse({ courseId: this.catalog.selects }).subscribe(
+    console.log(this.catalog.selects, "5")
+    this.apiRegisterCourseFacade.addRegisterCourseContent({ courseId: this.catalog.selects }).subscribe(
       {
         complete: () => this.router.navigateByUrl('/dashboard')
       }

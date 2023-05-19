@@ -1,23 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.facade.service';
-import { IcourseResponse } from '../../../../../shared/interfaces/courses.interfaces';
-import { forkJoin, map, switchMap, take, tap } from 'rxjs';
-import { CourseContentFacadeService } from 'src/app/shared/core/facade/course-content.facade.service';
-import { ICourseContent, MergedCourseContentAndCourseContentUser } from 'src/app/shared/interfaces/course-content.interface';
-import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
-import { ApiRegisterCourseFacadeService } from 'src/app/shared/core/facade/api-register-course.facade.service';
+
+import { forkJoin, map, switchMap, take } from 'rxjs';
+
+import { MergedCourseContentAndCourseContentUser } from 'src/app/shared/interfaces/course-content.interface';
+
 import { CourseDetailsFacadeService } from 'src/app/shared/core/facade/course-details-facade.service';
-import { RangeValueAccessor } from '@angular/forms';
+import { Subscription } from 'rxjs';
+
 @Component({
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.scss'],
 })
-export class CourseDetailComponent implements OnInit {
+export class CourseDetailComponent implements OnInit, OnDestroy {
   courseState?: MergedCourseContentAndCourseContentUser | null[];
-  courseContentInit: number = 0;
   courseContent = this.courseDetailsFacade.getCourseContentBySelect$;
   teste = this.courseDetailsFacade.getCoursesContentUser$;
+
+  private activatedRouteSubscription!: Subscription;
+  private firstCourseContentSubscription!: Subscription;
+  private coursesContentUserSubscription!: Subscription;
+  private courseContentBySelectSubscription!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,16 +29,27 @@ export class CourseDetailComponent implements OnInit {
     private courseDetailsFacade: CourseDetailsFacadeService
   ) {}
 
+  ngOnDestroy(): void {
+    this.activatedRouteSubscription.unsubscribe();
+    this.firstCourseContentSubscription.unsubscribe();
+    this.coursesContentUserSubscription.unsubscribe();
+    this.courseContentBySelectSubscription.unsubscribe();
+  }
+
   ngOnInit(): void {
-    this.activatedRoute.params
+    this.activatedRouteSubscription = this.activatedRoute.params
       .pipe(
         map((params) => params.id),
         switchMap((courseId) => this.coursesFacade.getCourseById(courseId))
       )
       .subscribe();
-    this.courseDetailsFacade.firstCourseContent$.subscribe(value=> console.log(value, "fisrtcourse"));
-    this.courseDetailsFacade.getCoursesContentUser$.subscribe(value => console.log(value, "getcoursesContentUser"));
-    this.courseDetailsFacade.getCourseContentBySelect$.subscribe(value => console.log(value, "courseSelect"))
+
+    this.firstCourseContentSubscription =
+      this.courseDetailsFacade.firstCourseContent$.subscribe();
+    this.coursesContentUserSubscription =
+      this.courseDetailsFacade.getCoursesContentUser$.subscribe();
+    this.courseContentBySelectSubscription =
+      this.courseDetailsFacade.getCourseContentBySelect$.subscribe();
   }
 
   onSelectCourseContent(id: number) {

@@ -15,20 +15,21 @@ export class ApiRegisterCourseFacadeService {
 
   }
 
-  addRegisterCourse(coursesIds: IRegisterCourseRequest): Observable<IRegisterCoursesResponse> {
-    return this.apiServices.registerCourse(coursesIds).pipe(
-      tap(response =>
-        this.userState.addCourses(response.courses)
-      ),
+  // addRegisterCourse(coursesIds: IRegisterCourseRequest): Observable<IRegisterCoursesResponse> {
+  //   return this.apiServices.registerCourse(coursesIds).pipe(
+  //     tap(response =>
+  //       this.userState.addCourses(response.courses)
+  //     ),
 
-    )
-  }
+  //   )
+  // }
 
-  addRegisterCourseContent(coursesId: IRegisterCourseRequest): Observable<IRegisterCoursesResponse> {
+  addRegisterCourseContent(coursesId: IRegisterCourseRequest): Observable<IRegisterCoursesResponse[]> {
     return this.apiServices.registerCourse(coursesId).pipe(
       tap((response) => {
-        this.userState.addCourses(response.courses)
-        this.userState.addCoursesContentUser(response.coursesContentUser)
+        console.log(response)
+        this.userState.addCourses(response[0].courses)
+        this.userState.addCoursesContentUser(response[0].coursesContentUser)
       }
       ),
     )

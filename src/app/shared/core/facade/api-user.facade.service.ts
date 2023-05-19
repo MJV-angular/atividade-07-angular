@@ -77,6 +77,7 @@ export class ApiUserFacadeService {
   ): Observable<UserResponse> {
     return this.apiServices.updatedUser(user, id).pipe(
       tap((response) => {
+        console.log(response)
         this.userState.editeUser(response);
       })
     );

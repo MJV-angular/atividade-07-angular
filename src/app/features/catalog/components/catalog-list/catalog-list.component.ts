@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-catalog-list',
   templateUrl: './catalog-list.component.html',
@@ -10,7 +8,5 @@ import { Component } from '@angular/core';
 
 
 export class CatalogListComponent{
-
-
 
 }
