@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserResponse } from '../../interfaces/api.interfaces';
+import { IUser } from '../../interfaces/user.interfaces';
 import { ApiSessionService } from '../../core/async/api-session.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent implements OnInit {
-  user?: UserResponse
+  user?: IUser
   constructor(private apiService: ApiSessionService, private route: Router) { }
 
   ngOnInit(): void {

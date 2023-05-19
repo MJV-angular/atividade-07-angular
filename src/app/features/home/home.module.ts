@@ -6,7 +6,6 @@ import { HomeMainComponent } from './components/home-main/home-main.component';
 import { HomeAnimationComponent } from './components/home-animation/home-animation.component';
 import { HomeRoutingModule } from './home-routing.module';
 
-
 @NgModule({
     declarations: [
         HomeComponent,

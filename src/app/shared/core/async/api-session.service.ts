@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IloginRequest } from '../../interfaces/api.interfaces';
+import { IloginRequest } from '../../interfaces/user.interfaces';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../sync/local-storage.service';
 

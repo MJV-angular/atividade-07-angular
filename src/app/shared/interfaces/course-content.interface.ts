@@ -1,5 +1,5 @@
 import { SafeResourceUrl } from "@angular/platform-browser";
-import { IcoursesContentUser } from "./api.interfaces";
+import { IcoursesContentUser } from "./user.interfaces";
 
 export interface ICourseContent {
   id: number,

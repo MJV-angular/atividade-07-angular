@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiUserService } from '../async/api-user.service';
 import { UserStateService } from '../state/user-state.service';
-import { UserRequest, UserResponse } from '../../interfaces/api.interfaces';
+import { IUser, IUserResponse, IUserState, UserRequest } from '../../interfaces/user.interfaces';
 import {
   EMPTY,
   Observable,
@@ -54,7 +54,7 @@ export class ApiUserFacadeService {
   );
 
 
-  addUser(user: UserRequest): Observable<UserResponse> {
+  addUser(user: UserRequest): Observable<IUser> {
     return this.apiServices.createUser(user).pipe(
       tap((response) => {
         this.userState.setUser(response);
@@ -74,7 +74,7 @@ export class ApiUserFacadeService {
   updatedUser(
     user: Partial<UserRequest>,
     id: number
-  ): Observable<UserResponse> {
+  ): Observable<IUser> {
     return this.apiServices.updatedUser(user, id).pipe(
       tap((response) => {
         console.log(response)

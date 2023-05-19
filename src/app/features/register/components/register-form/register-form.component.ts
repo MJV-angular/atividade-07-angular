@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiUserService } from 'src/app/shared/core/async/api-user.service';
 import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
-import { UserRequest } from 'src/app/shared/interfaces/api.interfaces';
+import { RegisterFacadeService } from 'src/app/shared/core/facade/register-facade.service';
 import moment from 'moment';
+import { ModalService } from 'src/app/shared/core/sync/modal.service';
+
 
 @Component({
   selector: 'app-register-form',
@@ -16,7 +17,7 @@ export class RegisterFormComponent {
 
   currentDate: string = moment(Date.now()).format('YYYY-MM-DD')
 
-  constructor(private userFacade: ApiUserFacadeService, private router: Router) { }
+  constructor(private userFacade: ApiUserFacadeService, private router: Router, private registerFacade: RegisterFacadeService, private modal: ModalService) { }
 
   addressForm = new FormGroup({
     street: new FormControl("", { nonNullable: true, validators: [Validators.required] }),
@@ -43,9 +44,8 @@ export class RegisterFormComponent {
 
   createUser() {
     const {dateBirth, ...withOutDateBirth} = this.userForm.getRawValue()
-    this.userFacade.addUser({...withOutDateBirth, dateBirth: this.formatDate(this.userForm.value.dateBirth)})
-      .subscribe({
-        next: () => console.log('Todo criado'),
+    this.registerFacade.createUser({...withOutDateBirth, dateBirth: this.formatDate(this.userForm.value.dateBirth)}).subscribe({
+        next: () => console.log('user criado'),
         error: (error) => console.log(`erro: ${error.message}`),
         complete: () => this.router.navigateByUrl('/login')
       });

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilModalService } from 'src/app/shared/core/sync/perfil-modal.service';
-import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
+import { IUser } from 'src/app/shared/interfaces/user.interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
 import { LocalStorageService } from 'src/app/shared/core/sync/local-storage.service';
@@ -15,10 +15,10 @@ import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 })
 export class ModalPerfilComponent implements OnInit {
 
-  user?: UserResponse;
+  user?: IUser;
   userData: IUserState | null = null;
   currentDate?: Date;
-  newUser?: UserResponse
+  newUser?: IUser
 
   constructor(public perfilServices: PerfilModalService, public userFacade: ApiUserFacadeService, private _localStorage: LocalStorageService) { }
 

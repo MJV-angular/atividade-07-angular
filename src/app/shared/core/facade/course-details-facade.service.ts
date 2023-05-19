@@ -7,7 +7,7 @@ import { tap, switchMap, map, of, combineLatest, Observable } from 'rxjs';
 import { UserStateService } from '../state/user-state.service';
 import { MergedCourseContentAndCourseContentUser } from '../../interfaces/course-content.interface';
 import { ApiCourseContentUserService } from '../async/api-course-content-user.service';
-import { IcoursesContentUser } from '../../interfaces/api.interfaces';
+import { IcoursesContentUser } from '../../interfaces/user.interfaces';
 @Injectable({
   providedIn: 'root',
 })

@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IcoursesContentUser } from '../../interfaces/api.interfaces';
+import { IcoursesContentUser } from '../../interfaces/user.interfaces';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ApiCourseContentUserService {
   token = localStorage.getItem('@TOKEN');
 
   completedCourseContentUser(id: number): Observable<IcoursesContentUser> {
-    
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });

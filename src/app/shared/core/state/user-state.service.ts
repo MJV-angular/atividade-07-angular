@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {
-  IcoursesContentUser,
-  UserResponse,
-} from '../../interfaces/api.interfaces';
+import { IUser, IUserResponse, IcoursesContentUser } from '../../interfaces/user.interfaces';
 import { IUserState } from '../../interfaces/user.interfaces';
 import { IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
 
@@ -37,11 +34,11 @@ export class UserStateService {
     return this.state$.asObservable();
   }
 
-  setUser(user: UserResponse) {
+  setUser(user: IUser) {
     this.state$.next(user);
   }
 
-  editeUser(user: UserResponse) {
+  editeUser(user: IUser) {
     this.state$.next(user);
   }
 
