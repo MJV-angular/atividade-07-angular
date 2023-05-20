@@ -1,5 +1,4 @@
-import { DataDashboardService } from 'src/app/shared/core/sync/data-dashboard.service';
-import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
+import { UserFacadeService } from 'src/app/shared/core/facade/user-facade.service';
 import { PerfilModalService } from 'src/app/shared/core/sync/perfil-modal.service';
 import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.facade.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -12,15 +11,14 @@ import { BehaviorSubject, Observable, Subscription, forkJoin, switchMap, take } 
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-
   user$ = this.userFacade.getUser$;
-  mycourses$ = this.userFacade.getCoursesByUser$;
+  coursesUser$ = this.userFacade.getCoursesUser$;
   subscription?: Subscription;
   filterCoursesContent$ = this.courseContentFacade.getCoursesfilter$;
 
   constructor(
     public modalService: PerfilModalService,
-    public userFacade: ApiUserFacadeService,
+    public userFacade: UserFacadeService,
     public coursesFacade: ApiCoursesFacadeService,
     private courseContentFacade: CourseContentFacadeService
   ) {}

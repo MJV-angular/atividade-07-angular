@@ -3,7 +3,7 @@ import { Observable, mergeMap, of, take, tap } from 'rxjs';
 import { ApiCoursesService } from '../async/api-courses.service';
 import { CourseStateService } from '../state/course-state.service';
 import { CatalogStateService } from '../state/catalog-state.service';
-import { IcourseResponse, IcoursesState } from '../../interfaces/courses.interfaces';
+import { Courses } from '../../interfaces/catalog.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ApiCoursesFacadeService {
 
   constructor(public courseServices: ApiCoursesService, public courseState: CourseStateService, public catalogState: CatalogStateService) { }
 
-  getCourses$: Observable<IcourseResponse[]> = this.courseState.getState()
+  getCourses$: Observable<Courses[]> = this.courseState.getState()
     .pipe(
       take(1),
       mergeMap(state => {
@@ -29,14 +29,10 @@ export class ApiCoursesFacadeService {
       }))
 
 
-  getCourses(): Observable<IcourseResponse[]> {
-    return this.courseServices.getCourses().pipe(tap((response) => {
-      return this.courseState.setCourses(response)
-    }))
-  }
 
 
-  getCourseById(id: number): Observable<IcourseResponse> {
+
+  getCourseById(id: number): Observable<Courses> {
     return this.getCourses$.pipe(
       take(1),
       mergeMap((courses) => {

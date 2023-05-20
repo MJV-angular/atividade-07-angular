@@ -1,6 +1,6 @@
-export interface IDashboard {
-  certificate: string[]
-  courses: string[]
+import { CourseContent, CourseContentUser } from "./register-courses.interfaces";
+
+export interface DashboardState {
+  coursesContentUserbyCourseId: CourseContentUser[] | null;
+  courseContentSelect: CourseContentUser | null
 }
-
-

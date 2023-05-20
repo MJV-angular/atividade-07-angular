@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser, IUserResponse, IcoursesContentUser } from '../../interfaces/user.interfaces';
 import { IUserState } from '../../interfaces/user.interfaces';
-import { IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
+import { CourseUser } from '../../interfaces/register-courses.interfaces';
+import { CourseContentUser } from '../../interfaces/register-courses.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +43,7 @@ export class UserStateService {
     this.state$.next(user);
   }
 
-  addCourses(courses: IRegisterCourseResponse[]) {
+  addCourses(courses: CourseUser[]) {
     const state = this.state$.getValue();
     this.state$.next({
       ...state,
@@ -58,7 +59,7 @@ export class UserStateService {
     });
   }
 
-  addCompleteCoursesContentUser(coursesContentUser: IcoursesContentUser) {
+  addCompleteCoursesContentUser(coursesContentUser: CourseContentUser) {
     const state = this.state$.getValue();
     const updatedCoursesContentUser = state.coursesContentUser.map((courseContentUser) => {
       console.log(courseContentUser.courseContentId, courseContentUser.id);

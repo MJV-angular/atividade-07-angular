@@ -3,14 +3,14 @@
   <app-header />
   <div class="container">
     <app-sidebar
-      [courses]="mycourses$ | async"
+      [coursesUser]="coursesUser$ | async"
       (openModal)="showModal()"
       [user]="user$ | async"
     ></app-sidebar>
     <div>
       <div class="dashboard-middle">
         <app-courses-list-dashboard
-          [courses]="mycourses$ | async"
+          [courses]="coursesUser$ | async"
           [user]="user$ | async"
         ></app-courses-list-dashboard>
         <app-search-dashboard></app-search-dashboard>

@@ -13,7 +13,9 @@ import {
   shareReplay,
   tap,
 } from 'rxjs';
+import { RegisterCoursesApi } from '../../interfaces/register-courses.interfaces';
 import { ApiCoursesFacadeService } from './api-courses.facade.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -30,11 +32,6 @@ export class ApiUserFacadeService {
     shareReplay(1)
   );
 
-  readonly userCourses$ = this.userState.getState().pipe(
-    map((state) => state.courses),
-    distinctUntilChanged(),
-    shareReplay(1)
-  );
 
   readonly updatedLocalStorage$ = this.userState.getState().pipe(
     map((state) => localStorage.setItem('@USER', JSON.stringify(state))),
@@ -42,16 +39,19 @@ export class ApiUserFacadeService {
     shareReplay(1)
   );
 
-  readonly getCoursesByUser$ = combineLatest([
-    this.userCourses$,
-    this.courses.getCourses$,
-  ]).pipe(
-    map(([userCourses, courses]) =>
-      courses.filter((course) =>
-        userCourses.some((userCourse) => course.id == userCourse.courseId)
-      )
-    )
-  );
+
+//  // necessário
+//   setRegisterCourses(courses: Course[]) {
+//     return this.userState.addCourses(courses);
+//   }
+
+// // necessário
+
+// readonly getCourses$ = this.userState.getState().pipe(
+//   map((state) => state.courses),
+//   distinctUntilChanged(),
+//   shareReplay(1)
+// );
 
 
   addUser(user: UserRequest): Observable<IUser> {

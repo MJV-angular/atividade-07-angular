@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserRequest } from '../../interfaces/user.interfaces';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from '../sync/local-storage.service';
+import { environment } from 'src/envirements/envirements';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiUserService {
 
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
+  constructor(private httpClient: HttpClient) { }
 
   createUser(data: UserRequest): Observable<any> {
-    return this.httpClient.post(`https://api-naianereis.vercel.app/user`, data)
+    return this.httpClient.post(`${environment}/user`, data)
   }
 
   updatedUser(data: Partial<UserRequest>, UserId: number): Observable<any> {
-    return this.httpClient.patch(`https://api-naianereis.vercel.app/user/${UserId}`, data)
+    return this.httpClient.patch(`${environment.apiKey}/user/${UserId}`, data)
   }
 }

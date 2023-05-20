@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { ICourseContent, MergedCourseContentAndCourseContentUser } from 'src/app/shared/interfaces/course-content.interface';
-
+import { CourseContent, CourseContentUser } from 'src/app/shared/interfaces/register-courses.interfaces';
 @Component({
   selector: 'app-course-content',
   templateUrl: './course-content.component.html',
@@ -10,7 +9,7 @@ import { ICourseContent, MergedCourseContentAndCourseContentUser } from 'src/app
 
 export class CourseContentComponent  {
 
-  @Input() courseContent: MergedCourseContentAndCourseContentUser | null = null;
+  @Input() courseContent: CourseContentUser | null = null;
   @Output() completedCourse = new EventEmitter();
 
 

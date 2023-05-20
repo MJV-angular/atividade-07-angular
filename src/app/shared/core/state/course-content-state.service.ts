@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IcourseContentState , ICourseContent, IcourseContentFilterState} from '../../interfaces/course-content.interface';
+import { CourseContent } from '../../interfaces/register-courses.interfaces';
+import { IcourseContentState, IcourseContentFilterState } from '../../interfaces/course-content.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +25,7 @@ export class CourseContentStateService {
     return this.stateFilter$.asObservable()
   }
 
-  addCoursesContent(coursesContent: ICourseContent[]) {
+  addCoursesContent(coursesContent: CourseContent[]) {
     const state = this.state$.getValue();
     if(state.courseContent){
       this.state$.next({
@@ -37,7 +38,7 @@ export class CourseContentStateService {
     }
   }
 
-  addCoursesContentFiltered(coursesContentFiltered: ICourseContent[]) {
+  addCoursesContentFiltered(coursesContentFiltered: CourseContent[]) {
     this.stateFilter$.next({
       filterCourseContent: coursesContentFiltered
     });

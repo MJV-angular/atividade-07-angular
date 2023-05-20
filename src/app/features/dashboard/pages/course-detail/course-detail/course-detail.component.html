@@ -1,15 +1,16 @@
 <div class="container">
   <app-header></app-header>
   <main>
-    <app-aside-course
+     <app-aside-course
       (selectedCourseContent)="onSelectCourseContent($event)"
-      [coursesContent]="teste | async"
+      [coursesContentUser]="coursesContentUser"
     ></app-aside-course>
-    
+
     <app-course-content
+    [courseContent]="courseContentSelect |async"
       (completedCourse)="onCompletedCourse($event)"
-      [courseContent]="courseContent | async"
     ></app-course-content>
+
   </main>
   <app-footer></app-footer>
 </div>

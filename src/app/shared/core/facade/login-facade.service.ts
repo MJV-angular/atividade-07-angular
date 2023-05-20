@@ -29,7 +29,6 @@ export class LoginFacadeService {
   }
 
   login(user: IloginRequest): Observable<IUserResponse> {
-    let pathDirect: string = '/dashboard';
     return this.api.login(user).pipe(
       tap({
         next: (response: IUserResponse) => {

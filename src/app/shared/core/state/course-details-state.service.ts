@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IcourseDetailsState } from '../../interfaces/course-details.interfaces';
-import { ICourseContent, MergedCourseContentAndCourseContentUser } from '../../interfaces/course-content.interface';
+import { CourseContent } from '../../interfaces/register-courses.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class CourseDetailsStateService {
     return this.state$.asObservable();
   }
 
-  addCourseContentSelected(course: MergedCourseContentAndCourseContentUser ) {
+  addCourseContentSelected(course: CourseContent ) {
     return this.state$.next({
       ...this.state$.getValue(),
       courseSelected: course

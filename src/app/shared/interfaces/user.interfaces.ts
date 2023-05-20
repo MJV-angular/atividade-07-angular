@@ -1,6 +1,5 @@
 
-import { IRegisterCourseResponse } from "./register-courses.interfaces";
-
+import { CourseUser } from "./register-courses.interfaces";
 export interface IUser {
   user: any;
   token: string;
@@ -12,7 +11,7 @@ export interface IUser {
   dateBirth: Date;
   cpf: string;
   address:IAddressRequest;
-  courses: IRegisterCourseResponse[]
+  courses: CourseUser[]
   coursesContentUser: IcoursesContentUser[]
 }
 
@@ -71,7 +70,7 @@ export interface IUserState {
   dateBirth?: Date;
   cpf?: string;
   address?: IAddressState;
-  courses: IRegisterCourseResponse[];
+  courses: CourseUser[];
   coursesContentUser: IcoursesContentUser[]
 }
 

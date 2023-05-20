@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscriber, combineLatest, distinctUntilChanged, map, of, shareReplay, switchMap, tap } from 'rxjs';
 import { ApiCourseContentService } from '../async/api-course-content.service';
-import { ICourseContent } from '../../interfaces/course-content.interface';
 import { CourseContentStateService } from '../state/course-content-state.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -28,7 +27,6 @@ export class CourseContentFacadeService {
       distinctUntilChanged(),
       shareReplay(1),
     );
-
 
 
   readonly getCoursesfilter$ = this.courseContentState

@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from '../sync/local-storage.service';
+import { environment } from 'src/envirements/envirements';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiCoursesService {
-
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
+  constructor(private httpClient: HttpClient) {}
 
   getCourses(): Observable<any> {
-    return this.httpClient.get(`https://api-naianereis.vercel.app/courses`)
+    return this.httpClient.get(`${environment.apiKey}/courses`);
   }
 
   getCourseById(id: number): Observable<any> {
-    return this.httpClient.get(`https://api-naianereis.vercel.app/courses/${id}`)
+    return this.httpClient.get(`${environment.apiKey}/courses/${id}`);
   }
-
 }
