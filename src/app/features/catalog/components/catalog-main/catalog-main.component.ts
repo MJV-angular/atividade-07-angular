@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription, forkJoin, switchMap } from 'rxjs';
 import { CatalogFacadeService } from 'src/app/shared/core/facade/catalog-facade.service';
 import { UserFacadeService } from 'src/app/shared/core/facade/user-facade.service';
@@ -9,12 +9,12 @@ import { CourseUser } from 'src/app/shared/interfaces/register-courses.interface
   templateUrl: './catalog-main.component.html',
   styleUrls: ['./catalog-main.component.scss'],
 })
-export class CatalogMainComponent implements OnInit {
+export class CatalogMainComponent implements OnInit, OnDestroy {
   class?: string;
   selects$!: number[];
   courses$ = this.catalogFacade.getCourses$;
   coursesUser$: CourseUser[] = [];
-  subscription!: Subscription;
+  private subscription: Subscription = new Subscription()
 
   constructor(
     private catalogFacade: CatalogFacadeService,
@@ -22,7 +22,7 @@ export class CatalogMainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.catalogFacade.getCatalogSelects$
+    this.subscription = this.catalogFacade.getCatalogSelects$
       .pipe(
         switchMap((selects) => {
           this.selects$ = selects;
@@ -43,6 +43,10 @@ export class CatalogMainComponent implements OnInit {
   }
 
   onSubmit() {
-    this.catalogFacade.registerCourses(this.selects$).subscribe()
+    this.subscription.add(this.catalogFacade.registerCourses(this.selects$).subscribe());
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

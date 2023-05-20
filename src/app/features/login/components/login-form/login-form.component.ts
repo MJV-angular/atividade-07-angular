@@ -26,19 +26,15 @@ export class LoginFormComponent implements OnDestroy {
     }),
   });
 
-  private loginSubscription?: Subscription;
+  private loginSubscription: Subscription = new Subscription();
 
   constructor(
-
     public toast: ToastService,
-    private loginFacade: LoginFacadeService,
-
+    private loginFacade: LoginFacadeService
   ) {}
 
   ngOnDestroy(): void {
-    if (this.loginSubscription) {
-      this.loginSubscription.unsubscribe();
-    }
+    this.loginSubscription.unsubscribe();
   }
 
   login() {

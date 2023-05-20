@@ -12,7 +12,7 @@ import { DashboardFacadeService } from 'src/app/shared/core/facade/dashboard-fac
 })
 export class CourseDetailComponent implements OnInit, OnDestroy {
   courseContentSelect = this.dashboardFacade.getCourseSelected;
-  activatedRouteSubscription!: Subscription;
+  activatedRouteSubscription: Subscription = new Subscription()
   coursesContentUser = this.dashboardFacade.getCoursesContentbyCoursesId$;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,9 +20,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    if (this.activatedRouteSubscription) {
-      this.activatedRouteSubscription.unsubscribe();
-    }
+    this.activatedRouteSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
