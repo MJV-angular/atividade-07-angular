@@ -3,23 +3,22 @@
   top: 20px;
   left: 20px;
   z-index: 9999;
-  max-width: 350px;
+  max-width: 450px;
 }
 
 .toast-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .5rem .75rem;
-  background-color: #007bff;
+  padding: 10px;
   color: #fff;
-  border-radius: .25rem .25rem 0 0;
+  border-radius: 8px;
 }
 
 .toast-header .close {
   color: #fff;
   opacity: .8;
-  font-size: 1.25rem;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1;
   text-shadow: 0 1px 0 #fff;
@@ -36,5 +35,5 @@
 .toast-body {
   padding: .75rem;
   background-color: #f8f9fa;
-  border-radius: 0 0 .25rem .25rem;
+  border-radius: 8px;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription, forkJoin, switchMap } from 'rxjs';
-import { CatalogFacade2Service } from 'src/app/shared/core/facade/catalog-facade2.service';
+import { CatalogFacadeService } from 'src/app/shared/core/facade/catalog-facade.service';
 import { UserFacadeService } from 'src/app/shared/core/facade/user-facade.service';
 import { CourseUser } from 'src/app/shared/interfaces/register-courses.interfaces';
 
@@ -17,7 +17,7 @@ export class CatalogMainComponent implements OnInit {
   subscription!: Subscription;
 
   constructor(
-    private catalogFacade: CatalogFacade2Service,
+    private catalogFacade: CatalogFacadeService,
     private userFacade: UserFacadeService
   ) {}
 
@@ -43,6 +43,6 @@ export class CatalogMainComponent implements OnInit {
   }
 
   onSubmit() {
-    this.catalogFacade.registerCourses(this.selects$).subscribe(value => console.log(value))
+    this.catalogFacade.registerCourses(this.selects$).subscribe()
   }
 }

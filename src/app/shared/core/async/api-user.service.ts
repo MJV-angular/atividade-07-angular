@@ -12,7 +12,7 @@ export class ApiUserService {
   constructor(private httpClient: HttpClient) { }
 
   createUser(data: UserRequest): Observable<any> {
-    return this.httpClient.post(`${environment}/user`, data)
+    return this.httpClient.post(`${environment.apiKey}/user`, data)
   }
 
   updatedUser(data: Partial<UserRequest>, UserId: number): Observable<any> {

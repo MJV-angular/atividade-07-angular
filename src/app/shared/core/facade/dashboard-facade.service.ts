@@ -34,18 +34,15 @@ export class DashboardFacadeService {
     private userFacade: UserFacadeService
   ) {}
 
-  // selectCourseContentUser(id: number) {
-
-  //   return this.dashboardState.getState().pipe(
-  //     map((value) => value.coursesContentUserbyCourseId),
-  //     tap((coursesContent) => {
-  //       const courseFind = coursesContent!.filter(
-  //         (courseContentUser) => courseContentUser.id == id
-  //       );
-  //      return this.dashboardState.addcourseContentSelect(courseFind[0]);
-  //     })
-  //   );
-  // }
+  readonly getCoursesContentbyCoursesId$ = this.dashboardState.getState().pipe(
+    map(({ coursesContentUserbyCourseId }) => coursesContentUserbyCourseId),
+    switchMap((stateCoursesContent) => {
+      if (stateCoursesContent) {
+        return of(stateCoursesContent);
+      }
+      return of(null);
+    })
+  );
 
   selectCourseContentUser(idSelect: number) {
     return this.dashboardState.getState().pipe(
@@ -60,32 +57,25 @@ export class DashboardFacadeService {
   completedCourseContentUser(id: number): Observable<CourseContentUser> {
     return this.courseContentUserApi
       .completedCourseContentUser(id)
-      .pipe(tap((response) => this.userFacade.setCoursesCompleted(response)));
+      .pipe(
+        tap((response) =>
+          this.dashboardState.addCompleteCoursesContentUser(response)
+        )
+      );
   }
 
   getCourseContentsUserByCourseId(id: number): Observable<CourseContentUser[]> {
     return this.apiCourseContentsUserByCourse
       .getCoursesContentUserById(id)
       .pipe(
-        tap((courseContentUser) =>
-          this.dashboardState.addCoursesContentsbyCourse(courseContentUser)
-        )
+        tap((courseContentUser) => {
+          this.dashboardState.addcourseContentSelect(courseContentUser[0]);
+          this.dashboardState.addCoursesContentsbyCourse(courseContentUser);
+        })
       );
   }
 
-  readonly getCoursesContent$ = this.dashboardState.getState().pipe(
-    take(1),
-    map(({ courseContentSelect }) => courseContentSelect),
-    switchMap((stateCoursesContent) => {
-      if (stateCoursesContent) {
-        return of(stateCoursesContent);
-      }
-      return of(null);
-    })
-  );
-
   readonly getCourseSelected = this.dashboardState.getState().pipe(
-
     switchMap((coursesContent) => {
       if (coursesContent.courseContentSelect) {
         return of(coursesContent.courseContentSelect);

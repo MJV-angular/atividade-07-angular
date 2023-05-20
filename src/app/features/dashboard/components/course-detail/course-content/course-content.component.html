@@ -2,6 +2,6 @@
   <button (click)="emitEvent(courseContent.id)">Concluir tarefa</button>
   <h2>{{courseContent.courseContent.title}}</h2>
   <iframe width="640" height="390" [src]="courseContent.courseContent.video_url | embed" ></iframe>
-  <p>{{courseContent |json}}</p>
+  <p>{{courseContent.courseContent.text}}</p>
 </ng-container>
 

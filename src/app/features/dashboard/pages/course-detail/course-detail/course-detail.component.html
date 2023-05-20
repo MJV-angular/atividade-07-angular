@@ -3,7 +3,7 @@
   <main>
      <app-aside-course
       (selectedCourseContent)="onSelectCourseContent($event)"
-      [coursesContentUser]="coursesContentUser"
+      [coursesContentUser]="coursesContentUser | async"
     ></app-aside-course>
 
     <app-course-content

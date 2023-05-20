@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import {  map, switchMap, take, tap } from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs';
 
 import { Subscription } from 'rxjs';
 import { DashboardFacadeService } from 'src/app/shared/core/facade/dashboard-facade.service';
-import { CourseContentUser } from 'src/app/shared/interfaces/register-courses.interfaces';
 
 @Component({
   templateUrl: './course-detail.component.html',
@@ -14,7 +13,7 @@ import { CourseContentUser } from 'src/app/shared/interfaces/register-courses.in
 export class CourseDetailComponent implements OnInit, OnDestroy {
   courseContentSelect = this.dashboardFacade.getCourseSelected;
   activatedRouteSubscription!: Subscription;
-  coursesContentUser!: CourseContentUser[];
+  coursesContentUser = this.dashboardFacade.getCoursesContentbyCoursesId$;
   constructor(
     private activatedRoute: ActivatedRoute,
     private dashboardFacade: DashboardFacadeService
@@ -34,17 +33,14 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
           this.dashboardFacade.getCourseContentsUserByCourseId(courseId).pipe()
         )
       )
-      .subscribe((value) => (this.coursesContentUser = value));
-
-  }
-
-  onSelectCourseContent(id: number) {
-    this.dashboardFacade
-      .selectCourseContentUser(id)
       .subscribe();
   }
 
+  onSelectCourseContent(id: number) {
+    this.dashboardFacade.selectCourseContentUser(id).subscribe();
+  }
+
   onCompletedCourse(id: number) {
-    this.dashboardFacade.completedCourseContentUser(id).subscribe()
+    this.dashboardFacade.completedCourseContentUser(id).subscribe();
   }
 }

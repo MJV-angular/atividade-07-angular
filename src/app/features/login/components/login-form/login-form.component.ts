@@ -3,9 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/shared/interfaces/user.interfaces';
 import { ToastService } from 'src/app/shared/core/sync/toast.service';
 import { LoginFacadeService } from 'src/app/shared/core/facade/login-facade.service';
-import { ApiSessionFacadeService } from 'src/app/shared/core/facade/api-session.service.facade';
 import { Subscription } from 'rxjs';
-import { ModalService } from 'src/app/shared/core/sync/modal.service';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -30,10 +29,10 @@ export class LoginFormComponent implements OnDestroy {
   private loginSubscription?: Subscription;
 
   constructor(
-    private apiService: ApiSessionFacadeService,
+
     public toast: ToastService,
     private loginFacade: LoginFacadeService,
-    private modal: ModalService
+
   ) {}
 
   ngOnDestroy(): void {

@@ -44,7 +44,7 @@ export class LoginFacadeService {
           console.log(error.message);
         },
         complete: () => {
-          this.toast.show('uma mensagem');
+          this.toast.show('Seja bem vindo!');
         },
       })
     );

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiUserFacadeService } from 'src/app/shared/core/facade/api-user.facade.service';
+import { UserFacadeService } from 'src/app/shared/core/facade/user-facade.service';
 import { RegisterFacadeService } from 'src/app/shared/core/facade/register-facade.service';
 import moment from 'moment';
 import { ModalService } from 'src/app/shared/core/sync/modal.service';
@@ -17,7 +17,7 @@ export class RegisterFormComponent {
 
   currentDate: string = moment(Date.now()).format('YYYY-MM-DD')
 
-  constructor(private userFacade: ApiUserFacadeService, private router: Router, private registerFacade: RegisterFacadeService, private modal: ModalService) { }
+  constructor(private userFacade: UserFacadeService, private router: Router, private registerFacade: RegisterFacadeService, private modal: ModalService) { }
 
   addressForm = new FormGroup({
     street: new FormControl("", { nonNullable: true, validators: [Validators.required] }),

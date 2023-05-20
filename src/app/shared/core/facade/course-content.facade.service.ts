@@ -1,16 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscriber, combineLatest, distinctUntilChanged, map, of, shareReplay, switchMap, tap } from 'rxjs';
+import {
+  distinctUntilChanged,
+  map,
+  of,
+  shareReplay,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { ApiCourseContentService } from '../async/api-course-content.service';
 import { CourseContentStateService } from '../state/course-content-state.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class CourseContentFacadeService {
-  constructor(private apiServices: ApiCourseContentService, private courseContentState: CourseContentStateService, private sanitizer: DomSanitizer) { }
-
+  constructor(
+    private apiServices: ApiCourseContentService,
+    private courseContentState: CourseContentStateService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   readonly getCoursesContent$ = this.courseContentState
     .getStateCourseContent()
@@ -21,45 +30,45 @@ export class CourseContentFacadeService {
           return of(stateCoursesContent);
         }
         return this.getCourseContent().pipe(
-          tap((value) => this.courseContentState.addCoursesContent(value)),
-        )
+          tap((value) => this.courseContentState.addCoursesContent(value))
+        );
       }),
       distinctUntilChanged(),
-      shareReplay(1),
+      shareReplay(1)
     );
-
 
   readonly getCoursesfilter$ = this.courseContentState
     .getStateCoursesContentFilter()
     .pipe(
-      map((coursesContent) =>
-        coursesContent.filterCourseContent,
-      ),
+      map((coursesContent) => coursesContent.filterCourseContent),
       distinctUntilChanged(),
-      shareReplay(1),
+      shareReplay(1)
     );
 
   readonly getCoursesfilterInitial$ = this.getCoursesContent$.pipe(
     tap((value) => {
       map(({ courseContent }) => courseContent),
-        this.courseContentState.addCoursesContentFiltered(value)
+        this.courseContentState.addCoursesContentFiltered(value);
     })
-  )
-
+  );
 
   getCourseContent() {
-    return this.apiServices.getCoursesContent().pipe(
-      tap((value) => this.courseContentState.addCoursesContent(value))
-    )
+    return this.apiServices
+      .getCoursesContent()
+      .pipe(tap((value) => this.courseContentState.addCoursesContent(value)));
   }
 
   filteredCoursesContent(search: string) {
-    search = search.toLocaleLowerCase()
+    search = search.toLocaleLowerCase();
     return this.getCoursesContent$.pipe(
-      map((value) => value.filter(({ title, text }) => title.toLocaleLowerCase().includes(search) || text.toLocaleLowerCase().includes(search))),
-      tap((value) =>
-        this.courseContentState.addCoursesContentFiltered(value)
-      )
-    )
+      map((value) =>
+        value.filter(
+          ({ title, text }) =>
+            title.toLocaleLowerCase().includes(search) ||
+            text.toLocaleLowerCase().includes(search)
+        )
+      ),
+      tap((value) => this.courseContentState.addCoursesContentFiltered(value))
+    );
   }
 }

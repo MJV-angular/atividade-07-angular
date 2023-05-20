@@ -40,10 +40,16 @@ export class UserStateService {
   }
 
   editeUser(user: IUser) {
-    this.state$.next(user);
+    console.log(user)
+    const state = this.state$.getValue();
+    this.state$.next({
+      ...state,
+      ...user
+    });
   }
 
   addCourses(courses: CourseUser[]) {
+    console.log(courses)
     const state = this.state$.getValue();
     this.state$.next({
       ...state,
@@ -59,20 +65,4 @@ export class UserStateService {
     });
   }
 
-  addCompleteCoursesContentUser(coursesContentUser: CourseContentUser) {
-    const state = this.state$.getValue();
-    const updatedCoursesContentUser = state.coursesContentUser.map((courseContentUser) => {
-      console.log(courseContentUser.courseContentId, courseContentUser.id);
-      if (courseContentUser.courseContentId === coursesContentUser.id) {
-        return { ...courseContentUser, complete: coursesContentUser.complete };
-      }
-      return courseContentUser;
-    });
-
-    this.state$.next({
-      ...state,
-      coursesContentUser: updatedCoursesContentUser ,
-    });
-  }
 }
-

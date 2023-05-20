@@ -1,8 +1,6 @@
   <ul class="container" >
     <ng-container *ngFor="let item of coursesContentUser" >
-      <app-checkbox [class]="idSelected == item.id || item?  'checked': ''" [coursesContent]="item.courseContent" [checked]="item.complete"  (click)="emitEvent(item.courseContent.id, item.id)"></app-checkbox>
-    {{item.courseContent.id}}
-    {{item.courseContent.title | json}}
+      <app-checkbox [class]="idSelected == item.courseContent.id || item.complete?  'checked': ''" [coursesContent]="item.courseContent" [checked]="item.complete"  (click)="emitEvent(item.courseContent.id, item.id)"></app-checkbox>
     </ng-container>
   </ul>
 

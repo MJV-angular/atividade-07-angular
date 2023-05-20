@@ -1,9 +1,8 @@
 import { UserFacadeService } from 'src/app/shared/core/facade/user-facade.service';
 import { PerfilModalService } from 'src/app/shared/core/sync/perfil-modal.service';
-import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.facade.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CourseContentFacadeService } from 'src/app/shared/core/facade/course-content.facade.service';
-import { BehaviorSubject, Observable, Subscription, forkJoin, switchMap, take } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +18,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     public modalService: PerfilModalService,
     public userFacade: UserFacadeService,
-    public coursesFacade: ApiCoursesFacadeService,
     private courseContentFacade: CourseContentFacadeService
   ) {}
 

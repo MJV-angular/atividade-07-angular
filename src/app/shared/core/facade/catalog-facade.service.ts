@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class CatalogFacade2Service {
+export class CatalogFacadeService {
   constructor(
     private apiCourses: ApiCoursesService,
     private catalogState: CatalogStateService,
