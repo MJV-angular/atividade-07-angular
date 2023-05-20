@@ -7,12 +7,12 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   user$ = this.userFacade.getUser$;
   coursesUser$ = this.userFacade.getCoursesUser$;
-  subscription?: Subscription;
+  private subscription: Subscription = new Subscription()
   filterCoursesContent$ = this.courseContentFacade.getCoursesfilter$;
 
   constructor(
@@ -22,13 +22,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.subscription = this.courseContentFacade.getCoursesfilterInitial$.subscribe(value => console.log(value));
+    this.subscription = this.courseContentFacade.getCoursesfilterInitial$.subscribe();
   }
 
   showModal() {
