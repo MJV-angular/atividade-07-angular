@@ -1,62 +1,46 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiCoursesFacadeService } from 'src/app/shared/core/facade/api-courses.facade.service';
 
-import { forkJoin, map, switchMap, take } from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs';
 
-import { MergedCourseContentAndCourseContentUser } from 'src/app/shared/interfaces/course-content.interface';
-
-import { CourseDetailsFacadeService } from 'src/app/shared/core/facade/course-details-facade.service';
 import { Subscription } from 'rxjs';
+import { DashboardFacadeService } from 'src/app/shared/core/facade/dashboard-facade.service';
 
 @Component({
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.scss'],
 })
 export class CourseDetailComponent implements OnInit, OnDestroy {
-  courseState?: MergedCourseContentAndCourseContentUser | null[];
-  courseContent = this.courseDetailsFacade.getCourseContentBySelect$;
-  teste = this.courseDetailsFacade.getCoursesContentUser$;
-
-  private activatedRouteSubscription!: Subscription;
-  private firstCourseContentSubscription!: Subscription;
-  private coursesContentUserSubscription!: Subscription;
-  private courseContentBySelectSubscription!: Subscription;
-
+  courseContentSelect = this.dashboardFacade.getCourseSelected;
+  activatedRouteSubscription!: Subscription;
+  coursesContentUser = this.dashboardFacade.getCoursesContentbyCoursesId$;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private coursesFacade: ApiCoursesFacadeService,
-    private courseDetailsFacade: CourseDetailsFacadeService
+    private dashboardFacade: DashboardFacadeService
   ) {}
 
   ngOnDestroy(): void {
-    this.activatedRouteSubscription.unsubscribe();
-    this.firstCourseContentSubscription.unsubscribe();
-    this.coursesContentUserSubscription.unsubscribe();
-    this.courseContentBySelectSubscription.unsubscribe();
+    if (this.activatedRouteSubscription) {
+      this.activatedRouteSubscription.unsubscribe();
+    }
   }
 
   ngOnInit(): void {
     this.activatedRouteSubscription = this.activatedRoute.params
       .pipe(
         map((params) => params.id),
-        switchMap((courseId) => this.coursesFacade.getCourseById(courseId))
+        switchMap((courseId) =>
+          this.dashboardFacade.getCourseContentsUserByCourseId(courseId).pipe()
+        )
       )
       .subscribe();
-
-    this.firstCourseContentSubscription =
-      this.courseDetailsFacade.firstCourseContent$.subscribe();
-    this.coursesContentUserSubscription =
-      this.courseDetailsFacade.getCoursesContentUser$.subscribe();
-    this.courseContentBySelectSubscription =
-      this.courseDetailsFacade.getCourseContentBySelect$.subscribe();
   }
 
   onSelectCourseContent(id: number) {
-    this.courseDetailsFacade.getCourseContentbyId(id).subscribe();
+    this.dashboardFacade.selectCourseContentUser(id).subscribe();
   }
 
   onCompletedCourse(id: number) {
-    this.courseDetailsFacade.completedCourseContentUser(id).subscribe();
+    this.dashboardFacade.completedCourseContentUser(id).subscribe();
   }
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subject, debounceTime, filter, map, takeUntil, distinctUntilChanged, tap, switchMap, Observable, Subscription } from 'rxjs';
 import { CourseContentFacadeService } from '../../core/facade/course-content.facade.service';
-import { ICourseContent } from '../../interfaces/course-content.interface';
+import { CourseContent } from '../../interfaces/register-courses.interfaces';
 
 @Component({
   selector: 'app-input-search',

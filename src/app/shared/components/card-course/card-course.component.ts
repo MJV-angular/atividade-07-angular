@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IUserState } from '../../interfaces/user.interfaces';
-import { IcourseResponse } from '../../interfaces/courses.interfaces';
+import { CourseUser } from '../../interfaces/register-courses.interfaces';
+
 
 @Component({
   selector: 'app-card-course',
@@ -9,6 +10,6 @@ import { IcourseResponse } from '../../interfaces/courses.interfaces';
 })
 export class CardCourseComponent {
   @Input() user : IUserState | undefined;
-  @Input() course : IcourseResponse | undefined
+  @Input() course : CourseUser | undefined
 
 }

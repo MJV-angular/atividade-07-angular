@@ -1,6 +1,7 @@
 
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { ICourseContent } from 'src/app/shared/interfaces/course-content.interface';
+import { CourseContent } from 'src/app/shared/interfaces/register-courses.interfaces';
+
 
 @Component({
   selector: 'app-checkbox',
@@ -11,7 +12,7 @@ export class CheckboxComponent implements OnInit{
   ngOnInit(): void {
     console.log(this.coursesContent, 'checkbox')
   }
-  @Input() coursesContent?: ICourseContent;
+  @Input() coursesContent?: CourseContent;
   @Input() class!: string;
   @Input() checked: boolean = false;
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IcourseResponse } from 'src/app/shared/interfaces/courses.interfaces';
+import { CourseUser} from 'src/app/shared/interfaces/register-courses.interfaces';
 import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 
 @Component({
@@ -10,5 +10,5 @@ import { IUserState } from 'src/app/shared/interfaces/user.interfaces';
 
 export class CoursesListDashboardComponent {
   @Input() user! : IUserState | null;
-  @Input() courses : IcourseResponse[] | null  = null
+  @Input() courses : CourseUser[] | null  = null
 }

@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IRegisterCourseResponse } from 'src/app/shared/interfaces/register-courses.interfaces';
-import { OnInit } from '@angular/core';
-import { IcourseResponse } from 'src/app/shared/interfaces/courses.interfaces';
+import { CourseUser } from 'src/app/shared/interfaces/register-courses.interfaces';
 @Component({
   selector: 'app-my-courses',
   templateUrl: './my-courses.component.html',
@@ -9,6 +7,6 @@ import { IcourseResponse } from 'src/app/shared/interfaces/courses.interfaces';
 })
 export class MyCoursesComponent{
 
-  @Input() mycourses?: IcourseResponse[]
+  @Input() mycourses?: CourseUser[]
 
 }

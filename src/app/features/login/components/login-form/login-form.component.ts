@@ -1,9 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserResponse } from 'src/app/shared/interfaces/api.interfaces';
+import { IUser } from 'src/app/shared/interfaces/user.interfaces';
 import { ToastService } from 'src/app/shared/core/sync/toast.service';
-
-import { ApiSessionFacadeService } from 'src/app/shared/core/facade/api-session.service.facade';
+import { LoginFacadeService } from 'src/app/shared/core/facade/login-facade.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -13,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class LoginFormComponent implements OnDestroy {
   token?: string;
-  user?: UserResponse;
+  user?: IUser;
   error?: string;
 
   userForm = new FormGroup({
@@ -30,8 +29,10 @@ export class LoginFormComponent implements OnDestroy {
   private loginSubscription?: Subscription;
 
   constructor(
-    private apiService: ApiSessionFacadeService,
-    public toast: ToastService
+
+    public toast: ToastService,
+    private loginFacade: LoginFacadeService,
+
   ) {}
 
   ngOnDestroy(): void {
@@ -41,7 +42,7 @@ export class LoginFormComponent implements OnDestroy {
   }
 
   login() {
-    this.loginSubscription = this.apiService
+    this.loginSubscription = this.loginFacade
       .login(this.userForm.getRawValue())
       .subscribe();
   }

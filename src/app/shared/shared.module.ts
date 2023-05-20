@@ -20,6 +20,7 @@ import { InputSearchComponent } from './components/input-search/input-search.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThumbPipe } from './pipes/thumb.pipe';
 import { EmbedPipe } from './pipes/embed.pipe';
+
 @NgModule({
   declarations: [
     HeaderComponent,

@@ -1,21 +1,25 @@
-  <div>
-    <h2 class="primary-title">Escolha um curso</h2>
-  </div>
+<div>
+  <h2 class="primary-title">Escolha um curso</h2>
+</div>
 
-  <app-catalog-list>
-    <ng-container *ngFor="let item of catalog?.courses; let i = index">
-      <app-catalog-item
-        [styles]="catalog.selects.includes(item.id) || userCourses?.includes(item.id) ? 'selected' : ''"
-        (click)="onClick(item.id)"
-      >
-        {{ item.name }}
-      </app-catalog-item>
-    </ng-container>
-  </app-catalog-list>
+<app-catalog-list *ngIf="courses$ | async">
+  <ng-container *ngFor="let item of courses$ | async; let i = index">
+    <app-catalog-item
+      (click)="onClick(item.id)"
+      [styles]="
+        selects$.includes(item.id) || coursesUser$.includes(item.id)
+          ? 'selected'
+          : ''
+      "
+    >
+      {{ item.name }}
+    </app-catalog-item>
+  </ng-container>
+</app-catalog-list>
 
-  <div class="main-footer">
-    <button (click)="onSubmit()" class="button-secundary">
-      <img src="/assets/AngleUp.svg" alt="" srcset="" />
-    </button>
-  </div>
+<div class="main-footer">
+  <button (click)="onSubmit()" class="button-secundary">
+    <img src="/assets/AngleUp.svg" alt="" srcset="" />
+  </button>
+</div>
 

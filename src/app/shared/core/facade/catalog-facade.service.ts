@@ -1,28 +1,68 @@
 import { Injectable } from '@angular/core';
-import {  distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs';
+import { ApiCoursesService } from '../async/api-courses.service';
 import { CatalogStateService } from '../state/catalog-state.service';
-import { ApiCoursesFacadeService } from './api-courses.facade.service';
-import { ApiUserFacadeService } from './api-user.facade.service';
+import {
+  distinctUntilChanged,
+  map,
+  of,
+  shareReplay,
+  switchMap,
+  take,
+  tap,
+} from 'rxjs';
+import { ApiRegisterCourseService } from '../async/api-register-course.service';
+import { UserFacadeService } from './user-facade.service';
+import { Router } from '@angular/router';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CatalogFacadeService {
+  constructor(
+    private apiCourses: ApiCoursesService,
+    private catalogState: CatalogStateService,
+    private apiRegisterCourseFacade: ApiRegisterCourseService,
+    private userFacade: UserFacadeService,
+    private router: Router
+  ) {}
 
-  constructor(public courseFacade: ApiCoursesFacadeService, private catalogState: CatalogStateService, private userFacade: ApiUserFacadeService) { }
+  readonly getCourses$ = this.apiCourses.getCourses();
 
-  readonly getCatalog$ = this.courseFacade.getCourses$.pipe(
-    tap((value) => this.catalogState.addCourses(value)),
-    switchMap(() => this.userFacade.getUser$),
-    map((value) => value.courses.map(ele => this.selectCatalog(ele.courseId))),
-    switchMap(() => this.catalogState.getState()),
-    shareReplay(1),
+  readonly getCatalogSelects$ = this.catalogState
+    .getState()
+    .pipe(map((catalog) => catalog.selects));
+
+  readonly getCoursesByCatalog$ = this.catalogState.getState().pipe(
+    map((catalog) => catalog.courses),
+    take(1),
+    switchMap((stateCourses) => {
+      if (stateCourses.length == 0) {
+        return of(stateCourses);
+      }
+      return this.getCourses$.pipe(
+        tap((value) => {
+          this.catalogState.addCourses(value);
+        })
+      );
+    }),
+    distinctUntilChanged(),
+    shareReplay(1)
   );
 
-  selectCatalog(id: number) {
-    return this.catalogState.selectCourses(id)
+  redirectToPath(pathDirect: string) {
+    this.router.navigateByUrl(pathDirect);
   }
 
+  registerCourses(ids: number[]) {
+    return this.apiRegisterCourseFacade.registerCourse({ courseId: ids }).pipe(
+      map((response) => response[0].courses),
+      tap((response) => {
+        this.userFacade.setRegisterCourses(response);
+        this.redirectToPath('/dashboard');
+      })
+    );
+  }
 
+  selectCatalog(id: number) {
+    return this.catalogState.selectCourses(id);
+  }
 }
-
-

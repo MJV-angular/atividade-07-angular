@@ -1,7 +1,5 @@
-
-import { MergedCourseContentAndCourseContentUser } from "./course-content.interface";
+import { CourseContent } from "./register-courses.interfaces";
 
 export interface IcourseDetailsState {
-  courseSelected: MergedCourseContentAndCourseContentUser | null,
-
+  courseSelected: CourseContent | null,
 }

@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {
-  IcoursesContentUser,
-  UserResponse,
-} from '../../interfaces/api.interfaces';
+import { IUser, IUserResponse, IcoursesContentUser } from '../../interfaces/user.interfaces';
 import { IUserState } from '../../interfaces/user.interfaces';
-import { IRegisterCourseResponse } from '../../interfaces/register-courses.interfaces';
+import { CourseUser } from '../../interfaces/register-courses.interfaces';
+import { CourseContentUser } from '../../interfaces/register-courses.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -37,15 +35,21 @@ export class UserStateService {
     return this.state$.asObservable();
   }
 
-  setUser(user: UserResponse) {
+  setUser(user: IUser) {
     this.state$.next(user);
   }
 
-  editeUser(user: UserResponse) {
-    this.state$.next(user);
+  editeUser(user: IUser) {
+    console.log(user)
+    const state = this.state$.getValue();
+    this.state$.next({
+      ...state,
+      ...user
+    });
   }
 
-  addCourses(courses: IRegisterCourseResponse[]) {
+  addCourses(courses: CourseUser[]) {
+    console.log(courses)
     const state = this.state$.getValue();
     this.state$.next({
       ...state,
@@ -61,20 +65,4 @@ export class UserStateService {
     });
   }
 
-  addCompleteCoursesContentUser(coursesContentUser: IcoursesContentUser) {
-    const state = this.state$.getValue();
-    const updatedCoursesContentUser = state.coursesContentUser.map((courseContentUser) => {
-      console.log(courseContentUser.courseContentId, courseContentUser.id);
-      if (courseContentUser.courseContentId === coursesContentUser.id) {
-        return { ...courseContentUser, complete: coursesContentUser.complete };
-      }
-      return courseContentUser;
-    });
-
-    this.state$.next({
-      ...state,
-      coursesContentUser: updatedCoursesContentUser ,
-    });
-  }
 }
-

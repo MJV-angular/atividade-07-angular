@@ -5,9 +5,10 @@
     <p>Cursos</p>
   </div>
   <ul>
-    <ng-container *ngFor="let item of courses">
-      <li (click)="onSelectClick(item.id)" >
-        <a>{{ item.name }}</a>
+    <ng-container *ngFor="let item of coursesUser">
+      <!-- {{item| json}} -->
+      <li (click)="onSelectClick(item.course.id)" >
+        <a>{{ item.course.name }}</a>
       </li>
     </ng-container>
 

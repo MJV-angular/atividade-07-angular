@@ -10,7 +10,8 @@ section {
 figure {
   width: 110px;
   max-height: 110px;
-  height: 110px;
+  min-height: 110px;
+  height: 100%;
   border-radius: 8px;
   text-align: center;
   background-color: var(--gray-color);
