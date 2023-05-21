@@ -12,7 +12,8 @@ import { Subscription } from 'rxjs';
 export class DashboardComponent implements OnInit, OnDestroy {
   user$ = this.userFacade.getUser$;
   coursesUser$ = this.userFacade.getCoursesUser$;
-  private subscription: Subscription = new Subscription()
+  private subscriptionCourses$: Subscription = new Subscription()
+  private subscriptionUser$: Subscription = new Subscription()
   filterCoursesContent$ = this.courseContentFacade.getCoursesfilter$;
 
   constructor(
@@ -22,12 +23,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptionCourses$.unsubscribe();
+    this.subscriptionUser$.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.userFacade.getUser$.subscribe(value => console.log(value))
-    this.subscription = this.courseContentFacade.getCoursesfilterInitial$.subscribe();
+    this.subscriptionUser$ = this.userFacade.getUser$.subscribe()
+    this.subscriptionCourses$ = this.courseContentFacade.getCoursesfilterInitial$.subscribe();
   }
 
   showModal() {
