@@ -42,8 +42,7 @@ export class LoginFacadeService {
           }
         },
         error: (error: any) => {
-          this.modal.show();
-          console.log(error.message);
+          this.modal.show(error.error.message,"error");
         },
         complete: () => {
           this.toast.show('Seja bem vindo!');
