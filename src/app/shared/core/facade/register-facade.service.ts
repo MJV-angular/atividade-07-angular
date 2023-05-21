@@ -5,19 +5,16 @@ import { tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class RegisterFacadeService {
+  constructor(private apiUser: ApiUserService, private router: Router) {}
 
-  constructor(private apiUser: ApiUserService, private router:Router ) { }
-
-  createUser(user: UserRequest){
+  createUser(user: UserRequest) {
     return this.apiUser.createUser(user).pipe(
       tap(() => {
         this.router.navigate(['/login']);
       })
-    )
+    );
   }
 }
-

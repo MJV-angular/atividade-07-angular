@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiCoursesService } from '../async/api-courses.service';
 import { CatalogStateService } from '../state/catalog-state.service';
 import {
+  Subject,
   distinctUntilChanged,
   map,
   of,
@@ -17,6 +18,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class CatalogFacadeService {
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
   constructor(
     private apiCourses: ApiCoursesService,
     private catalogState: CatalogStateService,
@@ -27,13 +30,9 @@ export class CatalogFacadeService {
 
   readonly getCourses$ = this.apiCourses.getCourses();
 
-  readonly getCatalogSelects$ = this.catalogState
-    .getState()
-    .pipe(map((catalog) => catalog.selects));
-
   readonly getCoursesByCatalog$ = this.catalogState.getState().pipe(
-    map((catalog) => catalog.courses),
     take(1),
+    map((catalog) => catalog.courses),
     switchMap((stateCourses) => {
       if (stateCourses.length == 0) {
         return of(stateCourses);
@@ -45,24 +44,16 @@ export class CatalogFacadeService {
       );
     }),
     distinctUntilChanged(),
-    shareReplay(1)
   );
 
-  redirectToPath(pathDirect: string) {
-    this.router.navigateByUrl(pathDirect);
-  }
 
   registerCourses(ids: number[]) {
-    return this.apiRegisterCourseFacade.registerCourse({ courseId: ids }).pipe(
+     return this.apiRegisterCourseFacade.registerCourse({ courseId: ids }).pipe(
+      take(1),
       map((response) => response[0].courses),
       tap((response) => {
         this.userFacade.setRegisterCourses(response);
-        this.redirectToPath('/dashboard');
       })
     );
-  }
-
-  selectCatalog(id: number) {
-    return this.catalogState.selectCourses(id);
   }
 }

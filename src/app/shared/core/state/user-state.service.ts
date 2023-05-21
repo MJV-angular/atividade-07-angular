@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IUser, IUserResponse, IcoursesContentUser } from '../../interfaces/user.interfaces';
+import {
+  IUser,
+  IUserResponse,
+  IcoursesContentUser,
+} from '../../interfaces/user.interfaces';
 import { IUserState } from '../../interfaces/user.interfaces';
 import { CourseUser } from '../../interfaces/register-courses.interfaces';
 import { CourseContentUser } from '../../interfaces/register-courses.interfaces';
@@ -40,20 +44,25 @@ export class UserStateService {
   }
 
   editeUser(user: IUser) {
-    console.log(user)
     const state = this.state$.getValue();
     this.state$.next({
       ...state,
-      ...user
+      ...user,
+    });
+  }
+
+  cleanStateUser() {
+    this.state$.next({
+      coursesContentUser: [],
+      courses: [],
     });
   }
 
   addCourses(courses: CourseUser[]) {
-    console.log(courses)
     const state = this.state$.getValue();
     this.state$.next({
       ...state,
-      courses: [...state.courses, ...courses],
+      courses: [...courses],
     });
   }
 
@@ -64,5 +73,4 @@ export class UserStateService {
       coursesContentUser: [...state.coursesContentUser, ...coursesContent],
     });
   }
-
 }

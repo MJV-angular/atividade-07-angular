@@ -12,16 +12,15 @@ import { DashboardFacadeService } from 'src/app/shared/core/facade/dashboard-fac
 })
 export class CourseDetailComponent implements OnInit, OnDestroy {
   courseContentSelect = this.dashboardFacade.getCourseSelected;
-  activatedRouteSubscription: Subscription = new Subscription()
+  completedCourseSubscription: Subscription = new Subscription();
+  selectedSubscription: Subscription = new Subscription();
+  activatedRouteSubscription: Subscription = new Subscription();
   coursesContentUser = this.dashboardFacade.getCoursesContentbyCoursesId$;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private dashboardFacade: DashboardFacadeService
   ) {}
-
-  ngOnDestroy(): void {
-    this.activatedRouteSubscription.unsubscribe();
-  }
 
   ngOnInit(): void {
     this.activatedRouteSubscription = this.activatedRoute.params
@@ -35,10 +34,20 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
   }
 
   onSelectCourseContent(id: number) {
-    this.dashboardFacade.selectCourseContentUser(id).subscribe();
+    this.selectedSubscription = this.dashboardFacade
+      .selectCourseContentUser(id)
+      .subscribe();
   }
 
   onCompletedCourse(id: number) {
-    this.dashboardFacade.completedCourseContentUser(id).subscribe();
+    this.completedCourseSubscription = this.dashboardFacade
+      .completedCourseContentUser(id)
+      .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.activatedRouteSubscription.unsubscribe();
+    this.completedCourseSubscription.unsubscribe();
+    this.selectedSubscription.unsubscribe();
   }
 }

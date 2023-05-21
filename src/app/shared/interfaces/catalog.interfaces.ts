@@ -22,6 +22,5 @@ interface CourseContent {
 
 
 export interface ICatalog {
-  selects: number[],
   courses: Courses[];
 }

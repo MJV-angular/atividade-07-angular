@@ -7,6 +7,6 @@
     <li *ngIf="user"><a appBlue routerLink="/dashboard">Dashboard</a></li>
     <li *ngIf="!user"><a appBlue routerLink="/register">Cadastro</a></li>
     <li *ngIf="!user"><a appBlue routerLink="/login">Login</a></li>
-    <li *ngIf="user"><a (click)="logout()" appBlue>Sair</a></li>
+    <li *ngIf="user"><a (click)="onLogout()" appBlue>Sair</a></li>
   </ul>
 </nav>

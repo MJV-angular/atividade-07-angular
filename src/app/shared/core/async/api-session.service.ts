@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IloginRequest } from '../../interfaces/user.interfaces';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from '../sync/local-storage.service';
 import { environment } from 'src/envirements/envirements';
 
 @Injectable({
@@ -14,9 +13,5 @@ export class ApiSessionService {
 
   login(data: IloginRequest): Observable<any> {
     return this.httpClient.post(`${environment.apiKey}/login`, data)
-  }
-
-  logout(): void {
-    localStorage.clear()
   }
 }

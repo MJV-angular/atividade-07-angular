@@ -22,66 +22,27 @@ export class RegisterFormComponent implements OnDestroy {
   ) {}
 
   addressForm = new FormGroup({
-    street: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    number: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    city: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    state: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    country: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    zipCode: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
+    street: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    number: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    city: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    state: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    country: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    zipCode: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
 
   userForm = new FormGroup({
-    email: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.email],
-    }),
+    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
     name: new FormControl('', {
       nonNullable: true,
-      validators: [
-        Validators.required,
-        Validators.maxLength(50),
-        Validators.minLength(3),
-      ],
+      validators: [Validators.required, Validators.maxLength(50), Validators.minLength(3)],
     }),
     cpf: new FormControl('', {
       nonNullable: true,
-      validators: [
-        Validators.required,
-        Validators.pattern(/^\d+$/),
-        Validators.maxLength(11),
-        Validators.minLength(11),
-      ],
+      validators: [Validators.required, Validators.pattern(/^\d+$/), Validators.maxLength(11), Validators.minLength(11)],
     }),
-    dateBirth: new FormControl<Date | string>(this.currentDate, {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    picture: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    password: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(6)],
-    }),
+    dateBirth: new FormControl<Date | string>(this.currentDate, { nonNullable: true, validators: [Validators.required] }),
+    picture: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
     address: this.addressForm,
   });
 
@@ -92,16 +53,11 @@ export class RegisterFormComponent implements OnDestroy {
   createUser() {
     const { dateBirth, ...withOutDateBirth } = this.userForm.getRawValue();
     this.subscription.add(
-      this.registerFacade
-        .createUser({
-          ...withOutDateBirth,
-          dateBirth: this.formatDate(this.userForm.value.dateBirth),
-        })
-        .subscribe({
-          next: () => console.log('user criado'),
-          error: (error) => console.log(`erro: ${error.message}`),
-          complete: () => this.router.navigateByUrl('/login'),
-        })
+      this.registerFacade.createUser({ ...withOutDateBirth, dateBirth: this.formatDate(this.userForm.value.dateBirth) }).subscribe({
+        next: () => console.log('user criado'),
+        error: (error) => console.log(`erro: ${error.message}`),
+        complete: () => this.router.navigateByUrl('/login'),
+      })
     );
   }
 

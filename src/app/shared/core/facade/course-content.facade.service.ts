@@ -9,7 +9,7 @@ import {
 } from 'rxjs';
 import { ApiCourseContentService } from '../async/api-course-content.service';
 import { CourseContentStateService } from '../state/course-content-state.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',

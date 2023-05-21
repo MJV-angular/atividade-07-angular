@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.userFacade.getUser$.subscribe(value => console.log(value))
     this.subscription = this.courseContentFacade.getCoursesfilterInitial$.subscribe();
   }
 
