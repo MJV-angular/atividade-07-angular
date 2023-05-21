@@ -1,6 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject, Subscription, switchMap, take, takeUntil, tap } from 'rxjs';
+import {
+  Subject,
+  Subscription,
+  map,
+  switchMap,
+  take,
+  takeUntil,
+  tap,
+} from 'rxjs';
 import { CatalogFacadeService } from 'src/app/shared/core/facade/catalog-facade.service';
 import { UserFacadeService } from 'src/app/shared/core/facade/user-facade.service';
 import { CourseUser } from 'src/app/shared/interfaces/register-courses.interfaces';
@@ -10,7 +18,7 @@ import { CourseUser } from 'src/app/shared/interfaces/register-courses.interface
   templateUrl: './catalog-main.component.html',
   styleUrls: ['./catalog-main.component.scss'],
 })
-export class CatalogMainComponent implements OnDestroy {
+export class CatalogMainComponent implements OnDestroy, OnInit {
   constructor(
     private catalogFacade: CatalogFacadeService,
     private userFacade: UserFacadeService,
@@ -20,9 +28,15 @@ export class CatalogMainComponent implements OnDestroy {
   class?: string;
   selects: number[] = [];
   courses$ = this.catalogFacade.getCourses$;
-  coursesUser$ = this.userFacade.getCoursesUser$;
+  userCoursesIds!: number[];
+  coursesUserSubscription: Subscription = new Subscription();
   registerSubscription: Subscription = new Subscription();
 
+  ngOnInit(): void {
+    this.coursesUserSubscription = this.userFacade.getCoursesUser$
+      .pipe(map((coursesUser) => coursesUser.map((ele) => ele.course.id)))
+      .subscribe((coursesUserId) => (this.userCoursesIds = coursesUserId));
+  }
   onClick(id: number) {
     if (this.selects.indexOf(id) == -1) {
       this.selects.push(id);
@@ -36,13 +50,20 @@ export class CatalogMainComponent implements OnDestroy {
   }
 
   onSubmit() {
-    this.catalogFacade.registerCourses(this.selects).pipe(
-      take(1)
-    ).subscribe({
-      complete: () => {
-        this.redirectTopath('/dashboard');
-      },
-    });
+    if (this.selects.length > 0) {
+      this.catalogFacade
+        .registerCourses(this.selects)
+        .pipe(take(1))
+        .subscribe({
+          complete: () => {
+            this.redirectTopath('/dashboard');
+          },
+        });
+
+      this.selects = [];
+    } else {
+      this.redirectTopath('/dashboard');
+    }
   }
 
   ngOnDestroy(): void {

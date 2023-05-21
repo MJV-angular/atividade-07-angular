@@ -99,3 +99,16 @@
   position: relative;
   text-decoration: none;
 }
+
+.disabled
+{
+  display: block;
+  padding: 30px 20px;
+  background-color: rgb(111, 111, 111);
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  .courses-item_bg{
+    background-color: #323232;
+  }
+}
