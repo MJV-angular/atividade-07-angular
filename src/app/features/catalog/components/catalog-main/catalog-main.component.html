@@ -5,10 +5,12 @@
 <app-catalog-list *ngIf="courses$ | async">
   <ng-container *ngFor="let item of courses$ | async; let i = index">
     <app-catalog-item
-      (click)="onClick(item.id)"
+      (click)="!userCoursesIds.includes(item.id) && onClick(item.id)"
       [styles]="
-        selects.includes(item.id) || (coursesUser$ | async)?.includes(item.id)
+        selects.includes(item.id)
           ? 'selected'
+          : userCoursesIds.includes(item.id)
+          ? 'disabled'
           : ''
       "
     >

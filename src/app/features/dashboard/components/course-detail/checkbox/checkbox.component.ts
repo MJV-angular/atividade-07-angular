@@ -15,4 +15,5 @@ export class CheckboxComponent implements OnInit{
   @Input() coursesContent?: CourseContent;
   @Input() class!: string;
   @Input() checked: boolean = false;
+
 }
