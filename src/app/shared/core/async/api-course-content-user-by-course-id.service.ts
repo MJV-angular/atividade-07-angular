@@ -15,9 +15,7 @@ export class ApiCourseContentUserByCourseIdService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getCoursesContentUserById(
-    id: number
-  ): Observable<CourseContentUser[]> {
+  getCoursesContentUserById(id: number): Observable<CourseContentUser[]> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });

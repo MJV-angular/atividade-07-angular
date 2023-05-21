@@ -7,7 +7,7 @@ import { UserStateService } from '../state/user-state.service';
 import { Router } from '@angular/router';
 import { ToastService } from '../sync/toast.service';
 import { IUserResponse, IloginRequest } from '../../interfaces/user.interfaces';
-
+import { ModalService } from '../sync/modal.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +16,8 @@ export class LoginFacadeService {
     private router: Router,
     public api: Api,
     private toast: ToastService,
-    public userState: UserStateService
+    public userState: UserStateService,
+    private modal: ModalService
   ) {}
 
   setItensLocalStorage(response: IUserResponse) {
@@ -41,6 +42,7 @@ export class LoginFacadeService {
           }
         },
         error: (error: any) => {
+          this.modal.show();
           console.log(error.message);
         },
         complete: () => {

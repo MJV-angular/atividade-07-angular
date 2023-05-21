@@ -7,7 +7,7 @@
     <app-catalog-item
       (click)="onClick(item.id)"
       [styles]="
-        selects$.includes(item.id) || coursesUser$.includes(item.id)
+        selects.includes(item.id) || (coursesUser$ | async)?.includes(item.id)
           ? 'selected'
           : ''
       "
@@ -22,4 +22,3 @@
     <img src="/assets/AngleUp.svg" alt="" srcset="" />
   </button>
 </div>
-

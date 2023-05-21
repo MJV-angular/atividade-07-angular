@@ -39,21 +39,23 @@ export class DashboardStateService {
     });
   }
 
+  cleanStateDashboard() {
+    this.state$.next({
+      coursesContentUserbyCourseId: null,
+      courseContentSelect: null,
+    });
+  }
+
   addCompleteCoursesContentUser(coursesContentUpdated: CourseContentUser) {
     const state = this.state$.getValue();
     const updatedCoursesContentUser = state.coursesContentUserbyCourseId?.map(
       (courseContentUser) => {
-        console.log(courseContentUser.id, courseContentUser.id);
         if (courseContentUser.id === coursesContentUpdated.id) {
           return {
             ...courseContentUser,
             complete: coursesContentUpdated.complete,
           };
         }
-        console.log(
-          { ...courseContentUser, complete: coursesContentUpdated.complete },
-          state.coursesContentUserbyCourseId![0]
-        );
         return courseContentUser;
       }
     );

@@ -22,7 +22,7 @@ import {
   CourseUser,
 } from '../../interfaces/register-courses.interfaces';
 import { ApiCourseContentUserByCourseIdService } from '../async/api-course-content-user-by-course-id.service';
-import { IcoursesContentUser } from '../../interfaces/user.interfaces';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -30,8 +30,7 @@ export class DashboardFacadeService {
   constructor(
     public dashboardState: DashboardStateService,
     private apiCourseContentsUserByCourse: ApiCourseContentUserByCourseIdService,
-    private courseContentUserApi: ApiCourseContentUserService,
-    private userFacade: UserFacadeService
+    private courseContentUserApi: ApiCourseContentUserService
   ) {}
 
   readonly getCoursesContentbyCoursesId$ = this.dashboardState.getState().pipe(
