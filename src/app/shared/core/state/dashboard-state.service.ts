@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IcourseDetailsState } from '../../interfaces/course-details.interfaces';
-import {
-  CourseContent,
-  CourseContentUser,
-  CourseUser,
-} from '../../interfaces/register-courses.interfaces';
+
+import { CourseContentUser } from '../../interfaces/register-courses.interfaces';
 import { DashboardState } from '../../interfaces/dashboard.interfaces';
 
 @Injectable({

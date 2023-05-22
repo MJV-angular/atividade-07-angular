@@ -1,4 +1,3 @@
-
 export interface Courses {
   createdAt: string;
   id: number;
@@ -19,7 +18,6 @@ interface CourseContent {
   video_url: string;
   text: string;
 }
-
 
 export interface ICatalog {
   courses: Courses[];

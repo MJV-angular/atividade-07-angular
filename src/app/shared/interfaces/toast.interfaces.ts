@@ -1,5 +1,5 @@
 export interface Itoast{
   hide: boolean,
   message: string,
-  type: string,
+  type: 'sucess' | 'error',
 }

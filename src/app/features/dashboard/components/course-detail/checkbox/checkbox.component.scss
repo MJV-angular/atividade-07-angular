@@ -1,12 +1,4 @@
 .container {
-  .custom-checkbox:checked {
-    background-color: lightgreen;
-  }
-
-  .custom-checkbox:disabled {
-    background-color: rgb(255, 0, 0);
-  }
-
   padding: 0 20px;
   cursor: pointer;
   display: flex;
@@ -18,7 +10,7 @@
   font-weight: 600;
 
   &:hover {
-    background: var(--gray-color);
+    background: var(--color--vivid-green-cyan-secundary);
     color: var(--white-color);
   }
   div {
@@ -30,6 +22,11 @@
 }
 
 .checked {
+  background-color: var(--color--vivid-green-cyan);
+  color: var(--white-color);
+}
+
+.selected {
   background-color: var(--blue-color);
-  color: white;
+  color: var(--gray-color);
 }

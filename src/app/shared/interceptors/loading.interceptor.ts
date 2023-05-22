@@ -3,27 +3,30 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoadingService } from '../core/sync/loading.service';
-import { finalize } from 'rxjs/operators'
+import { finalize } from 'rxjs/operators';
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
-  private activeRequest = 0
+  private activeRequest = 0;
 
-  constructor(private loadingServices: LoadingService) { }
+  constructor(private loadingServices: LoadingService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     if (this.activeRequest == 0) {
       this.loadingServices.show();
     }
-    this.activeRequest++
+    this.activeRequest++;
     return next.handle(request).pipe(
       finalize(() => {
-        this.activeRequest--
+        this.activeRequest--;
         if (this.activeRequest == 0) {
-          this.loadingServices.hide()
+          this.loadingServices.hide();
         }
       })
     );
