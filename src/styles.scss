@@ -398,11 +398,11 @@ a {
 
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
-  width: 6px;
-  width: 6px;
+  width: 10px;
+
 }
 *::-webkit-scrollbar-track {
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #DFE9EB;
 }
 
@@ -415,7 +415,7 @@ a {
 }
 
 *::-webkit-scrollbar-thumb {
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #72846F;
 }
 

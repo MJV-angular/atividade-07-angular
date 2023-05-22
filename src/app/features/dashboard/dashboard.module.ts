@@ -18,6 +18,7 @@ import { CourseDetailComponent } from './pages/course-detail/course-detail/cours
 import { AsideCourseComponent } from './components/course-detail/aside-course/aside-course.component';
 import { CheckboxComponent } from './components/course-detail/checkbox/checkbox.component';
 import { CourseContentComponent } from './components/course-detail/course-content/course-content.component';
+import { DiscussionBoxComponent } from './components/dashboard/discussion-box/discussion-box.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { CourseContentComponent } from './components/course-detail/course-conten
     AsideCourseComponent,
     CheckboxComponent,
     CourseContentComponent,
+    DiscussionBoxComponent,
 
   ],
   imports: [

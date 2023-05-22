@@ -3,7 +3,7 @@
     <div class="btn-container">
       <button (click)="emitEvent(courseContent.id)" [disabled]="courseContent.complete">{{!courseContent.complete?"completar tarefa": "tarefa concluída"}}</button>
     </div>
-    <iframe width="100%" height="100%" [src]="courseContent.courseContent.video_url | embed" ></iframe>
+    <iframe width="100%" height="100%" [src]="courseContent.courseContent.video_url | embed" frameborder="0" ></iframe>
   </div>
 
 </ng-container>
