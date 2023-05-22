@@ -4,6 +4,7 @@ import { ApiUserService } from '../async/api-user.service';
 import { UserStateService } from '../state/user-state.service';
 import { IUser, UserRequest } from '../../interfaces/user.interfaces';
 import { Observable, distinctUntilChanged, map, shareReplay, tap } from 'rxjs';
+import { ToastService } from '../sync/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,8 @@ import { Observable, distinctUntilChanged, map, shareReplay, tap } from 'rxjs';
 export class UserFacadeService {
   constructor(
     private apiServices: ApiUserService,
-    private userState: UserStateService
+    private userState: UserStateService,
+    private toast: ToastService
   ) {}
 
   setRegisterCourses(courses: CourseUser[]) {
@@ -52,6 +54,9 @@ export class UserFacadeService {
     return this.apiServices.updatedUser(user, id).pipe(
       tap((response) => {
         this.userState.editeUser(response);
+      }),
+      tap(() => {
+        this.toast.show('Usuário atualizado com sucesso.', "sucess");
       })
     );
   }

@@ -1,27 +1,10 @@
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  Observable,
-  distinctUntilChanged,
-  map,
-  mergeMap,
-  of,
-  shareReplay,
-  switchMap,
-  take,
-  tap,
-  filter,
-  takeUntil,
-} from 'rxjs';
+import { Observable, map, of, switchMap, take, tap } from 'rxjs';
 import { ApiCourseContentUserService } from '../async/api-course-content-user.service';
 import { DashboardStateService } from '../state/dashboard-state.service';
-import { UserFacadeService } from './user-facade.service';
-import {
-  CourseContent,
-  CourseContentUser,
-  CourseUser,
-} from '../../interfaces/register-courses.interfaces';
+import { CourseContentUser } from '../../interfaces/register-courses.interfaces';
 import { ApiCourseContentUserByCourseIdService } from '../async/api-course-content-user-by-course-id.service';
+import { ToastService } from '../sync/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +13,8 @@ export class DashboardFacadeService {
   constructor(
     public dashboardState: DashboardStateService,
     private apiCourseContentsUserByCourse: ApiCourseContentUserByCourseIdService,
-    private courseContentUserApi: ApiCourseContentUserService
+    private courseContentUserApi: ApiCourseContentUserService,
+    public toast: ToastService
   ) {}
 
   readonly getCoursesContentbyCoursesId$ = this.dashboardState.getState().pipe(
@@ -54,13 +38,14 @@ export class DashboardFacadeService {
   }
 
   completedCourseContentUser(id: number): Observable<CourseContentUser> {
-    return this.courseContentUserApi
-      .completedCourseContentUser(id)
-      .pipe(
-        tap((response) =>
-          this.dashboardState.addCompleteCoursesContentUser(response)
-        )
-      );
+    return this.courseContentUserApi.completedCourseContentUser(id).pipe(
+      tap((response) =>
+        this.dashboardState.addCompleteCoursesContentUser(response)
+      ),
+      tap({
+        complete: () => this.toast.show('Curso completado', 'sucess'),
+      })
+    );
   }
 
   getCourseContentsUserByCourseId(id: number): Observable<CourseContentUser[]> {

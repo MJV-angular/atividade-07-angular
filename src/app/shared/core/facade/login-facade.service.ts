@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 import { ApiSessionService as Api } from '../async/api-session.service';
-
 import { UserStateService } from '../state/user-state.service';
-
 import { Router } from '@angular/router';
 import { ToastService } from '../sync/toast.service';
 import { IUserResponse, IloginRequest } from '../../interfaces/user.interfaces';
 import { ModalService } from '../sync/modal.service';
+
 @Injectable({
   providedIn: 'root',
 })
 export class LoginFacadeService {
+
+  name: string = ''
   constructor(
     private router: Router,
     public api: Api,
@@ -35,6 +36,7 @@ export class LoginFacadeService {
         next: (response: IUserResponse) => {
           this.userState.setUser(response.user);
           this.setItensLocalStorage(response);
+          this.name = response.user.name
           if (response.user.courses.length == 0) {
             this.redirectToPath('/catalog');
           } else {
@@ -45,7 +47,7 @@ export class LoginFacadeService {
           this.modal.show(error.error.message,"error");
         },
         complete: () => {
-          this.toast.show('Seja bem vindo!');
+          this.toast.show(`Seja bem vindo ${this.name}`, 'sucess');
         },
       })
     );

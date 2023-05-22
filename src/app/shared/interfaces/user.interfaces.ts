@@ -1,5 +1,4 @@
-
-import { CourseUser } from "./register-courses.interfaces";
+import { CourseUser } from './register-courses.interfaces';
 export interface IUser {
   user: any;
   token: string;
@@ -10,9 +9,9 @@ export interface IUser {
   picture?: string;
   dateBirth: Date;
   cpf: string;
-  address:IAddressRequest;
-  courses: CourseUser[]
-  coursesContentUser: IcoursesContentUser[]
+  address: IAddressRequest;
+  courses: CourseUser[];
+  coursesContentUser: IcoursesContentUser[];
 }
 
 export interface UserRequest {
@@ -24,13 +23,12 @@ export interface UserRequest {
   cpf: string;
 }
 
-
-export interface IcoursesContentUser{
-  id: number,
-  courseContentId: number,
-  userId: number,
-  complete: boolean,
-  favorite: boolean
+export interface IcoursesContentUser {
+  id: number;
+  courseContentId: number;
+  userId: number;
+  complete: boolean;
+  favorite: boolean;
 }
 
 export interface IloginRequest {
@@ -58,7 +56,6 @@ export interface IAddressState {
   country?: string;
   zipCode?: string;
   userId?: number;
-
 }
 
 export interface IUserState {
@@ -71,9 +68,8 @@ export interface IUserState {
   cpf?: string;
   address?: IAddressState;
   courses: CourseUser[];
-  coursesContentUser: IcoursesContentUser[]
+  coursesContentUser: IcoursesContentUser[];
 }
-
 
 export interface IUserResponse {
   user: IUser;
