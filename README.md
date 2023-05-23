@@ -10,11 +10,6 @@ Este é o projeto final desenvolvido para os alunos da MJV School Angular, com o
 ![image](https://user-images.githubusercontent.com/100942719/234718035-3e5bd47f-ee37-4bb3-ba66-53a62d90e3c9.png)
 
 
-[api utilizada no projeto](https://github.com/MJV-angular/api-projeto-final) 
-[aplicação no vercel](https://atividade-semana07-naianereis.vercel.app/)
-
-
-
 ## Instruções
 
 1. Clone o repositório:
