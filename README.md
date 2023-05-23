@@ -23,7 +23,7 @@ Este é o projeto final desenvolvido para os alunos da MJV School Angular, com o
 
 1. Para rodar o app é necessário entrar no diretório front-angular .
  
-### `cd front-angullar`
+### `cd front-angular`
 2. Em seguida instalar todas as dependências utilizadas no projeto.
    
 ### `npm install`
