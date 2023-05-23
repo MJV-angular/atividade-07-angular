@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable, distinctUntilChanged, find, map, of, shareReplay, switchMap, take, tap } from 'rxjs';
+import {
+  Observable,
+  distinctUntilChanged,
+  find,
+  map,
+  of,
+  shareReplay,
+  switchMap,
+  take,
+  tap,
+} from 'rxjs';
 import { ApiCourseContentUserService } from '../async/api-course-content-user.service';
 import { DashboardStateService } from '../state/dashboard-state.service';
 import { CourseContentUser } from '../../interfaces/register-courses.interfaces';
@@ -15,39 +25,18 @@ export class DashboardFacadeService {
     private apiCourseContentsUserByCourse: ApiCourseContentUserByCourseIdService,
     private courseContentUserApi: ApiCourseContentUserService,
     public toast: ToastService
-  ) {
-
-  }
+  ) {}
 
   readonly getCoursesContentbyCoursesId$ = this.dashboardState.getState().pipe(
     map(({ coursesContentUserbyCourseId }) => coursesContentUserbyCourseId),
-    tap((stateCoursesContent) => {
+    switchMap((stateCoursesContent) => {
       if (stateCoursesContent) {
         return of(stateCoursesContent);
       }
       return of(null);
     }),
-    distinctUntilChanged(),
     shareReplay(1)
   );
-
-  // switchMap(state => {
-  //   if (state.loaded) {
-  //     // todos já carregados, só retornamos a lista já carregada
-  //     return of(state.todos)
-  //   } else {
-  //     this.todosState.setLoading(true);
-  //     return this.todosApi
-  //       .getTodos()
-  //       .pipe(
-  //         tap((todos) => {
-  //           this.todosState.setTodos(todos);
-  //           this.todosState.setLoaded(true);
-  //         }),
-  //         finalize(() => {
-  //           this.todosState.setLoading(false);
-  //         })
-  //       )
 
   selectCourseContentUser(idSelect: number) {
     return this.dashboardState.getState().pipe(
@@ -59,7 +48,6 @@ export class DashboardFacadeService {
     );
   }
 
-
   completedCourseContentUser(id: number): Observable<CourseContentUser> {
     return this.courseContentUserApi.completedCourseContentUser(id).pipe(
       tap((response) =>
@@ -68,9 +56,10 @@ export class DashboardFacadeService {
       tap({
         complete: () => {
           this.toast.show('Curso completado', 'sucess'),
-          this.selectCourseContentUser(id)
+            this.selectCourseContentUser(id);
         },
-      })
+      }),
+      shareReplay(1)
     );
   }
 
@@ -82,10 +71,8 @@ export class DashboardFacadeService {
           this.dashboardState.addcourseContentSelect(courseContentUser[0]);
           this.dashboardState.addCoursesContentsbyCourse(courseContentUser);
         }),
-        distinctUntilChanged(),
         shareReplay(1)
       );
-
   }
 
   readonly getCourseSelected = this.dashboardState.getState().pipe(
