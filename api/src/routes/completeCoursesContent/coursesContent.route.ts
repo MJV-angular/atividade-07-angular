@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { listCompletedCourseContentByUserController, updatedCompleteCourseController } from "../../controllers/completedCourseContent/CompletedCourseContent.controllers";
+import { listCompletedCourseContentByUserController, updatedCompleteCourseController } from "../../controllers/completedCourseContent/completedCourseContent.controllers";
 
 const completeCourseContentRoutes = Router();
 completeCourseContentRoutes.get('/:userId/:courserId', listCompletedCourseContentByUserController);
