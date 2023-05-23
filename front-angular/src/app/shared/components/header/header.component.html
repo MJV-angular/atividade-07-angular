@@ -1,0 +1,20 @@
+<nav>
+  <figure>
+    <img src="/assets/logo.svg" alt="logo_mjv" />
+  </figure>
+  <ul>
+    <li><a appBlue routerLink="/">Home</a></li>
+    <li *ngIf="(user | async)?.name">
+      <a appBlue routerLink="/dashboard">Dashboard</a>
+    </li>
+    <li *ngIf="!(user | async)?.name">
+      <a appBlue routerLink="/register">Cadastro</a>
+    </li>
+    <li *ngIf="!(user | async)?.name">
+      <a appBlue routerLink="/login">Login</a>
+    </li>
+    <li *ngIf="(user | async)?.name">
+      <a (click)="onLogout()" appBlue>Sair</a>
+    </li>
+  </ul>
+</nav>
