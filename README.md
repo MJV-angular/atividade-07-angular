@@ -1,6 +1,6 @@
 # Projeto final - MJV School Angular.
 
-Este é o projeto final desenvolvido para os alunos da MJV School Angular, com o objetivo de praticar e aplicar os conceitos aprendidos utilizando a tecnologia Angular.
+Este é o projeto final desenvolvido para os alunos da MJV School Angular, com o objetivo de praticar e aplicar os conceitos aprendidos utilizando o framework Angular.
 
 ## Conceitos
 - Template Driven
