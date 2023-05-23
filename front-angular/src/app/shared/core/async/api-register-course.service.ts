@@ -14,7 +14,6 @@ import { environment } from 'src/envirements/envirements';
 export class ApiRegisterCourseService {
 
   constructor(private httpClient: HttpClient, private token: TokenFacadeService) {
-    console.log(this.token)
   }
 
   registerCourse(

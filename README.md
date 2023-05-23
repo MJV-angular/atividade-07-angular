@@ -1,6 +1,6 @@
-# Atividade da MJV School Angular - 07 - 08
+# Projeto final - MJV School Angular.
 
-Esta é uma atividade desenvolvida para os alunos da MJV School Angular, com o objetivo de praticar e aplicar conceitos aprendidos utilizando a tecnologia Angular.
+Este é o projeto final desenvolvido para os alunos da MJV School Angular, com o objetivo de praticar e aplicar os conceitos aprendidos utilizando a tecnologia Angular.
 
 ## Conceitos
 - Template Driven
@@ -23,12 +23,37 @@ Esta é uma atividade desenvolvida para os alunos da MJV School Angular, com o o
    
 ### `git clone https://github.com/MJV-angular/atividade-07-angular.git` 
 
-1. Para rodar o app é necessário rodar instalar todas as dependências utilizadas no projeto.
+1. Para rodar o app é necessário entrar no diretório front-angular .
+ 
+### `cd front-angullar`
+2. Em seguida instalar todas as dependências utilizadas no projeto.
    
-### `yarn install`
+### `npm install`
 
-2. Para rodar a aplicação use o seguinte comando.
+3. Para rodar a aplicação use o seguinte comando.
+
 ### `ng serve`
+
+4. Abra outro terminal e entre no diretório api.
+
+### `cd api`
+
+5. Adicionar uma secretekey no arquivo .env.example e renomea-lo arquivo para .env
+   
+### `npm install`
+
+6. Em seguida instalar todas as dependências utilizadas no projeto.
+   
+### `npm install`
+
+7. Para rodar a api use o seguinte comando.
+
+### `npm run dev`
+
+
+
+
+
            
 
 
