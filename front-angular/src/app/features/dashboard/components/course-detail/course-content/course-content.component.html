@@ -1,0 +1,11 @@
+<ng-container *ngIf="courseContent">
+  <div class="container">
+    <div class="btn-container">
+      <button (click)="emitEvent(courseContent.id)" [disabled]="courseContent.complete">{{!courseContent.complete?"completar tarefa": "tarefa concluída"}}</button>
+    </div>
+    <iframe width="100%" height="100%" [src]="courseContent.courseContent.video_url | embed" loading="lazy" frameborder="0" allowfullscreen="1"  #iframe allow="accelerometer"></iframe>
+  </div>
+
+</ng-container>
+
+
