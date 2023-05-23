@@ -32,8 +32,6 @@ Este é o projeto final desenvolvido para os alunos da MJV School Angular, com o
 ### `cd api`
 
 5. Adicione uma chave secreta(SECRET KEY) no arquivo .env.example e renomeie o arquivo para .env
-   
-### `npm install`
 
 6. Em seguida instalar todas as dependências utilizadas no projeto.
    
