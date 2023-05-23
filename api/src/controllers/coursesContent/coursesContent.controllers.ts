@@ -4,12 +4,11 @@ import deleteCourseService from "../../services/courses/deleteCourse.service";
 import createCourseContentService from "../../services/coursesContent/createCourseContent.service";
 import listCourseContentService from "../../services/coursesContent/listCourseContent.service";
 
-
 const createCourseContentController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     const data = req.body;
-    const resp = await createCourseContentService(id, data)
+    const resp = await createCourseContentService(id, data);
     return res.json(resp);
   } catch (error) {
     if (error instanceof Error) {
@@ -20,11 +19,9 @@ const createCourseContentController = async (req: Request, res: Response) => {
   }
 };
 
-
-
 const listCourseContentController = async (req: Request, res: Response) => {
   try {
-    const resp = await listCourseContentService()
+    const resp = await listCourseContentService();
     return res.json(resp);
   } catch (error) {
     if (error instanceof Error) {
@@ -49,13 +46,11 @@ const listCourseContentController = async (req: Request, res: Response) => {
 //   }
 // };
 
-
-
 const updatedCourseController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
     const data = req.body;
-    const resp = await updateCourseService(id, data)
+    const resp = await updateCourseService(id, data);
     return res.json(resp);
   } catch (error) {
     if (error instanceof Error) {
@@ -66,11 +61,10 @@ const updatedCourseController = async (req: Request, res: Response) => {
   }
 };
 
-
 const deleteCourseController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const resp = await deleteCourseService(id)
+    const resp = await deleteCourseService(id);
     return res.json(resp);
   } catch (error) {
     if (error instanceof Error) {
@@ -86,4 +80,4 @@ export {
   listCourseContentController,
   updatedCourseController,
   deleteCourseController,
-}
+};
