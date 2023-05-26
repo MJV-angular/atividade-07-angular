@@ -1,39 +1,53 @@
 .toast {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-color);
+  justify-content: center;
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 9999;
   max-width: 450px;
-}
-
-.toast-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  color: #fff;
+  width: 100%;
+  height: 80px;
   border-radius: 8px;
-}
+  overflow: hidden;
+  background-color: #f2faf7;
+  color: #0bc383;
+  box-shadow: var(--shadow-primary);
+  &::before {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 100%;
+    background-color: #0bc383;
+  }
+  .toast-header {
+    display: flex;
+    justify-content: space-between;
 
-.toast-header .close {
-  color: #fff;
-  opacity: .8;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1;
-  text-shadow: 0 1px 0 #fff;
-  background-color: transparent;
-  border: 0;
-}
+    .lottie-container {
+      align-items: center;
+      display: flex;
+      height: 50px;
+      padding: 15px;
+      .icon-lottie {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    button{
+      width: 35px;
+      height: 35px;
+      border: none;
+      background: none;
+      color: #0bc383;
+    }
+  }
+  .toast-body {
+    padding: 0 20px;
+    height: 100%;
+    flex-grow: 1;
+  }
 
-.toast-header .close:hover {
-  color: #fff;
-  opacity: 1;
-  text-decoration: none;
-}
-
-.toast-body {
-  padding: .75rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
 }

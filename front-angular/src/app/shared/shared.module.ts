@@ -20,6 +20,13 @@ import { InputSearchComponent } from './components/input-search/input-search.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThumbPipe } from './pipes/thumb.pipe';
 import { EmbedPipe } from './pipes/embed.pipe';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [
@@ -44,7 +51,8 @@ import { EmbedPipe } from './pipes/embed.pipe';
     CommonModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   exports:[
     HeaderComponent,

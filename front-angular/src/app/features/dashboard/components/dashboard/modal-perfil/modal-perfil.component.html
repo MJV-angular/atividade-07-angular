@@ -10,7 +10,7 @@
       <form [formGroup]="userForm" class="form-default">
         <div>
           <div class="container-picture">
-            <app-picture-perfil [user]="userData"></app-picture-perfil>
+            <app-picture-perfil [onlyPicture]="true" [user]="userData"></app-picture-perfil>
             <div>
               <label for="picture">foto</label>
               <input type="text" formControlName="picture" />

@@ -55,7 +55,7 @@ export class DashboardFacadeService {
       ),
       tap({
         complete: () => {
-          this.toast.show('Curso completado', 'sucess'),
+          this.toast.show('Curso completado', 'success'),
             this.selectCourseContentUser(id);
         },
       }),
