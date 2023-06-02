@@ -3,7 +3,7 @@
     <img src={{user?.picture}} alt="">
   </figure>
 
-  <div>
+  <div *ngIf="!onlyPicture">
     <span class="name">{{user?.name}}</span>
     <span class="email">{{user?.email}}</span>
   </div>

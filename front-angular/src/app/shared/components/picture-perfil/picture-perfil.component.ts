@@ -8,4 +8,5 @@ import { IUserState } from '../../interfaces/user.interfaces';
 
 export class PicturePerfilComponent {
   @Input() user!: IUserState | null;
+  @Input() onlyPicture: boolean = false;
 }

@@ -71,6 +71,7 @@
 }
 .container-picture {
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   div {
     max-width: 500px;

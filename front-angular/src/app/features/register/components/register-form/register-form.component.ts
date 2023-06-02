@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterFacadeService } from 'src/app/shared/core/facade/register-facade.service';
 import moment from 'moment';
 import { ModalService } from 'src/app/shared/core/sync/modal.service';
 import { Subscription } from 'rxjs';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-register-form',
@@ -20,6 +21,25 @@ export class RegisterFormComponent implements OnDestroy {
     private registerFacade: RegisterFacadeService,
     private modal: ModalService
   ) {}
+
+  @ViewChild('form', { static: true })
+  form!: ElementRef;
+
+  ngAfterContentInit() {
+    gsap.fromTo(
+      this.form.nativeElement,
+      {
+        opacity:0,
+        y: 500,
+      },
+      {
+        opacity:1,
+        y: 0,
+        duration: 0.5,
+      }
+    );
+
+  }
 
   addressForm = new FormGroup({
     street: new FormControl('', { nonNullable: true, validators: [Validators.required] }),

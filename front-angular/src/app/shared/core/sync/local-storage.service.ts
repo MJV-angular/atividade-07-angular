@@ -11,11 +11,7 @@ export class LocalStorageService {
   get refresh$() {
     return this._refresh$;
   }
-  setUser(){
-
-  }
-
-
+  
   get(item: string) {
     const localStorage$ = of(localStorage.getItem(item))
     return localStorage$.pipe(tap(

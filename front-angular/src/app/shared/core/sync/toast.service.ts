@@ -5,12 +5,13 @@ import { Itoast } from '../../interfaces/toast.interfaces';
   providedIn: 'root',
 })
 export class ToastService {
+  timeoutID!: any;
   constructor() {}
 
   private toastSubject = new BehaviorSubject<Itoast>({
     hide: false,
     message: '',
-    type: 'sucess',
+    type: 'success',
   });
 
   toastSubject$: Observable<Itoast> = this.toastSubject.asObservable();
@@ -21,7 +22,12 @@ export class ToastService {
       hide: false,
     });
   }
-  show(message: string, type: 'sucess'| 'error') {
+
+  show(message: string, type: 'success' | 'error') {
+    const time = 5000;
+
+    clearTimeout(this.timeoutID);
+
     this.toastSubject.next({
       ...this.toastSubject.getValue(),
       message: message,
@@ -29,8 +35,8 @@ export class ToastService {
       type: type,
     });
 
-    setTimeout(() => {
+    this.timeoutID = setTimeout(() => {
       this.hide();
-    }, 5000);
+    }, time);
   }
 }

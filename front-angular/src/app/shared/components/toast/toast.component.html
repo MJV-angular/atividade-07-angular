@@ -1,12 +1,22 @@
-<div class="toast" *ngIf="this.$isOpen| async">
+<div class="toast"  [ngStyle]="isOpen ? {display: 'block'} : { display :'none'}" #toast>
   <div class="toast-header">
-    <strong class="mr-auto">Título do Toast</strong>
-    <small>just now</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+    <div class="lottie-container">
+      <ng-lottie
+      class="icon-lottie"
+      [options]="options"
+      (animationCreated)="animationCreated($event)"
+    ></ng-lottie>
+    Sucess
+
+    </div>
+
+    <button type="button">
+      <span>&times;</span>
     </button>
   </div>
   <div class="toast-body">
-    <ng-container #container>  {{content}}</ng-container>
+    <ng-container>  {{ content }} </ng-container>
   </div>
 </div>
+
+

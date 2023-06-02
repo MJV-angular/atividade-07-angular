@@ -9,6 +9,9 @@ import { RegisterModule } from './features/register/register.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { CatalogModule } from './features/catalog/catalog.module';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,

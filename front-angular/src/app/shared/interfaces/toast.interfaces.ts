@@ -1,5 +1,10 @@
 export interface Itoast{
   hide: boolean,
   message: string,
-  type: 'sucess' | 'error',
+  type: 'success' | 'error',
+}
+
+
+export interface Itoasts{
+  toasts: Itoast[]
 }

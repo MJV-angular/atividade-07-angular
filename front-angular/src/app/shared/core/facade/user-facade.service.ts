@@ -57,7 +57,7 @@ export class UserFacadeService {
         this.userState.editeUser(response);
       }),
       tap(() => {
-        this.toast.show('Usuário atualizado com sucesso.', "sucess");
+        this.toast.show('Usuário atualizado com sucesso.', "success");
       })
     );
   }

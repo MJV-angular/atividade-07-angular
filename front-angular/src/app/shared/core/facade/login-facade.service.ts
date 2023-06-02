@@ -49,7 +49,7 @@ export class LoginFacadeService {
           this.modal.show(error.error.message,"error");
         },
         complete: () => {
-          this.toast.show(`Seja bem vindo ${this.name}`, 'sucess');
+          this.toast.show(`Seja bem-vindo! ${this.name}`, 'success');
         },
       })
     );

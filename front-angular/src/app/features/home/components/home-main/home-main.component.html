@@ -1,9 +1,11 @@
-<app-home-animation />
-<div class="about-container">
+
+
+<app-home-animation  />
+<div #box class="about-container">
   <div class="about-inner">
-    <div class="about-text">
-      <h2>Sobre</h2>
-      <p>{{ texts ? texts[5].paragraph : "" }}</p>
+    <div  #text  class="about-text">
+      <h2 >Sobre</h2>
+      <p >{{ texts ? texts[5].paragraph : "" }}</p>
     </div>
   </div>
 
@@ -12,10 +14,12 @@
       <figure>
         <img src="{{ ele.img }}" alt="" srcset="" />
       </figure>
-      <div>{{ ele.paragraph }}</div>
+      <div >{{ ele.paragraph }}</div>
     </li>
   </ul>
 </div>
+
+
 
 <div class="schools-container">
   <div class="half white">
