@@ -1,6 +1,6 @@
 # Projeto final - MJV School Angular.
 
-Este é o projeto final desenvolvido para os alunos da MJV School Angular, com o objetivo de praticar e aplicar os conceitos aprendidos utilizando o framework Angular.
+Este é o projeto final desenvolvido para o curso da MJV School Angular, com o objetivo de praticar e aplicar os conceitos aprendidos utilizando o framework Angular.
 
 
 ![image](https://user-images.githubusercontent.com/100942719/234717842-0f958fe6-1125-470c-8d60-7bb7ce000426.png)
